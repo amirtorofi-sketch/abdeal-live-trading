@@ -71,91 +71,98 @@ def get_margin_client() -> IsolatedMargin:
     return IsolatedMargin(API_KEY, API_SECRET)
 
 
-def verify_symbol_ready(spot_client: Spot, symbol: str) -> dict:
+def verify_symbol_ready(spot_client: Spot, spot_symbol: str) -> dict:
     """
-    قبل از هر معامله چک می‌کند که بازار وجود دارد و مارجین رویش فعال است.
+    قبل از هر معامله چک می‌کند که بازار وجود دارد و در حال معامله است.
     اگر نبود، BrokerError پرتاب می‌کند تا بات هیچ سفارشی نزند.
+
+    ⚠️ توجه: چک isMarginTradingAllowed/permissions عمداً اینجا مسدودکننده
+    نیست — چون با تست واقعی مشخص شد این فیلدها اصلاً بازتاب‌دهنده‌ی «اهرم
+    کلاسیک» تبدیل نیستن (احتمالاً یک فضای بازار جداست). فقط status=TRADING
+    را چک می‌کنیم که همچنان معنادار و امنه.
     """
-    info = spot_client.exchange_info(symbols=[symbol])
+    info = spot_client.exchange_info(symbols=[spot_symbol])
     markets = info.get("symbols", info) if isinstance(info, dict) else info
     if not markets:
-        raise BrokerError(f"بازار {symbol} در exchange_info پیدا نشد.")
+        raise BrokerError(f"بازار {spot_symbol} در exchange_info پیدا نشد.")
     market = markets[0]
     if market.get("status") != "TRADING":
-        raise BrokerError(f"بازار {symbol} در وضعیت TRADING نیست (status={market.get('status')}).")
-    permissions = market.get("permissions") or []
-    has_margin_permission = any("MARGIN" in str(p).upper() for p in permissions)
-    if not (market.get("isMarginTradingAllowed", False) or has_margin_permission):
-        raise BrokerError(
-            f"بازار {symbol} در حال حاضر نه isMarginTradingAllowed=true دارد و نه MARGIN توی "
-            f"permissions ({permissions!r}) — معامله‌ی اهرم‌دار روی آن ثبت نمی‌شود."
-        )
+        raise BrokerError(f"بازار {spot_symbol} در وضعیت TRADING نیست (status={market.get('status')}).")
     return market
+
+
+def dump_margin_assets_once(_cache={}) -> dict:
+    """
+    endpoint اختصاصی مارجین (نه اسپات) که فرضاً باید فهرست واقعی دارایی‌ها/
+    نمادهای مارجین‌دار رو بده. Security=NONE یعنی نیاز به API Key نداره.
+    فقط یه‌بار در طول اجرای برنامه صدا زده می‌شه (کش می‌شه) و خروجی خامش رو
+    چاپ می‌کنه تا بفهمیم دقیقاً چه ساختاری داره - چون تا الان هیچ‌وقت واقعاً
+    تستش نکرده بودیم.
+    """
+    if "done" in _cache:
+        return _cache["done"]
+    try:
+        margin_client = IsolatedMargin(api_key=None, api_secret=None)
+        assets = margin_client.get_all_assets()
+        print("🔍 خروجی خام get_all_assets() (endpoint عمومی مخصوص مارجین):")
+        print(json.dumps(assets, ensure_ascii=False, indent=2, default=str)[:4000])
+    except Exception as e:
+        print(f"🔍 get_all_assets() شکست خورد: {type(e).__name__}: {e}")
+        assets = None
+    _cache["done"] = assets
+    return assets
 
 
 def discover_irt_margin_symbols(spot_client: Spot, candidate_bases: list) -> dict:
     """
     ⚠️ فقط از endpointهای عمومی استفاده می‌کند (بدون نیاز به API Key).
 
-    برای هر ارز پایه در candidate_bases (مثل "BTC", "SOL", ...)، چک می‌کند که
-    آیا بازار <BASE>IRT روی تبدیل وجود دارد و اهرم کلاسیک/مارجین رویش فعاله.
+    نکته‌ی مهم (کشف‌شده بعد از تست واقعی): exchange_info اسپات برای این
+    نمادها permissions=["SPOT"] و isMarginTradingAllowed=false برمی‌گردونه -
+    یعنی این فیلدها اصلاً بازتاب‌دهنده‌ی «اهرم کلاسیک» تبدیل نیستن (که یه
+    فضای بازار جداست). همچنین هر بازار یه فیلد "tabdealSymbol" جدا با زیرخط
+    داره (مثلاً BTC_IRT کنار BTCIRT) که طبق کد رسمی پکیج، دقیقاً همینه که باید
+    برای سفارش‌های مارجین فرستاده بشه (add_symbol_to_data: اگه زیرخط داشته
+    باشه به‌عنوان tabdealSymbol می‌فرسته، نه symbol).
 
-    نکته‌ی مهم (کشف‌شده بعد از تست واقعی): فیلد isMarginTradingAllowed برای
-    همه‌ی نمادها False برمی‌گشت، با اینکه توی سایت تبدیل همون نمادها زیر تب
-    "اهرم کلاسیک" با نشان اهرم (5X و ...) نمایش داده می‌شدن. پس این فیلد به‌تنهایی
-    قابل‌اعتماد نیست؛ اینجا اضافه بر آن، فیلد permissions (اگر MARGIN توش باشه)
-    را هم چک می‌کنیم، و برای اولین نماد، کل JSON خام را هم چاپ می‌کنیم تا اگر
-    بازم قبول نشد، دقیقاً معلوم بشه صرافی چه فیلد دیگه‌ای برای این منظور داره.
+    چون هنوز معیار قطعی «مارجین‌دار بودن» را نداریم (get_all_assets تازه اضافه
+    شده و باید خروجیش دیده بشه)، فعلاً به‌صورت موقت هر نمادی که در exchange_info
+    با status=TRADING پیدا بشه را واجد شرایط در نظر می‌گیریم (چون DRY_RUN فعاله
+    و ریسکی نداره)، و هم‌زمان گزارش get_all_assets را چاپ می‌کنیم تا این معیار
+    موقت را در قدم بعد با داده‌ی واقعی دقیق کنیم.
+
+    خروجی: {base: {"spot": "BTCIRT", "margin": "BTC_IRT"}}
     """
+    dump_margin_assets_once()
+
     ready = {}
     diagnostics = []
-    dumped_raw_once = False
     for base in candidate_bases:
-        tabdeal_symbol = f"{base}IRT"
+        spot_symbol = f"{base}IRT"
         try:
-            info = spot_client.exchange_info(symbols=[tabdeal_symbol])
+            info = spot_client.exchange_info(symbols=[spot_symbol])
             markets = info.get("symbols", info) if isinstance(info, dict) else info
             if not markets:
-                diagnostics.append(f"  {tabdeal_symbol}: exchange_info پاسخ خالی داد. raw={info!r}")
+                diagnostics.append(f"  {spot_symbol}: exchange_info پاسخ خالی داد.")
                 continue
             market = markets[0]
+            margin_symbol = market.get("tabdealSymbol") or f"{base}_IRT"
 
-            if not dumped_raw_once:
-                dumped_raw_once = True
-                try:
-                    print(f"🔍 JSON کامل و خام بازار {tabdeal_symbol} (فقط برای اولین نماد، جهت بررسی دستی):")
-                    print(json.dumps(market, ensure_ascii=False, indent=2, default=str))
-                except Exception as e:
-                    print(f"🔍 چاپ JSON خام شکست خورد: {e}")
-
-            permissions = market.get("permissions") or []
-            has_margin_permission = any("MARGIN" in str(p).upper() for p in permissions)
-            margin_ok = market.get("isMarginTradingAllowed", False) or has_margin_permission
-
-            if market.get("status") == "TRADING" and margin_ok:
-                ready[base] = tabdeal_symbol
+            if market.get("status") == "TRADING":
+                ready[base] = {"spot": spot_symbol, "margin": margin_symbol}
             else:
-                diagnostics.append(
-                    f"  {tabdeal_symbol}: status={market.get('status')!r}, "
-                    f"isMarginTradingAllowed={market.get('isMarginTradingAllowed')!r}, "
-                    f"permissions={permissions!r}"
-                )
+                diagnostics.append(f"  {spot_symbol}: status={market.get('status')!r} (TRADING نیست)")
         except (ClientException, ServerException) as e:
-            diagnostics.append(f"  {tabdeal_symbol}: خطای API -> {type(e).__name__}: {e}")
+            diagnostics.append(f"  {spot_symbol}: خطای API -> {type(e).__name__}: {e}")
         except Exception as e:
-            diagnostics.append(f"  {tabdeal_symbol}: خطای غیرمنتظره -> {type(e).__name__}: {e}")
+            diagnostics.append(f"  {spot_symbol}: خطای غیرمنتظره -> {type(e).__name__}: {e}")
 
-    if not ready and diagnostics:
-        print("🔍 گزارش تشخیصی discover_irt_margin_symbols (هیچ نمادی تایید نشد):")
+    if ready:
+        print(f"✅ discover_irt_margin_symbols: {len(ready)} نماد (موقتاً بر مبنای status=TRADING) -> {ready}")
+    if diagnostics:
+        print("🔍 نمادهایی که حتی رد نشدن:")
         for line in diagnostics:
             print(line)
-        try:
-            full = spot_client.exchange_info()
-            all_markets = full.get("symbols", full) if isinstance(full, dict) else full
-            irt_like = [m.get("symbol") for m in all_markets if "IRT" in str(m.get("symbol", "")).upper()][:40]
-            print(f"🔍 برای مقایسه، این‌ها نمادهایی هستن که اسمشون IRT داره: {irt_like}")
-        except Exception as e:
-            print(f"🔍 حتی گرفتن exchange_info کامل هم شکست خورد: {type(e).__name__}: {e}")
 
     return ready
 
@@ -269,26 +276,31 @@ def plan_order(market: dict, side: str, price: float, own_margin_irt: float, lev
     }
 
 
-def open_margin_position(symbol: str, side: str, own_margin_irt: float, leverage: float, logger=print) -> dict:
+def open_margin_position(spot_symbol: str, margin_symbol: str, side: str, own_margin_irt: float, leverage: float, logger=print) -> dict:
     """
     یک پوزیشن مارجین ایزوله واقعی باز می‌کند (side: BUY برای لانگ، SELL برای شورت).
     اگر DRY_RUN=true باشد، فقط پلن سفارش را چاپ/برمی‌گرداند و هیچ سفارشی نمی‌فرستد.
+
+    spot_symbol (مثل "BTCIRT") برای گرفتن قیمت/فیلترهای بازار از endpointهای
+    اسپات استفاده می‌شود. margin_symbol (مثل "BTC_IRT"، با زیرخط) دقیقاً همان
+    چیزیه که به create_margin_order داده می‌شود - چون طبق کد رسمی پکیج، هر
+    نمادی که زیرخط داشته باشه به‌عنوان فیلد جدای tabdealSymbol فرستاده می‌شه.
     """
     spot_client = get_public_client()
-    market = verify_symbol_ready(spot_client, symbol)
-    price = get_mid_price(spot_client, symbol)
+    market = verify_symbol_ready(spot_client, spot_symbol)
+    price = get_mid_price(spot_client, spot_symbol)
     plan = plan_order(market, side, price, own_margin_irt, leverage)
 
-    logger(f"[tabdeal] پلن سفارش {symbol} side={side} price≈{price} -> {plan}")
+    logger(f"[tabdeal] پلن سفارش {margin_symbol} side={side} price≈{price} -> {plan}")
 
     if DRY_RUN:
         logger("[tabdeal] DRY_RUN فعاله — سفارش واقعی ارسال نشد.")
-        return {"dry_run": True, "symbol": symbol, "side": side, "price": price, **plan}
+        return {"dry_run": True, "symbol": margin_symbol, "side": side, "price": price, **plan}
 
     margin_client = get_margin_client()
     try:
         order = margin_client.create_margin_order(
-            symbol=symbol,
+            symbol=margin_symbol,
             side=_SIDE_MAP[side],
             type=OrderTypes.MARKET,
             quantity=plan["quantity"],
@@ -297,27 +309,28 @@ def open_margin_position(symbol: str, side: str, own_margin_irt: float, leverage
     except SecurityException as e:
         raise BrokerError(f"خطای امنیتی هنگام ثبت سفارش: {e}")
     except (ClientException, ServerException) as e:
-        raise BrokerError(f"خطای تبدیل هنگام ثبت سفارش ({symbol}, {side}): {e}")
+        raise BrokerError(f"خطای تبدیل هنگام ثبت سفارش ({margin_symbol}, {side}): {e}")
 
     order["_planned_price"] = price
     order["_notional_irt"] = plan["notional_irt"]
     return order
 
 
-def close_margin_position(symbol: str, opposite_side: str, quantity: str, logger=print) -> dict:
+def close_margin_position(margin_symbol: str, opposite_side: str, quantity: str, logger=print) -> dict:
     """
-    بستن پوزیشن با سفارش معکوس (MARKET). فرض بر این است که بازپرداخت وام
-    خودکار انجام می‌شود — این فرض را حتماً بعد از اولین معامله با
-    get_isolated_margin_account() بررسی کن.
+    بستن پوزیشن با سفارش معکوس (MARKET). margin_symbol باید همون فرمت زیرخط‌دار
+    باشه (مثل "BTC_IRT") که موقع باز کردن پوزیشن استفاده شد.
+    فرض بر این است که بازپرداخت وام خودکار انجام می‌شود — این فرض را حتماً بعد
+    از اولین معامله با get_isolated_margin_account() بررسی کن.
     """
     if DRY_RUN:
-        logger(f"[tabdeal] DRY_RUN فعاله — بستن پوزیشن {symbol} شبیه‌سازی شد (side={opposite_side}, qty={quantity}).")
-        return {"dry_run": True, "symbol": symbol, "side": opposite_side, "quantity": quantity}
+        logger(f"[tabdeal] DRY_RUN فعاله — بستن پوزیشن {margin_symbol} شبیه‌سازی شد (side={opposite_side}, qty={quantity}).")
+        return {"dry_run": True, "symbol": margin_symbol, "side": opposite_side, "quantity": quantity}
 
     margin_client = get_margin_client()
     try:
         order = margin_client.create_margin_order(
-            symbol=symbol,
+            symbol=margin_symbol,
             side=_SIDE_MAP[opposite_side],
             type=OrderTypes.MARKET,
             quantity=quantity,
@@ -326,5 +339,5 @@ def close_margin_position(symbol: str, opposite_side: str, quantity: str, logger
     except SecurityException as e:
         raise BrokerError(f"خطای امنیتی هنگام بستن پوزیشن: {e}")
     except (ClientException, ServerException) as e:
-        raise BrokerError(f"خطای تبدیل هنگام بستن پوزیشن ({symbol}): {e}")
+        raise BrokerError(f"خطای تبدیل هنگام بستن پوزیشن ({margin_symbol}): {e}")
     return order
