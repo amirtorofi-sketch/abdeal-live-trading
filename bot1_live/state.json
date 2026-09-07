@@ -1,1 +1,22 @@
-{}
+{
+  "ETHIRT": {
+    "direction": "short",
+    "entry": 562015905.0,
+    "sl": 2533.0299069008756,
+    "tp1": 2475.5551396486862,
+    "tp2": 2441.070279297373,
+    "source_label": "Supertrend+ADX",
+    "opened_at": "2026-09-07 13:00:00",
+    "adx": 19.987047775929753,
+    "margin_symbol": "ETH_IRT",
+    "lot_a": {
+      "qty": 0.0004,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.0004,
+      "status": "open"
+    }
+  },
+  "ETHIRT__last_candle": "2026-09-07 13:00:00"
+}
