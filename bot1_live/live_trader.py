@@ -88,34 +88,38 @@ def resolve_direction_and_levels(raw_direction: str, entry: float, raw_sl: float
         return "long", entry - risk, entry + risk * ST_TP1_RR, entry + risk * ST_TP2_RR
 
 
-def _close_lot(state, tabdeal_symbol, pos, lot_key, price, reason, source_label):
+def _close_lot(state, spot_symbol, pos, lot_key, price, reason, source_label):
     """
     یک لات (a یا b) را می‌بندد - چه در حالت آزمایشی (فقط شبیه‌سازی) چه در
     حالت زنده (سفارش واقعی معکوس). در صورت خطای واقعی، لات را «باز» نگه
     می‌دارد تا دور بعد دوباره تلاش شود، و False برمی‌گرداند.
+
+    spot_symbol فقط برای نمایش/لاگ استفاده می‌شود؛ سفارش واقعی با
+    pos["margin_symbol"] (فرمت زیرخط‌دار) ثبت می‌شود.
     """
     lot = pos[lot_key]
     opposite = "SELL" if pos["direction"] == "long" else "BUY"
+    margin_symbol = pos["margin_symbol"]
 
     if DRY_RUN:
         balance = state.get("_paper_balance_irt", PAPER_STARTING_BALANCE_IRT)
         pnl = paper_ledger.record_close(
-            PAPER_LOG_FILE, now_iso(), tabdeal_symbol, source_label, pos["direction"],
+            PAPER_LOG_FILE, now_iso(), spot_symbol, source_label, pos["direction"],
             pos["entry"], price, lot["qty"], balance, reason,
         )
         new_balance = balance + pnl
         state["_paper_balance_irt"] = new_balance
         notify(
-            f"⚪ [آزمایشی] بسته شدن {lot_key} پوزیشن {tabdeal_symbol} ({pos['direction']}) — دلیل: {reason}\n"
+            f"⚪ [آزمایشی] بسته شدن {lot_key} پوزیشن {spot_symbol} ({pos['direction']}) — دلیل: {reason}\n"
             f"قیمت خروج≈{price:,.0f} | PnL فرضی این لات≈{pnl:,.0f} تومان | موجودی فرضی≈{new_balance:,.0f} تومان"
         )
     else:
         try:
-            close_margin_position(tabdeal_symbol, opposite, lot["qty"], logger=print)
+            close_margin_position(margin_symbol, opposite, lot["qty"], logger=print)
         except BrokerError as e:
-            notify(f"❌ خطا در بستن {lot_key} پوزیشن واقعی {tabdeal_symbol}: {e}")
+            notify(f"❌ خطا در بستن {lot_key} پوزیشن واقعی {spot_symbol}: {e}")
             return False
-        notify(f"⚪ بسته شدن {lot_key} پوزیشن واقعی {tabdeal_symbol} ({pos['direction']}) — دلیل: {reason} — قیمت≈{price:,.0f}")
+        notify(f"⚪ بسته شدن {lot_key} پوزیشن واقعی {spot_symbol} ({pos['direction']}) — دلیل: {reason} — قیمت≈{price:,.0f}")
 
     lot["status"] = "closed"
     return True
@@ -166,12 +170,16 @@ def main():
     if not active:
         notify("⚠️ در حال حاضر هیچ‌کدام از نمادهای این استراتژی روی تبدیل بازار تومانی مارجین‌دار ندارند.")
         return
-    binance_to_tabdeal = {f"{base}USDT": tabdeal_symbol for base, tabdeal_symbol in active.items()}
+    binance_to_symbols = {f"{base}USDT": syms for base, syms in active.items()}
 
     mode_label = "آزمایشی (Paper — بدون پول واقعی)" if DRY_RUN else "زنده (پول واقعی)"
-    print(f"حالت اجرا: {mode_label} | نمادهای فعال: {list(binance_to_tabdeal.values())}")
+    print(f"حالت اجرا: {mode_label} | نمادهای فعال: {[s['spot'] for s in binance_to_symbols.values()]}")
 
-    for binance_symbol, tabdeal_symbol in binance_to_tabdeal.items():
+    for binance_symbol, syms in binance_to_symbols.items():
+        spot_symbol = syms["spot"]
+        margin_symbol = syms["margin"]
+        tabdeal_symbol = spot_symbol  # کلید state همچنان فرمت اسپاته (بدون تغییر ساختار state.json)
+
         try:
             manage_open_position(state, tabdeal_symbol)
         except Exception as e:
@@ -201,7 +209,7 @@ def main():
         side = "BUY" if direction == "long" else "SELL"
 
         try:
-            order = open_margin_position(tabdeal_symbol, side, OWN_MARGIN_IRT, LEVERAGE, logger=print)
+            order = open_margin_position(spot_symbol, margin_symbol, side, OWN_MARGIN_IRT, LEVERAGE, logger=print)
         except BrokerError as e:
             notify(f"❌ سیگنال {direction} روی {tabdeal_symbol} رد شد: {e}")
             state[signal_key] = str(candle_time)
@@ -214,7 +222,7 @@ def main():
         notional_irt = float(order.get("_notional_irt", order.get("notional_irt", real_price * qty)))
 
         try:
-            market = get_market_info(spot_client, tabdeal_symbol)
+            market = get_market_info(spot_client, spot_symbol)
             qty_a, qty_b = split_into_two_lots(market, qty)
         except Exception:
             qty_a, qty_b = qty, 0.0  # اگر گرفتن اطلاعات بازار شکست خورد، تک‌لاتی (فقط TP2) ادامه بده
@@ -224,6 +232,7 @@ def main():
             state[tabdeal_symbol] = {
                 "direction": direction, "entry": real_price, "sl": sl, "tp1": tp1, "tp2": tp2,
                 "source_label": "Supertrend+ADX", "opened_at": str(candle_time), "adx": adx_value,
+                "margin_symbol": margin_symbol,
                 "lot_a": {"qty": qty_a, "status": "closed"},  # از قبل بسته یعنی هدف TP1 وجود ندارد
                 "lot_b": {"qty": qty_a, "status": "open"},
             }
@@ -231,6 +240,7 @@ def main():
             state[tabdeal_symbol] = {
                 "direction": direction, "entry": real_price, "sl": sl, "tp1": tp1, "tp2": tp2,
                 "source_label": "Supertrend+ADX", "opened_at": str(candle_time), "adx": adx_value,
+                "margin_symbol": margin_symbol,
                 "lot_a": {"qty": qty_a, "status": "open"},
                 "lot_b": {"qty": qty_b, "status": "open"},
             }
