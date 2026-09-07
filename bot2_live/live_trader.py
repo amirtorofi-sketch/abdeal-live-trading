@@ -26,16 +26,16 @@ from signal_bot_v2 import check_strategy_smc_v2, get_htf_bias_v2, SL_ATR_MULT, T
 from common.tabdeal_broker import (  # noqa: E402
     open_margin_position, close_margin_position, get_public_client, get_mid_price,
     discover_irt_margin_symbols, extract_real_price, get_market_info, split_into_two_lots,
-    BrokerError, DRY_RUN,
+    BrokerError, DRY_RUN, _float_env,
 )
 from common.telegram_notify import send_telegram  # noqa: E402
 from common import paper_ledger  # noqa: E402
 
 CANDIDATE_BASES = ["BTC", "ETH", "SOL", "BNB", "DOGE"]
 
-OWN_MARGIN_IRT = float(os.environ.get("BOT2_MARGIN_IRT", "100000"))
-LEVERAGE = float(os.environ.get("BOT2_LEVERAGE", "2"))
-PAPER_STARTING_BALANCE_IRT = float(os.environ.get("PAPER_STARTING_BALANCE_IRT", "5000000"))
+OWN_MARGIN_IRT = _float_env("BOT2_MARGIN_IRT", "100000")
+LEVERAGE = _float_env("BOT2_LEVERAGE", "2")
+PAPER_STARTING_BALANCE_IRT = _float_env("PAPER_STARTING_BALANCE_IRT", "5000000")
 
 TELEGRAM_BOT_TOKEN_2 = os.environ.get("TELEGRAM_BOT_TOKEN_2", "")
 TELEGRAM_CHAT_ID_2 = os.environ.get("TELEGRAM_CHAT_ID_2", "")
