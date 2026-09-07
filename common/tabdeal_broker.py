@@ -99,20 +99,46 @@ def discover_irt_margin_symbols(spot_client: Spot, candidate_bases: list) -> dic
     یا نه. خروجی: دیکشنری {base: "BASEIRT"} فقط برای ارزهایی که هر دو شرط را
     داشتند. این یعنی لیست نمادهای فعال هر بار اجرا از روی وضعیت واقعی و زنده‌ی
     تبدیل ساخته می‌شود، نه یک لیست ثابت و دستی.
+
+    اگر هیچ نمادی پیدا نشد، یه گزارش تشخیصی کامل چاپ می‌کند (به‌جای خاموش رد
+    شدن) تا مشخص شود مشکل از کجاست: فرمت نماد اشتباهه؟ اسم فیلد فرق داره؟
+    خطای واقعی از سرور می‌آد؟
     """
     ready = {}
+    diagnostics = []
     for base in candidate_bases:
         tabdeal_symbol = f"{base}IRT"
         try:
             info = spot_client.exchange_info(symbols=[tabdeal_symbol])
             markets = info.get("symbols", info) if isinstance(info, dict) else info
             if not markets:
+                diagnostics.append(f"  {tabdeal_symbol}: exchange_info پاسخ خالی داد (بازار احتمالاً با این اسم وجود نداره). raw={info!r}")
                 continue
             market = markets[0]
             if market.get("status") == "TRADING" and market.get("isMarginTradingAllowed", False):
                 ready[base] = tabdeal_symbol
-        except (ClientException, ServerException):
-            continue
+            else:
+                diagnostics.append(
+                    f"  {tabdeal_symbol}: پیدا شد ولی رد شد -> status={market.get('status')!r}, "
+                    f"isMarginTradingAllowed={market.get('isMarginTradingAllowed')!r}, کلیدهای موجود={list(market.keys())}"
+                )
+        except (ClientException, ServerException) as e:
+            diagnostics.append(f"  {tabdeal_symbol}: خطای API -> {type(e).__name__}: {e}")
+        except Exception as e:
+            diagnostics.append(f"  {tabdeal_symbol}: خطای غیرمنتظره -> {type(e).__name__}: {e}")
+
+    if not ready and diagnostics:
+        print("🔍 گزارش تشخیصی discover_irt_margin_symbols (هیچ نمادی تایید نشد):")
+        for line in diagnostics:
+            print(line)
+        try:
+            full = spot_client.exchange_info()
+            all_markets = full.get("symbols", full) if isinstance(full, dict) else full
+            irt_like = [m.get("symbol") for m in all_markets if "IRT" in str(m.get("symbol", "")).upper()][:40]
+            print(f"🔍 برای مقایسه، این‌ها نمادهایی هستن که اسمشون IRT داره (از exchange_info کامل، حداکثر ۴۰ تا): {irt_like}")
+        except Exception as e:
+            print(f"🔍 حتی گرفتن exchange_info کامل هم شکست خورد: {type(e).__name__}: {e}")
+
     return ready
 
 
