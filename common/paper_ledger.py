@@ -42,10 +42,20 @@ def record_open(path: str, now_iso: str, symbol: str, source: str, direction: st
 
 def record_close(path: str, now_iso: str, symbol: str, source: str, direction: str,
                   entry_price: float, exit_price: float, quantity: float,
-                  balance_after_irt: float, exit_reason: str) -> float:
-    """PnL فرضی را حساب، ثبت و برمی‌گرداند (به تومان، بر پایه‌ی حرکت قیمت پایه)."""
+                  balance_before_irt: float, exit_reason: str) -> float:
+    """
+    PnL فرضی را حساب می‌کند، موجودیِ فرضیِ *بعد از* همین معامله را در CSV
+    ثبت می‌کند، و PnL را برمی‌گرداند (به تومان، بر پایه‌ی حرکت قیمت پایه).
+
+    نکته: قبلاً این تابع مقدار balance_before_irt را مستقیماً به‌عنوان
+    balance_after_irt می‌نوشت — یعنی هر ردیف CSV یک معامله عقب‌تر بود و
+    آخرین ردیف اصلاً موجودی واقعی فعلی را نشان نمی‌داد. الان قبل از نوشتن،
+    pnl همین معامله به موجودی قبلی اضافه می‌شود تا ستون واقعاً «بعد از» را
+    نشان دهد.
+    """
     sign = 1 if direction == "long" else -1
     pnl_irt = (exit_price - entry_price) * quantity * sign
+    balance_after_irt = balance_before_irt + pnl_irt
     _append_row(path, {
         "event_time_utc": now_iso, "event_type": "close", "symbol": symbol, "source": source,
         "direction": direction, "entry_price": entry_price, "exit_price": exit_price,
