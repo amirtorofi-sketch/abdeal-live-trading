@@ -91,76 +91,66 @@ def verify_symbol_ready(spot_client: Spot, spot_symbol: str) -> dict:
     return market
 
 
-def dump_margin_assets_once(_cache={}) -> dict:
+def _get_margin_assets_index(_cache={}) -> dict:
     """
-    endpoint اختصاصی مارجین (نه اسپات) که فرضاً باید فهرست واقعی دارایی‌ها/
-    نمادهای مارجین‌دار رو بده. Security=NONE یعنی نیاز به API Key نداره.
-    فقط یه‌بار در طول اجرای برنامه صدا زده می‌شه (کش می‌شه) و خروجی خامش رو
-    چاپ می‌کنه تا بفهمیم دقیقاً چه ساختاری داره - چون تا الان هیچ‌وقت واقعاً
-    تستش نکرده بودیم.
+    endpoint اختصاصی مارجین (نه اسپات) - Security=NONE یعنی نیاز به API Key
+    نداره. طبق تست واقعی، هر ردیفش یه دارایی درگیر یک بازار مارجینه (هم پایه
+    هم مظنه، هر کدوم ردیف جدا) و شامل symbol (سبک بایننس، مثل BTCUSDT),
+    tabdealSymbol (زیرخط‌دار، مثل BTC_USDT), maxLeverage, isBorrowable و... هست.
+
+    این تابع کل لیست را یک‌بار می‌گیرد (کش می‌شود) و بر اساس symbol ایندکس
+    می‌کند تا بشه سریع فهمید یک بازار خاص (مثلاً BTCIRT) اصلاً در این فهرست
+    مارجین هست یا نه - این دقیق‌تر از exchange_info اسپاته که معلوم شد
+    isMarginTradingAllowed/permissions درستی برای اهرم کلاسیک برنمی‌گردونه.
     """
-    if "done" in _cache:
-        return _cache["done"]
+    if "index" in _cache:
+        return _cache["index"]
+    index = {}
     try:
         margin_client = IsolatedMargin(api_key=None, api_secret=None)
         assets = margin_client.get_all_assets()
-        print("🔍 خروجی خام get_all_assets() (endpoint عمومی مخصوص مارجین):")
-        print(json.dumps(assets, ensure_ascii=False, indent=2, default=str)[:4000])
+        for row in assets or []:
+            sym = row.get("symbol")
+            if sym:
+                index.setdefault(sym, []).append(row)
+        irt_symbols = sorted(s for s in index if s.endswith("IRT"))
+        print(f"🔍 get_all_assets(): {len(assets or [])} ردیف خام، {len(index)} نماد یکتا، "
+              f"{len(irt_symbols)} نماد ختم‌شده به IRT -> {irt_symbols}")
     except Exception as e:
         print(f"🔍 get_all_assets() شکست خورد: {type(e).__name__}: {e}")
-        assets = None
-    _cache["done"] = assets
-    return assets
+    _cache["index"] = index
+    return index
 
 
 def discover_irt_margin_symbols(spot_client: Spot, candidate_bases: list) -> dict:
     """
     ⚠️ فقط از endpointهای عمومی استفاده می‌کند (بدون نیاز به API Key).
 
-    نکته‌ی مهم (کشف‌شده بعد از تست واقعی): exchange_info اسپات برای این
-    نمادها permissions=["SPOT"] و isMarginTradingAllowed=false برمی‌گردونه -
-    یعنی این فیلدها اصلاً بازتاب‌دهنده‌ی «اهرم کلاسیک» تبدیل نیستن (که یه
-    فضای بازار جداست). همچنین هر بازار یه فیلد "tabdealSymbol" جدا با زیرخط
-    داره (مثلاً BTC_IRT کنار BTCIRT) که طبق کد رسمی پکیج، دقیقاً همینه که باید
-    برای سفارش‌های مارجین فرستاده بشه (add_symbol_to_data: اگه زیرخط داشته
-    باشه به‌عنوان tabdealSymbol می‌فرسته، نه symbol).
+    منبع اصلی تشخیص «مارجین‌دار بودن» حالا get_all_assets() است (نه
+    exchange_info اسپات، که معلوم شد isMarginTradingAllowed/permissions
+    نادرستی برمی‌گردونه). یک بازار وقتی واجد شرایط است که symbol آن
+    (مثل "BTCIRT") در فهرست get_all_assets() پیدا بشه.
 
-    چون هنوز معیار قطعی «مارجین‌دار بودن» را نداریم (get_all_assets تازه اضافه
-    شده و باید خروجیش دیده بشه)، فعلاً به‌صورت موقت هر نمادی که در exchange_info
-    با status=TRADING پیدا بشه را واجد شرایط در نظر می‌گیریم (چون DRY_RUN فعاله
-    و ریسکی نداره)، و هم‌زمان گزارش get_all_assets را چاپ می‌کنیم تا این معیار
-    موقت را در قدم بعد با داده‌ی واقعی دقیق کنیم.
-
-    خروجی: {base: {"spot": "BTCIRT", "margin": "BTC_IRT"}}
+    خروجی: {base: {"spot": "BTCIRT", "margin": "BTC_IRT", "max_leverage": "10.0"}}
     """
-    dump_margin_assets_once()
+    margin_index = _get_margin_assets_index()
 
     ready = {}
     diagnostics = []
     for base in candidate_bases:
         spot_symbol = f"{base}IRT"
-        try:
-            info = spot_client.exchange_info(symbols=[spot_symbol])
-            markets = info.get("symbols", info) if isinstance(info, dict) else info
-            if not markets:
-                diagnostics.append(f"  {spot_symbol}: exchange_info پاسخ خالی داد.")
-                continue
-            market = markets[0]
-            margin_symbol = market.get("tabdealSymbol") or f"{base}_IRT"
-
-            if market.get("status") == "TRADING":
-                ready[base] = {"spot": spot_symbol, "margin": margin_symbol}
-            else:
-                diagnostics.append(f"  {spot_symbol}: status={market.get('status')!r} (TRADING نیست)")
-        except (ClientException, ServerException) as e:
-            diagnostics.append(f"  {spot_symbol}: خطای API -> {type(e).__name__}: {e}")
-        except Exception as e:
-            diagnostics.append(f"  {spot_symbol}: خطای غیرمنتظره -> {type(e).__name__}: {e}")
+        rows = margin_index.get(spot_symbol)
+        if not rows:
+            diagnostics.append(f"  {spot_symbol}: توی get_all_assets پیدا نشد -> مارجین/اهرم کلاسیک نداره.")
+            continue
+        margin_symbol = rows[0].get("tabdealSymbol") or f"{base}_IRT"
+        max_leverage = rows[0].get("maxLeverage")
+        ready[base] = {"spot": spot_symbol, "margin": margin_symbol, "max_leverage": max_leverage}
 
     if ready:
-        print(f"✅ discover_irt_margin_symbols: {len(ready)} نماد (موقتاً بر مبنای status=TRADING) -> {ready}")
+        print(f"✅ discover_irt_margin_symbols: {len(ready)} نماد واقعاً مارجین‌دار -> {ready}")
     if diagnostics:
-        print("🔍 نمادهایی که حتی رد نشدن:")
+        print("🔍 نمادهایی که مارجین ندارن:")
         for line in diagnostics:
             print(line)
 
