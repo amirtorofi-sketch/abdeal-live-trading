@@ -36,7 +36,7 @@ from signal_bot import (  # noqa: E402  (وارد کردن بدون تغییر �
 from common.tabdeal_broker import (  # noqa: E402
     open_margin_position, close_margin_position, get_public_client, get_mid_price,
     discover_irt_margin_symbols, extract_real_price, get_market_info, split_into_two_lots,
-    BrokerError, DRY_RUN,
+    BrokerError, DRY_RUN, _float_env,
 )
 from common.telegram_notify import send_telegram  # noqa: E402
 from common import paper_ledger  # noqa: E402
@@ -44,9 +44,9 @@ from common import paper_ledger  # noqa: E402
 # ارزهای پایه‌ی کاندید این استراتژی (از روی SYMBOLS در signal_bot.py)
 CANDIDATE_BASES = ["BTC", "ETH", "SOL", "BNB", "DOGE", "CRV", "ROSE", "CHZ", "ONE", "VET", "MASK", "MANA", "GALA"]
 
-OWN_MARGIN_IRT = float(os.environ.get("BOT1_MARGIN_IRT", "150000"))
-LEVERAGE = float(os.environ.get("BOT1_LEVERAGE", "3"))
-PAPER_STARTING_BALANCE_IRT = float(os.environ.get("PAPER_STARTING_BALANCE_IRT", "5000000"))
+OWN_MARGIN_IRT = _float_env("BOT1_MARGIN_IRT", "150000")
+LEVERAGE = _float_env("BOT1_LEVERAGE", "3")
+PAPER_STARTING_BALANCE_IRT = _float_env("PAPER_STARTING_BALANCE_IRT", "5000000")
 
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "")
