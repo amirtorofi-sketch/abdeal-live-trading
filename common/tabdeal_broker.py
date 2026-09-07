@@ -31,6 +31,17 @@ from tabdeal.enums import OrderSides, OrderTypes
 # نگاشت رشته‌ی ساده به Enum رسمی پکیج (دقیقاً طبق نمونه‌ی README رسمی tabdeal-python)
 _SIDE_MAP = {"BUY": OrderSides.BUY, "SELL": OrderSides.SELL}
 
+def _float_env(name: str, default: str) -> float:
+    """
+    مثل os.environ.get ولی رشته‌ی خالی رو هم «تنظیم‌نشده» در نظر می‌گیره.
+    لازمه چون گیت‌هاب اکشنز وقتی یه Variable وجود نداره، ${{ vars.X }} رو به
+    رشته‌ی خالی resolve می‌کنه (نه اینکه اصلاً env var رو ست نکنه)، و
+    os.environ.get(name, default) در اون حالت رشته‌ی خالی برمی‌گردونه، نه default.
+    """
+    raw = os.environ.get(name, "").strip()
+    return float(raw) if raw else float(default)
+
+
 API_KEY = os.environ.get("TABDEAL_API_KEY", "")
 API_SECRET = os.environ.get("TABDEAL_API_SECRET", "")
 
@@ -42,7 +53,7 @@ DRY_RUN = os.environ.get("TABDEAL_DRY_RUN", "true").strip().lower() != "false"
 
 # سقف امنیتی سخت — این کد هرگز بیشتر از این مبلغ (تومان) را به‌عنوان مارجین
 # خودِ کاربر در یک معامله قفل نمی‌کند، حتی اگر مقدار اشتباه از جایی دیگر بیاید.
-HARD_CAP_MARGIN_IRT = float(os.environ.get("TABDEAL_HARD_CAP_MARGIN_IRT", "500000"))
+HARD_CAP_MARGIN_IRT = _float_env("TABDEAL_HARD_CAP_MARGIN_IRT", "500000")
 
 
 class BrokerError(Exception):
