@@ -20,6 +20,7 @@
 """
 
 import os
+import json
 import math
 from decimal import Decimal, ROUND_DOWN
 
@@ -82,10 +83,12 @@ def verify_symbol_ready(spot_client: Spot, symbol: str) -> dict:
     market = markets[0]
     if market.get("status") != "TRADING":
         raise BrokerError(f"بازار {symbol} در وضعیت TRADING نیست (status={market.get('status')}).")
-    if not market.get("isMarginTradingAllowed", False):
+    permissions = market.get("permissions") or []
+    has_margin_permission = any("MARGIN" in str(p).upper() for p in permissions)
+    if not (market.get("isMarginTradingAllowed", False) or has_margin_permission):
         raise BrokerError(
-            f"بازار {symbol} در حال حاضر isMarginTradingAllowed=false گزارش می‌شود — "
-            "معامله‌ی اهرم‌دار روی آن ثبت نمی‌شود. یا نماد را عوض کن یا از تبدیل بپرس."
+            f"بازار {symbol} در حال حاضر نه isMarginTradingAllowed=true دارد و نه MARGIN توی "
+            f"permissions ({permissions!r}) — معامله‌ی اهرم‌دار روی آن ثبت نمی‌شود."
         )
     return market
 
@@ -95,32 +98,47 @@ def discover_irt_margin_symbols(spot_client: Spot, candidate_bases: list) -> dic
     ⚠️ فقط از endpointهای عمومی استفاده می‌کند (بدون نیاز به API Key).
 
     برای هر ارز پایه در candidate_bases (مثل "BTC", "SOL", ...)، چک می‌کند که
-    آیا بازار <BASE>IRT روی تبدیل وجود دارد و isMarginTradingAllowed=true هست
-    یا نه. خروجی: دیکشنری {base: "BASEIRT"} فقط برای ارزهایی که هر دو شرط را
-    داشتند. این یعنی لیست نمادهای فعال هر بار اجرا از روی وضعیت واقعی و زنده‌ی
-    تبدیل ساخته می‌شود، نه یک لیست ثابت و دستی.
+    آیا بازار <BASE>IRT روی تبدیل وجود دارد و اهرم کلاسیک/مارجین رویش فعاله.
 
-    اگر هیچ نمادی پیدا نشد، یه گزارش تشخیصی کامل چاپ می‌کند (به‌جای خاموش رد
-    شدن) تا مشخص شود مشکل از کجاست: فرمت نماد اشتباهه؟ اسم فیلد فرق داره؟
-    خطای واقعی از سرور می‌آد؟
+    نکته‌ی مهم (کشف‌شده بعد از تست واقعی): فیلد isMarginTradingAllowed برای
+    همه‌ی نمادها False برمی‌گشت، با اینکه توی سایت تبدیل همون نمادها زیر تب
+    "اهرم کلاسیک" با نشان اهرم (5X و ...) نمایش داده می‌شدن. پس این فیلد به‌تنهایی
+    قابل‌اعتماد نیست؛ اینجا اضافه بر آن، فیلد permissions (اگر MARGIN توش باشه)
+    را هم چک می‌کنیم، و برای اولین نماد، کل JSON خام را هم چاپ می‌کنیم تا اگر
+    بازم قبول نشد، دقیقاً معلوم بشه صرافی چه فیلد دیگه‌ای برای این منظور داره.
     """
     ready = {}
     diagnostics = []
+    dumped_raw_once = False
     for base in candidate_bases:
         tabdeal_symbol = f"{base}IRT"
         try:
             info = spot_client.exchange_info(symbols=[tabdeal_symbol])
             markets = info.get("symbols", info) if isinstance(info, dict) else info
             if not markets:
-                diagnostics.append(f"  {tabdeal_symbol}: exchange_info پاسخ خالی داد (بازار احتمالاً با این اسم وجود نداره). raw={info!r}")
+                diagnostics.append(f"  {tabdeal_symbol}: exchange_info پاسخ خالی داد. raw={info!r}")
                 continue
             market = markets[0]
-            if market.get("status") == "TRADING" and market.get("isMarginTradingAllowed", False):
+
+            if not dumped_raw_once:
+                dumped_raw_once = True
+                try:
+                    print(f"🔍 JSON کامل و خام بازار {tabdeal_symbol} (فقط برای اولین نماد، جهت بررسی دستی):")
+                    print(json.dumps(market, ensure_ascii=False, indent=2, default=str))
+                except Exception as e:
+                    print(f"🔍 چاپ JSON خام شکست خورد: {e}")
+
+            permissions = market.get("permissions") or []
+            has_margin_permission = any("MARGIN" in str(p).upper() for p in permissions)
+            margin_ok = market.get("isMarginTradingAllowed", False) or has_margin_permission
+
+            if market.get("status") == "TRADING" and margin_ok:
                 ready[base] = tabdeal_symbol
             else:
                 diagnostics.append(
-                    f"  {tabdeal_symbol}: پیدا شد ولی رد شد -> status={market.get('status')!r}, "
-                    f"isMarginTradingAllowed={market.get('isMarginTradingAllowed')!r}, کلیدهای موجود={list(market.keys())}"
+                    f"  {tabdeal_symbol}: status={market.get('status')!r}, "
+                    f"isMarginTradingAllowed={market.get('isMarginTradingAllowed')!r}, "
+                    f"permissions={permissions!r}"
                 )
         except (ClientException, ServerException) as e:
             diagnostics.append(f"  {tabdeal_symbol}: خطای API -> {type(e).__name__}: {e}")
@@ -135,12 +153,11 @@ def discover_irt_margin_symbols(spot_client: Spot, candidate_bases: list) -> dic
             full = spot_client.exchange_info()
             all_markets = full.get("symbols", full) if isinstance(full, dict) else full
             irt_like = [m.get("symbol") for m in all_markets if "IRT" in str(m.get("symbol", "")).upper()][:40]
-            print(f"🔍 برای مقایسه، این‌ها نمادهایی هستن که اسمشون IRT داره (از exchange_info کامل، حداکثر ۴۰ تا): {irt_like}")
+            print(f"🔍 برای مقایسه، این‌ها نمادهایی هستن که اسمشون IRT داره: {irt_like}")
         except Exception as e:
             print(f"🔍 حتی گرفتن exchange_info کامل هم شکست خورد: {type(e).__name__}: {e}")
 
     return ready
-
 
 def get_mid_price(spot_client: Spot, symbol: str) -> float:
     """قیمت لحظه‌ای تقریبی = میانگین بهترین Bid/Ask از دفتر سفارش."""
