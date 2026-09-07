@@ -178,16 +178,12 @@ def main():
 
         price = res["price"]
         atr_v = res["atr"]
-        if direction == "long":
-            sl = price - atr_v * SL_ATR_MULT
-            tp1 = price + (price - sl) * TP1_RR
-            tp2 = price + (price - sl) * TP2_RR
-            side = "BUY"
-        else:
-            sl = price + atr_v * SL_ATR_MULT
-            tp1 = price - (sl - price) * TP1_RR
-            tp2 = price - (sl - price) * TP2_RR
-            side = "SELL"
+        # ⚠️ risk_pct به‌صورت درصدی از قیمت دلاری بایننس محاسبه می‌شود، نه عدد
+        # مطلق - چون معامله‌ی واقعی روی قیمت تومانی تبدیل انجام می‌شود و این دو
+        # مقیاس کاملاً متفاوتند. سطوح واقعی SL/TP بعد از گرفتن real_price
+        # (قیمت واقعی تبدیل) ساخته می‌شوند، نه اینجا با قیمت دلاری.
+        risk_pct = (atr_v * SL_ATR_MULT / price) if price else 0.0
+        side = "BUY" if direction == "long" else "SELL"
 
         try:
             order = open_margin_position(spot_symbol, margin_symbol, side, OWN_MARGIN_IRT, LEVERAGE, logger=print)
@@ -198,6 +194,14 @@ def main():
             continue
 
         real_price = extract_real_price(order, fallback_price=price)
+        if direction == "long":
+            sl = real_price * (1 - risk_pct)
+            tp1 = real_price * (1 + risk_pct * TP1_RR)
+            tp2 = real_price * (1 + risk_pct * TP2_RR)
+        else:
+            sl = real_price * (1 + risk_pct)
+            tp1 = real_price * (1 - risk_pct * TP1_RR)
+            tp2 = real_price * (1 - risk_pct * TP2_RR)
         qty = float(order.get("origQty") or order.get("quantity"))
         notional_irt = float(order.get("_notional_irt", order.get("notional_irt", real_price * qty)))
         score = res["bull_score"] if direction == "long" else res["bear_score"]
