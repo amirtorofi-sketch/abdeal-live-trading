@@ -79,13 +79,38 @@ def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def resolve_direction_and_levels(raw_direction: str, entry: float, raw_sl: float):
+def resolve_direction(raw_direction: str) -> str:
     """دقیقاً همون منطق trading_bot.py: سیگنال خام معکوس اجرا می‌شود."""
-    risk = abs(entry - raw_sl)
-    if raw_direction == "buy":
-        return "short", entry + risk, entry - risk * ST_TP1_RR, entry - risk * ST_TP2_RR
+    return "short" if raw_direction == "buy" else "long"
+
+
+def compute_risk_fraction(entry_usdt: float, raw_sl_usdt: float) -> float:
+    """
+    ⚠️ فاصله‌ی SL از ورود را به‌صورت درصدی (نسبت به قیمت دلاری بایننس)
+    برمی‌گرداند، نه عدد مطلق. چون سیگنال روی قیمت دلاری بایننس محاسبه می‌شود
+    ولی معامله‌ی واقعی روی قیمت تومانی تبدیل انجام می‌شود (دو مقیاس کاملاً
+    متفاوت)، اگر همون عدد دلاری خام مستقیم به‌عنوان سطح SL تومانی ذخیره بشه،
+    با قیمت واقعی تبدیل قابل‌مقایسه نیست و SL/TP عملاً همیشه فوری و اشتباه
+    فعال می‌شه (باگ واقعی که در اولین تست پیدا شد). راه‌حل: فقط درصد فاصله را
+    از داده‌ی بایننس می‌گیریم و در compute_levels روی قیمت واقعی تومانی
+    اعمالش می‌کنیم.
+    """
+    if entry_usdt == 0:
+        return 0.0
+    return abs(entry_usdt - raw_sl_usdt) / entry_usdt
+
+
+def compute_levels(direction: str, real_entry_irt: float, risk_pct: float):
+    """سطوح SL/TP1/TP2 را روی مقیاس واقعیِ تومانیِ ورود می‌سازد (نه دلاری)."""
+    if direction == "long":
+        sl = real_entry_irt * (1 - risk_pct)
+        tp1 = real_entry_irt * (1 + risk_pct * ST_TP1_RR)
+        tp2 = real_entry_irt * (1 + risk_pct * ST_TP2_RR)
     else:
-        return "long", entry - risk, entry + risk * ST_TP1_RR, entry + risk * ST_TP2_RR
+        sl = real_entry_irt * (1 + risk_pct)
+        tp1 = real_entry_irt * (1 - risk_pct * ST_TP1_RR)
+        tp2 = real_entry_irt * (1 - risk_pct * ST_TP2_RR)
+    return sl, tp1, tp2
 
 
 def _close_lot(state, spot_symbol, pos, lot_key, price, reason, source_label):
@@ -205,7 +230,8 @@ def main():
         if state.get(signal_key) == str(candle_time):
             continue
 
-        direction, sl, tp1, tp2 = resolve_direction_and_levels(raw_direction, price, st_line)
+        direction = resolve_direction(raw_direction)
+        risk_pct = compute_risk_fraction(price, st_line)
         side = "BUY" if direction == "long" else "SELL"
 
         try:
@@ -218,6 +244,7 @@ def main():
 
         # قیمت واقعی تبدیل (نه قیمت بایننس که سیگنال رویش حساب شد)
         real_price = extract_real_price(order, fallback_price=price)
+        sl, tp1, tp2 = compute_levels(direction, real_price, risk_pct)
         qty = float(order.get("origQty") or order.get("quantity"))
         notional_irt = float(order.get("_notional_irt", order.get("notional_irt", real_price * qty)))
 
