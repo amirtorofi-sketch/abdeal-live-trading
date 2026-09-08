@@ -45,8 +45,20 @@ from common.tabdeal_broker import (  # noqa: E402
 from common.telegram_notify import send_telegram  # noqa: E402
 from common import paper_ledger  # noqa: E402
 
-OWN_MARGIN_IRT = _float_env("BOT1_MARGIN_IRT", "150000")
-LEVERAGE = _float_env("BOT1_LEVERAGE", "3")
+# مارجین/اهرم جدا به‌ازای هر استراتژی - دقیقاً معادل نسبت ۳۰۰$/۳x (Supertrend)
+# در برابر ۱۰۰$/۱x (ICT/SMC) در trading_bot.py تلگرامی اصلی.
+SOURCE_ST = "Supertrend+ADX"
+SOURCE_SMC = "ICT/SMC Scalp Pro"
+SOURCE_CONFIG = {
+    SOURCE_ST: {
+        "margin_irt": _float_env("BOT1_MARGIN_IRT", "150000"),
+        "leverage": _float_env("BOT1_LEVERAGE", "3"),
+    },
+    SOURCE_SMC: {
+        "margin_irt": _float_env("BOT1_SMC_MARGIN_IRT", "50000"),
+        "leverage": _float_env("BOT1_SMC_LEVERAGE", "1"),
+    },
+}
 PAPER_STARTING_BALANCE_IRT = _float_env("PAPER_STARTING_BALANCE_IRT", "5000000")
 
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
@@ -172,16 +184,18 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
                        raw_direction, entry_price, raw_sl, candle_time, rr1, rr2, source_label, extra_label=""):
     """
     منطق مشترک باز کردن پوزیشن (دو-لاتی) برای هر دو استراتژی - تا کد برای
-    Supertrend و SMC دوباره‌نویسی نشود.
+    Supertrend و SMC دوباره‌نویسی نشود. مارجین/اهرم از SOURCE_CONFIG بر اساس
+    source_label خوانده می‌شود (هر استراتژی مقدار خودش را دارد).
     """
     if state.get(signal_key) == str(candle_time):
         return
 
     direction, sl, tp1, tp2 = resolve_direction_and_levels(raw_direction, entry_price, raw_sl, rr1, rr2)
     side = "BUY" if direction == "long" else "SELL"
+    cfg = SOURCE_CONFIG[source_label]
 
     try:
-        order = open_margin_position(spot_symbol, margin_symbol, side, OWN_MARGIN_IRT, LEVERAGE, logger=print)
+        order = open_margin_position(spot_symbol, margin_symbol, side, cfg["margin_irt"], cfg["leverage"], logger=print)
     except BrokerError as e:
         notify(f"❌ سیگنال {direction} روی {spot_symbol} ({source_label}) رد شد: {e}")
         state[signal_key] = str(candle_time)
@@ -279,7 +293,7 @@ def main():
                         signal_key=f"{spot_symbol}__st__last_candle",
                         raw_direction=raw_direction, entry_price=price, raw_sl=st_line,
                         candle_time=candle_time, rr1=ST_TP1_RR, rr2=ST_TP2_RR,
-                        source_label="Supertrend+ADX", extra_label=f" | ADX={adx_value:.1f}",
+                        source_label=SOURCE_ST, extra_label=f" | ADX={adx_value:.1f}",
                     )
 
         # --- استراتژی ۲: ICT/SMC Scalp Pro ---
@@ -305,7 +319,7 @@ def main():
                         signal_key=f"{spot_symbol}__smc__last_candle",
                         raw_direction=raw_direction, entry_price=price2, raw_sl=raw_sl,
                         candle_time=res["candle_time"], rr1=TP1_RR, rr2=TP2_RR,
-                        source_label="ICT/SMC Scalp Pro", extra_label=f" | امتیاز={score}/7",
+                        source_label=SOURCE_SMC, extra_label=f" | امتیاز={score}/7",
                     )
 
         time.sleep(0.5)
