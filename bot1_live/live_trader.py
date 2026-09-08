@@ -92,17 +92,18 @@ def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def resolve_direction_and_levels(raw_direction: str, entry: float, raw_sl: float, rr1: float, rr2: float):
+def resolve_direction_and_risk_pct(raw_direction: str, entry: float, raw_sl: float):
     """
-    دقیقاً همون منطق trading_bot.py: سیگنال خام همیشه معکوس اجرا می‌شود.
-    raw_direction اینجا "long"/"short" است (جهت خامی که خودِ استراتژی حساب
-    کرده، نه جهت نهایی).
+    دقیقاً همون منطق trading_bot.py برای معکوس‌کردن جهت. ولی برخلاف نسخه‌ی
+    قبلی، دیگه سطوح مطلق SL/TP رو اینجا حساب نمی‌کنیم - چون entry/raw_sl روی
+    مقیاس قیمت دلاری بایننسه، در حالی که پوزیشن واقعی روی قیمت تومانی تبدیل
+    باز می‌شه (دو مقیاس کاملاً متفاوت؛ همون مشکلی که باعث شد TP1/TP2 فوراً و
+    اشتباه فایر بشن). به‌جاش فقط درصد فاصله‌ی SL رو برمی‌گردونیم؛ سطوح واقعی
+    بعد از گرفتن real_price (قیمت واقعی تبدیل) با همین درصد ساخته می‌شن.
     """
-    risk = abs(entry - raw_sl)
-    if raw_direction == "long":
-        return "short", entry + risk, entry - risk * rr1, entry - risk * rr2
-    else:
-        return "long", entry - risk, entry + risk * rr1, entry + risk * rr2
+    risk_pct = (abs(entry - raw_sl) / entry) if entry else 0.0
+    direction = "short" if raw_direction == "long" else "long"
+    return direction, risk_pct
 
 
 def _close_lot(state, spot_symbol, pos, lot_key, price, reason, source_label):
@@ -190,7 +191,7 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
     if state.get(signal_key) == str(candle_time):
         return
 
-    direction, sl, tp1, tp2 = resolve_direction_and_levels(raw_direction, entry_price, raw_sl, rr1, rr2)
+    direction, risk_pct = resolve_direction_and_risk_pct(raw_direction, entry_price, raw_sl)
     side = "BUY" if direction == "long" else "SELL"
     cfg = SOURCE_CONFIG[source_label]
 
@@ -205,6 +206,18 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
     real_price = extract_real_price(order, fallback_price=entry_price)
     qty = float(order.get("origQty") or order.get("quantity"))
     notional_irt = float(order.get("_notional_irt", order.get("notional_irt", real_price * qty)))
+
+    # سطوح SL/TP واقعی را روی مقیاس قیمت *واقعی تبدیل* می‌سازیم (نه مقیاس
+    # دلاری بایننس) - همون درصد ریسکی که از سیگنال دلاری محاسبه شد، اینجا
+    # روی real_price اعمال می‌شود.
+    if direction == "long":
+        sl = real_price * (1 - risk_pct)
+        tp1 = real_price * (1 + risk_pct * rr1)
+        tp2 = real_price * (1 + risk_pct * rr2)
+    else:
+        sl = real_price * (1 + risk_pct)
+        tp1 = real_price * (1 - risk_pct * rr1)
+        tp2 = real_price * (1 - risk_pct * rr2)
 
     try:
         market = get_market_info(spot_client, spot_symbol)
