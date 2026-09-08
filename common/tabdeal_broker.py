@@ -122,29 +122,6 @@ def _get_margin_assets_index(_cache={}) -> dict:
     return index
 
 
-def discover_all_irt_margin_bases(spot_client: Spot) -> dict:
-    """
-    برخلاف discover_irt_margin_symbols (که یک لیست کاندید ثابت می‌گیرد)، این
-    تابع تمام نمادهای IRT مارجین‌دار موجود روی تبدیل را برمی‌گرداند - برای
-    استراتژی‌هایی که باید روی «همه‌ی بازار تومانی» کار کنند، نه یک زیرمجموعه‌ی
-    از پیش تعیین‌شده. USDT_IRT عمداً کنار گذاشته می‌شود چون خودِ دارایی نقل‌
-    وانتقاله، نه یک کوین نوسانی برای سیگنال‌گیری.
-
-    خروجی: {base: {"spot": "BTCIRT", "margin": "BTC_IRT", "max_leverage": "10.0"}}
-    """
-    margin_index = _get_margin_assets_index()
-    ready = {}
-    for symbol, rows in margin_index.items():
-        if not symbol.endswith("IRT") or symbol == "USDTIRT":
-            continue
-        base = symbol[:-3]
-        margin_symbol = rows[0].get("tabdealSymbol") or f"{base}_IRT"
-        max_leverage = rows[0].get("maxLeverage")
-        ready[base] = {"spot": symbol, "margin": margin_symbol, "max_leverage": max_leverage}
-    print(f"✅ discover_all_irt_margin_bases: {len(ready)} نماد -> {sorted(ready.keys())}")
-    return ready
-
-
 def discover_irt_margin_symbols(spot_client: Spot, candidate_bases: list) -> dict:
     """
     ⚠️ فقط از endpointهای عمومی استفاده می‌کند (بدون نیاز به API Key).
