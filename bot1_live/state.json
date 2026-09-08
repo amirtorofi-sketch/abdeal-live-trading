@@ -1,1 +1,40 @@
-{}
+{
+  "BTCIRT__smc": {
+    "direction": "long",
+    "entry": 17485151169.0,
+    "sl": 78015.13334942075,
+    "tp1": 78786.27497586887,
+    "tp2": 79248.95995173774,
+    "source_label": "ICT/SMC Scalp Pro",
+    "opened_at": "2026-09-08 06:45:00",
+    "margin_symbol": "BTC_IRT",
+    "lot_a": {
+      "qty": 1.42e-06,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 1.42e-06,
+      "status": "open"
+    }
+  },
+  "BTCIRT__smc__last_candle": "2026-09-08 06:45:00",
+  "XLMIRT__smc": {
+    "direction": "long",
+    "entry": 42297.55,
+    "sl": 0.1869041605656017,
+    "tp1": 0.1918937591515975,
+    "tp2": 0.19488751830319498,
+    "source_label": "ICT/SMC Scalp Pro",
+    "opened_at": "2026-09-08 06:45:00",
+    "margin_symbol": "XLM_IRT",
+    "lot_a": {
+      "qty": 0.591,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.5911,
+      "status": "open"
+    }
+  },
+  "XLMIRT__smc__last_candle": "2026-09-08 06:45:00"
+}
