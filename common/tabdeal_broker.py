@@ -122,6 +122,29 @@ def _get_margin_assets_index(_cache={}) -> dict:
     return index
 
 
+def discover_all_irt_margin_bases(spot_client: Spot) -> dict:
+    """
+    برخلاف discover_irt_margin_symbols (که یک لیست کاندید ثابت می‌گیرد)، این
+    تابع تمام نمادهای IRT مارجین‌دار موجود روی تبدیل را برمی‌گرداند - برای
+    استراتژی‌هایی که باید روی «همه‌ی بازار تومانی» کار کنند، نه یک زیرمجموعه‌ی
+    از پیش تعیین‌شده. USDT_IRT عمداً کنار گذاشته می‌شود چون خودِ دارایی نقل‌
+    وانتقاله، نه یک کوین نوسانی برای سیگنال‌گیری.
+
+    خروجی: {base: {"spot": "BTCIRT", "margin": "BTC_IRT", "max_leverage": "10.0"}}
+    """
+    margin_index = _get_margin_assets_index()
+    ready = {}
+    for symbol, rows in margin_index.items():
+        if not symbol.endswith("IRT") or symbol == "USDTIRT":
+            continue
+        base = symbol[:-3]
+        margin_symbol = rows[0].get("tabdealSymbol") or f"{base}_IRT"
+        max_leverage = rows[0].get("maxLeverage")
+        ready[base] = {"spot": symbol, "margin": margin_symbol, "max_leverage": max_leverage}
+    print(f"✅ discover_all_irt_margin_bases: {len(ready)} نماد -> {sorted(ready.keys())}")
+    return ready
+
+
 def discover_irt_margin_symbols(spot_client: Spot, candidate_bases: list) -> dict:
     """
     ⚠️ فقط از endpointهای عمومی استفاده می‌کند (بدون نیاز به API Key).
@@ -155,6 +178,27 @@ def discover_irt_margin_symbols(spot_client: Spot, candidate_bases: list) -> dic
             print(line)
 
     return ready
+
+
+def discover_all_irt_margin_bases(exclude_bases=("USDT",)) -> list:
+    """
+    برخلاف discover_irt_margin_symbols که یک لیست کاندید ثابت را چک می‌کند،
+    این تابع مستقیماً از get_all_assets() تمام دارایی‌هایی که بازار IRT
+    مارجین‌دار واقعی دارند را استخراج می‌کند - یعنی «همه‌ی ارزهای بازار تومانی»
+    را پویا و زنده برمی‌گرداند، نه یک لیست دستی که ممکنه قدیمی/ناقص بشه.
+
+    exclude_bases: USDT به‌طور پیش‌فرض حذف می‌شود چون جفت USDT/IRT خودش یک
+    بازار ارز است، نه یک «کوین» که استراتژی کندل‌محور رویش معنا داشته باشد.
+    """
+    margin_index = _get_margin_assets_index()
+    bases = []
+    for sym in margin_index:
+        if not sym.endswith("IRT"):
+            continue
+        base = sym[: -len("IRT")]
+        if base and base not in exclude_bases:
+            bases.append(base)
+    return sorted(set(bases))
 
 def get_mid_price(spot_client: Spot, symbol: str) -> float:
     """قیمت لحظه‌ای تقریبی = میانگین بهترین Bid/Ask از دفتر سفارش."""
