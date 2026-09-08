@@ -33,10 +33,10 @@ jobs:
           TABDEAL_API_SECRET: ${{ secrets.TABDEAL_API_SECRET }}
           TABDEAL_DRY_RUN: ${{ vars.TABDEAL_DRY_RUN }}
           TABDEAL_HARD_CAP_MARGIN_IRT: ${{ vars.TABDEAL_HARD_CAP_MARGIN_IRT }}
-          BOT2_MARGIN_IRT: ${{ vars.BOT2_MARGIN_IRT }}
-          BOT2_LEVERAGE: ${{ vars.BOT2_LEVERAGE }}
           BOT2_ST_MARGIN_IRT: ${{ vars.BOT2_ST_MARGIN_IRT }}
           BOT2_ST_LEVERAGE: ${{ vars.BOT2_ST_LEVERAGE }}
+          BOT2_SMC_MARGIN_IRT: ${{ vars.BOT2_SMC_MARGIN_IRT }}
+          BOT2_SMC_LEVERAGE: ${{ vars.BOT2_SMC_LEVERAGE }}
           PAPER_STARTING_BALANCE_IRT: ${{ vars.PAPER_STARTING_BALANCE_IRT }}
           TELEGRAM_BOT_TOKEN_2: ${{ secrets.TELEGRAM_BOT_TOKEN_2 }}
           TELEGRAM_CHAT_ID_2: ${{ vars.TELEGRAM_CHAT_ID_2 }}
