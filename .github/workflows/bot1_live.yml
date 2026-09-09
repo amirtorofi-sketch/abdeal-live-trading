@@ -3,7 +3,7 @@ name: Bot1 Live (Supertrend+ADX -> Tabdeal)
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "*/15 * * * *"   # هر ۱۵ دقیقه — با TABDEAL_DRY_RUN=true کاملاً بی‌خطره (سفارش واقعی ثبت نمی‌شه)
+    - cron: "3-59/15 * * * *"  # هر ۱۵ دقیقه، ولی از دقیقه‌ی ۳ شروع می‌شه (نه رند) تا صف اجرا خلوت‌تر باشه
 
 permissions:
   contents: write
