@@ -80,6 +80,13 @@ def save_state(state: dict):
         json.dump(state, f, ensure_ascii=False, indent=2)
 
 
+def next_trade_id(state: dict) -> int:
+    """شماره‌ی پیوسته برای هر معامله‌ی جدید - تا بشه توی تلگرام باز/بسته‌شدن هر معامله رو با هم جفت کرد."""
+    n = int(state.get("_trade_counter", 0)) + 1
+    state["_trade_counter"] = n
+    return n
+
+
 def notify(text: str):
     print(text)
     send_telegram(TELEGRAM_BOT_TOKEN_2, TELEGRAM_CHAT_ID_2, text)
@@ -116,7 +123,7 @@ def _close_lot(state, spot_symbol, pos, lot_key, price, reason, source_label):
         new_balance = balance + pnl
         state["_paper_balance_irt"] = new_balance
         notify(
-            f"⚪ [آزمایشی] بسته شدن {lot_key} پوزیشن {spot_symbol} ({source_label}, {pos['direction']}) — دلیل: {reason}\n"
+            f"⚪ [آزمایشی] معامله #{pos.get('trade_id','؟')} — بسته شدن {lot_key} | {spot_symbol} ({source_label}, {pos['direction']}) — دلیل: {reason}\n"
             f"قیمت خروج≈{price:,.0f} | PnL فرضی این لات≈{pnl:,.0f} تومان | موجودی فرضی≈{new_balance:,.0f} تومان"
         )
     else:
@@ -125,7 +132,7 @@ def _close_lot(state, spot_symbol, pos, lot_key, price, reason, source_label):
         except BrokerError as e:
             notify(f"❌ خطا در بستن {lot_key} پوزیشن واقعی {spot_symbol} ({source_label}): {e}")
             return False
-        notify(f"⚪ بسته شدن {lot_key} پوزیشن واقعی {spot_symbol} ({source_label}, {pos['direction']}) — دلیل: {reason} — قیمت≈{price:,.0f}")
+        notify(f"⚪ معامله #{pos.get('trade_id','؟')} — بسته شدن {lot_key} واقعی | {spot_symbol} ({source_label}, {pos['direction']}) — دلیل: {reason} — قیمت≈{price:,.0f}")
 
     lot["status"] = "closed"
     return True
@@ -155,7 +162,7 @@ def manage_open_position(state: dict, position_key: str, spot_symbol: str):
             ok = _close_lot(state, spot_symbol, pos, "lot_a", price, reason, source_label)
             if ok and reason == "TP1" and pos["lot_b"]["status"] == "open":
                 pos["sl"] = pos["entry"]
-                notify(f"🔵 SL لات باقی‌مانده‌ی {spot_symbol} ({source_label}) به نقطه‌ی ورود (Breakeven={pos['entry']:,.0f}) منتقل شد.")
+                notify(f"🔵 معامله #{pos.get('trade_id','؟')} — SL لات باقی‌مانده‌ی {spot_symbol} ({source_label}) به نقطه‌ی ورود (Breakeven={pos['entry']:,.0f}) منتقل شد.")
 
     lot_b = pos["lot_b"]
     if lot_b["status"] == "open":
@@ -211,9 +218,11 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
     except Exception:
         qty_a, qty_b = qty, 0.0
 
+    trade_id = next_trade_id(state)
     base_fields = {
         "direction": direction, "entry": real_price, "sl": sl, "tp1": tp1, "tp2": tp2,
         "source_label": source_label, "opened_at": str(candle_time), "margin_symbol": margin_symbol,
+        "trade_id": trade_id,
     }
     if qty_b <= 0:
         state[position_key] = {**base_fields, "lot_a": {"qty": qty_a, "status": "closed"}, "lot_b": {"qty": qty_a, "status": "open"}}
@@ -227,13 +236,13 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
             real_price, sl, tp1, tp2, qty, notional_irt,
         )
         notify(
-            f"🟢 [آزمایشی] پوزیشن {direction.upper()} باز شد | {spot_symbol} | {source_label}{extra_label}\n"
+            f"🟢 [آزمایشی] معامله #{trade_id} — پوزیشن {direction.upper()} باز شد | {spot_symbol} | {source_label}{extra_label}\n"
             f"ورود واقعی تبدیل≈{real_price:,.0f} | SL={sl:,.0f} | TP1={tp1:,.0f} | TP2={tp2:,.0f}\n"
             f"مقدار: {qty} | حجم فرضی≈{notional_irt:,.0f} تومان (هیچ سفارش واقعی ثبت نشد)"
         )
     else:
         notify(
-            f"🟢 پوزیشن واقعی {direction.upper()} باز شد | {spot_symbol} | {source_label}{extra_label}\n"
+            f"🟢 معامله #{trade_id} — پوزیشن واقعی {direction.upper()} باز شد | {spot_symbol} | {source_label}{extra_label}\n"
             f"ورود≈{real_price:,.0f} | SL={sl:,.0f} | TP1={tp1:,.0f} | TP2={tp2:,.0f} | مقدار: {qty}"
         )
 
