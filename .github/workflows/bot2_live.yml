@@ -3,7 +3,7 @@ name: Bot2 Live (ICT-SMC v2 -> Tabdeal)
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "*/15 * * * *"   # هر ۱۵ دقیقه — با TABDEAL_DRY_RUN=true کاملاً بی‌خطره (سفارش واقعی ثبت نمی‌شه)
+    - cron: "8-59/15 * * * *"  # هر ۱۵ دقیقه، از دقیقه‌ی ۸ (نه رند، و جدا از بات ۱ که دقیقه‌ی ۳ه) تا صف اجرا خلوت‌تر باشه و دوتا بات هم‌زمان صف نکشن
 
 permissions:
   contents: write
