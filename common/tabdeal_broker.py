@@ -177,6 +177,15 @@ def discover_all_irt_margin_bases(exclude_bases=("USDT",)) -> list:
             bases.append(base)
     return sorted(set(bases))
 
+def currency_label(spot_symbol: str) -> str:
+    """برچسب فارسیِ ارز مظنه، برای پیام‌های تلگرام - بازار تومانی یا تتری."""
+    if spot_symbol.endswith("IRT"):
+        return "تومان"
+    if spot_symbol.endswith("USDT"):
+        return "تتر"
+    return spot_symbol[-4:]
+
+
 def get_mid_price(spot_client: Spot, symbol: str) -> float:
     """قیمت لحظه‌ای تقریبی = میانگین بهترین Bid/Ask از دفتر سفارش."""
     book = spot_client.depth(symbol=symbol, limit=5)
