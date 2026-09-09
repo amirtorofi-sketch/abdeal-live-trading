@@ -2,27 +2,9 @@
   "BTCIRT__smc__last_candle": "2026-09-09 05:00:00",
   "XLMIRT__smc__last_candle": "2026-09-09 11:00:00",
   "ARBIRT__smc__last_candle": "2026-09-08 09:00:00",
-  "_paper_balance_irt": 4994739.648516874,
+  "_paper_balance_irt": 4968911.400966873,
   "TRXIRT__smc__last_candle": "2026-09-08 08:30:00",
   "WIFIRT__smc__last_candle": "2026-09-09 09:45:00",
-  "ARBIRT__smc": {
-    "direction": "short",
-    "entry": 39042.5,
-    "sl": 39042.5,
-    "tp1": 37738.72262047869,
-    "tp2": 36434.945240957386,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-08 09:00:00",
-    "margin_symbol": "ARB_IRT",
-    "lot_a": {
-      "qty": 0.6403,
-      "status": "closed"
-    },
-    "lot_b": {
-      "qty": 0.6403,
-      "status": "open"
-    }
-  },
   "SEIIRT__smc": {
     "direction": "short",
     "entry": 11744.5,
@@ -44,24 +26,6 @@
   },
   "SEIIRT__smc__last_candle": "2026-09-09 05:00:00",
   "ADAIRT__smc__last_candle": "2026-09-09 09:45:00",
-  "ARBIRT__st": {
-    "direction": "long",
-    "entry": 38891.0,
-    "sl": 36812.70265040902,
-    "tp1": 42008.446024386474,
-    "tp2": 45125.89204877294,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-09-09 09:45:00",
-    "margin_symbol": "ARB_IRT",
-    "lot_a": {
-      "qty": 5.7854,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 5.7854,
-      "status": "open"
-    }
-  },
   "ARBIRT__st__last_candle": "2026-09-09 09:45:00",
   "BTCIRT__st": {
     "direction": "long",
@@ -241,25 +205,5 @@
   "XRPIRT__smc__last_candle": "2026-09-09 09:45:00",
   "_trade_counter": 4,
   "NOTIRT__smc__last_candle": "2026-09-09 11:00:00",
-  "TRBIRT__smc__last_candle": "2026-09-09 14:45:00",
-  "TRBIRT__smc": {
-    "direction": "long",
-    "entry": 4138404.0,
-    "sl": 4098291.096077727,
-    "tp1": 4198573.355883409,
-    "tp2": 4258742.711766818,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-09 14:45:00",
-    "margin_symbol": "TRB_IRT",
-    "trade_id": 4,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 0.006,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 0.006,
-      "status": "open"
-    }
-  }
+  "TRBIRT__smc__last_candle": "2026-09-09 14:45:00"
 }
