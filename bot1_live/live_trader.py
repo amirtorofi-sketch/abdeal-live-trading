@@ -40,7 +40,7 @@ from signal_bot import (  # noqa: E402  (وارد کردن بدون تغییر �
 from common.tabdeal_broker import (  # noqa: E402
     open_margin_position, close_margin_position, get_public_client, get_mid_price,
     discover_all_irt_margin_bases, discover_irt_margin_symbols, extract_real_price,
-    get_market_info, split_into_two_lots, BrokerError, DRY_RUN, _float_env,
+    get_market_info, split_into_two_lots, currency_label, BrokerError, DRY_RUN, _float_env,
 )
 from common.telegram_notify import send_telegram  # noqa: E402
 from common import paper_ledger  # noqa: E402
@@ -126,6 +126,12 @@ def _close_lot(state, spot_symbol, pos, lot_key, price, reason, source_label):
     opposite = "SELL" if pos["direction"] == "long" else "BUY"
     margin_symbol = pos["margin_symbol"]
 
+    cur = currency_label(spot_symbol)
+    price_pct = (price - pos["entry"]) / pos["entry"] * 100 if pos["entry"] else 0.0
+    if pos["direction"] == "short":
+        price_pct = -price_pct
+    pct_sign = "+" if price_pct >= 0 else ""
+
     if DRY_RUN:
         balance = state.get("_paper_balance_irt", PAPER_STARTING_BALANCE_IRT)
         pnl = paper_ledger.record_close(
@@ -134,9 +140,12 @@ def _close_lot(state, spot_symbol, pos, lot_key, price, reason, source_label):
         )
         new_balance = balance + pnl
         state["_paper_balance_irt"] = new_balance
+        pos["realized_pnl"] = pos.get("realized_pnl", 0.0) + pnl
+        pnl_sign = "+" if pnl >= 0 else ""
         notify(
             f"⚪ [آزمایشی] معامله #{pos.get('trade_id','؟')} — بسته شدن {lot_key} | {spot_symbol} ({source_label}, {pos['direction']}) — دلیل: {reason}\n"
-            f"قیمت خروج≈{price:,.0f} | PnL فرضی این لات≈{pnl:,.0f} تومان | موجودی فرضی≈{new_balance:,.0f} تومان"
+            f"قیمت خروج≈{price:,.0f} {cur} | تغییر قیمت: {pct_sign}{price_pct:.2f}٪\n"
+            f"سود/زیان این لات: {pnl_sign}{pnl:,.0f} {cur} | موجودی فعلی: {new_balance:,.0f} {cur}"
         )
     else:
         try:
@@ -144,7 +153,10 @@ def _close_lot(state, spot_symbol, pos, lot_key, price, reason, source_label):
         except BrokerError as e:
             notify(f"❌ خطا در بستن {lot_key} پوزیشن واقعی {spot_symbol} ({source_label}): {e}")
             return False
-        notify(f"⚪ معامله #{pos.get('trade_id','؟')} — بسته شدن {lot_key} واقعی | {spot_symbol} ({source_label}, {pos['direction']}) — دلیل: {reason} — قیمت≈{price:,.0f}")
+        notify(
+            f"⚪ معامله #{pos.get('trade_id','؟')} — بسته شدن {lot_key} واقعی | {spot_symbol} ({source_label}, {pos['direction']}) — دلیل: {reason}\n"
+            f"قیمت خروج≈{price:,.0f} {cur} | تغییر قیمت: {pct_sign}{price_pct:.2f}٪ (سود/زیان دقیق تومانی رو از پنل تبدیل چک کن)"
+        )
 
     lot["status"] = "closed"
     return True
@@ -185,6 +197,20 @@ def manage_open_position(state: dict, position_key: str, spot_symbol: str):
             _close_lot(state, spot_symbol, pos, "lot_b", price, reason, source_label)
 
     if pos["lot_a"]["status"] == "closed" and pos["lot_b"]["status"] == "closed":
+        cur = currency_label(spot_symbol)
+        if DRY_RUN:
+            total_pnl = pos.get("realized_pnl", 0.0)
+            balance = state.get("_paper_balance_irt", PAPER_STARTING_BALANCE_IRT)
+            margin_used = pos.get("margin_irt") or None
+            roi_txt = f" ({'+' if total_pnl >= 0 else ''}{total_pnl / margin_used * 100:.1f}٪ نسبت به مارجین این معامله)" if margin_used else ""
+            sign = "+" if total_pnl >= 0 else ""
+            notify(
+                f"🏁 معامله #{pos.get('trade_id','؟')} کاملاً بسته شد | {spot_symbol} ({source_label})\n"
+                f"مجموع سود/زیان این معامله: {sign}{total_pnl:,.0f} {cur}{roi_txt}\n"
+                f"موجودی نهایی بعد از این معامله: {balance:,.0f} {cur}"
+            )
+        else:
+            notify(f"🏁 معامله #{pos.get('trade_id','؟')} کاملاً بسته شد | {spot_symbol} ({source_label}) — سود/زیان و موجودی دقیق رو از پنل تبدیل چک کن.")
         del state[position_key]
 
 
@@ -236,7 +262,7 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
     base_fields = {
         "direction": direction, "entry": real_price, "sl": sl, "tp1": tp1, "tp2": tp2,
         "source_label": source_label, "opened_at": str(candle_time), "margin_symbol": margin_symbol,
-        "trade_id": trade_id,
+        "trade_id": trade_id, "margin_irt": cfg["margin_irt"],
     }
     if qty_b <= 0:
         state[position_key] = {**base_fields, "lot_a": {"qty": qty_a, "status": "closed"}, "lot_b": {"qty": qty_a, "status": "open"}}
@@ -244,20 +270,25 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
         state[position_key] = {**base_fields, "lot_a": {"qty": qty_a, "status": "open"}, "lot_b": {"qty": qty_b, "status": "open"}}
     state[signal_key] = str(candle_time)
 
+    cur = currency_label(spot_symbol)
+
     if DRY_RUN:
+        balance_before = state.get("_paper_balance_irt", PAPER_STARTING_BALANCE_IRT)
         paper_ledger.record_open(
             PAPER_LOG_FILE, now_iso(), spot_symbol, source_label, direction,
             real_price, sl, tp1, tp2, qty, notional_irt,
         )
         notify(
-            f"🟢 [آزمایشی] معامله #{trade_id} — پوزیشن {direction.upper()} باز شد | {spot_symbol} | {source_label}{extra_label}\n"
-            f"ورود واقعی تبدیل≈{real_price:,.0f} | SL={sl:,.0f} | TP1={tp1:,.0f} | TP2={tp2:,.0f}\n"
-            f"مقدار: {qty} | حجم فرضی≈{notional_irt:,.0f} تومان (هیچ سفارش واقعی ثبت نشد)"
+            f"🟢 [آزمایشی] معامله #{trade_id} باز شد | {spot_symbol} | {source_label}{extra_label}\n"
+            f"جهت: {direction.upper()} | موجودی قبل از این معامله: {balance_before:,.0f} {cur}\n"
+            f"قیمت ورود: {real_price:,.0f} {cur} | ارزش این پوزیشن≈{notional_irt:,.0f} {cur} (مقدار: {qty})\n"
+            f"SL={sl:,.0f} | TP1={tp1:,.0f} | TP2={tp2:,.0f} (هیچ سفارش واقعی ثبت نشد)"
         )
     else:
         notify(
-            f"🟢 معامله #{trade_id} — پوزیشن واقعی {direction.upper()} باز شد | {spot_symbol} | {source_label}{extra_label}\n"
-            f"ورود≈{real_price:,.0f} | SL={sl:,.0f} | TP1={tp1:,.0f} | TP2={tp2:,.0f} | مقدار: {qty}"
+            f"🟢 معامله #{trade_id} باز شد [واقعی] | {spot_symbol} | {source_label}{extra_label}\n"
+            f"جهت: {direction.upper()} | قیمت ورود: {real_price:,.0f} {cur} | ارزش این پوزیشن≈{notional_irt:,.0f} {cur} (مقدار: {qty})\n"
+            f"SL={sl:,.0f} | TP1={tp1:,.0f} | TP2={tp2:,.0f}"
         )
 
     save_state(state)
