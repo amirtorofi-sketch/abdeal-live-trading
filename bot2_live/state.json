@@ -1,1 +1,24 @@
-{}
+{
+  "_trade_counter": 1,
+  "DOGEIRT__smc": {
+    "direction": "short",
+    "entry": 20258.0,
+    "sl": 20483.665209613355,
+    "tp1": 19919.502185579968,
+    "tp2": 19581.004371159932,
+    "source_label": "ICT/SMC v2",
+    "opened_at": "2026-09-10 01:00:00",
+    "margin_symbol": "DOGE_IRT",
+    "trade_id": 1,
+    "margin_irt": 100000.0,
+    "lot_a": {
+      "qty": 4.93,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 4.93,
+      "status": "open"
+    }
+  },
+  "DOGEIRT__smc__last_candle": "2026-09-10 01:00:00"
+}
