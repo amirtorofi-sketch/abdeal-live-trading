@@ -2,7 +2,7 @@
   "BTCIRT__smc__last_candle": "2026-09-10 06:15:00",
   "XLMIRT__smc__last_candle": "2026-09-10 23:00:00",
   "ARBIRT__smc__last_candle": "2026-09-10 23:00:00",
-  "_paper_balance_irt": 4920046.284284325,
+  "_paper_balance_irt": 4935234.0317478245,
   "TRXIRT__smc__last_candle": "2026-09-10 18:45:00",
   "WIFIRT__smc__last_candle": "2026-09-10 16:00:00",
   "SEIIRT__smc__last_candle": "2026-09-10 16:00:00",
@@ -13,7 +13,7 @@
   "ETHIRT__st": {
     "direction": "long",
     "entry": 580070094.0,
-    "sl": 572903661.6228302,
+    "sl": 580070094.0,
     "tp1": 590819742.5657548,
     "tp2": 601569391.1315098,
     "source_label": "Supertrend+ADX",
@@ -21,12 +21,13 @@
     "margin_symbol": "ETH_IRT",
     "lot_a": {
       "qty": 0.000387,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 0.000388,
       "status": "open"
-    }
+    },
+    "realized_pnl": 7333.8421455
   },
   "ETHIRT__st__last_candle": "2026-09-09 09:45:00",
   "ETHIRT__smc__last_candle": "2026-09-09 09:45:00",
@@ -46,7 +47,7 @@
   "NOTIRT__smc": {
     "direction": "long",
     "entry": 99.5,
-    "sl": 98.1404686145271,
+    "sl": 99.5,
     "tp1": 101.53929707820933,
     "tp2": 103.57859415641869,
     "source_label": "ICT/SMC Scalp Pro",
@@ -56,12 +57,13 @@
     "margin_irt": 50000.0,
     "lot_a": {
       "qty": 251.2,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 251.3,
       "status": "open"
-    }
+    },
+    "realized_pnl": 828.9599999999992
   },
   "WIFIRT__smc": {
     "direction": "long",
@@ -86,7 +88,7 @@
   "DOGEIRT__smc": {
     "direction": "long",
     "entry": 19598.5,
-    "sl": 19448.276023227856,
+    "sl": 19598.5,
     "tp1": 19823.835965158214,
     "tp2": 20049.171930316432,
     "source_label": "ICT/SMC Scalp Pro",
@@ -96,38 +98,19 @@
     "margin_irt": 50000.0,
     "lot_a": {
       "qty": 1.27,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 1.27,
       "status": "open"
-    }
+    },
+    "realized_pnl": 454.66
   },
   "DOGEIRT__smc__last_candle": "2026-09-10 23:00:00",
-  "FLOKIIRT__smc": {
-    "direction": "long",
-    "entry": 5.59209,
-    "sl": 5.537973020563612,
-    "tp1": 5.673265469154582,
-    "tp2": 5.7544409383091635,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-10 23:00:00",
-    "margin_symbol": "FLOKI_IRT",
-    "trade_id": 20,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 4470.6,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 4470.6,
-      "status": "open"
-    }
-  },
   "PEPEIRT__smc": {
     "direction": "long",
     "entry": 0.7638050000000001,
-    "sl": 0.7531575741331757,
+    "sl": 0.7638050000000001,
     "tp1": 0.7797761388002366,
     "tp2": 0.7957472776004728,
     "source_label": "ICT/SMC Scalp Pro",
@@ -137,32 +120,13 @@
     "margin_irt": 50000.0,
     "lot_a": {
       "qty": 32730.8,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 32730.8,
       "status": "open"
-    }
-  },
-  "SHIBIRT__smc": {
-    "direction": "long",
-    "entry": 1.1872500000000001,
-    "sl": 1.1755398553796559,
-    "tp1": 1.2048152169305166,
-    "tp2": 1.2223804338610331,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-10 23:00:00",
-    "margin_symbol": "SHIB_IRT",
-    "trade_id": 23,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 21057.0,
-      "status": "open"
     },
-    "lot_b": {
-      "qty": 21057.1,
-      "status": "open"
-    }
+    "realized_pnl": 872.766781999998
   },
   "TRBIRT__st": {
     "direction": "long",
@@ -184,25 +148,5 @@
       "status": "open"
     }
   },
-  "TRBIRT__st__last_candle": "2026-09-10 23:00:00",
-  "XLMIRT__smc": {
-    "direction": "long",
-    "entry": 41197.1,
-    "sl": 40840.48282610615,
-    "tp1": 41732.02576084077,
-    "tp2": 42266.95152168154,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-10 23:00:00",
-    "margin_symbol": "XLM_IRT",
-    "trade_id": 25,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 0.6068,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 0.6068,
-      "status": "open"
-    }
-  }
+  "TRBIRT__st__last_candle": "2026-09-10 23:00:00"
 }
