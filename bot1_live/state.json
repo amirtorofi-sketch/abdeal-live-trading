@@ -2,7 +2,7 @@
   "BTCIRT__smc__last_candle": "2026-09-10 06:15:00",
   "XLMIRT__smc__last_candle": "2026-09-10 23:00:00",
   "ARBIRT__smc__last_candle": "2026-09-10 23:00:00",
-  "_paper_balance_irt": 4934301.7817478245,
+  "_paper_balance_irt": 4942734.737947824,
   "TRXIRT__smc__last_candle": "2026-09-10 18:45:00",
   "WIFIRT__smc__last_candle": "2026-09-10 16:00:00",
   "SEIIRT__smc__last_candle": "2026-09-10 16:00:00",
@@ -33,7 +33,7 @@
   "ETHIRT__smc__last_candle": "2026-09-09 09:45:00",
   "FLOKIIRT__smc__last_candle": "2026-09-10 23:00:00",
   "HBARIRT__smc__last_candle": "2026-09-09 09:45:00",
-  "LINKIRT__smc__last_candle": "2026-09-10 23:00:00",
+  "LINKIRT__smc__last_candle": "2026-09-12 01:15:00",
   "PEPEIRT__smc__last_candle": "2026-09-10 23:00:00",
   "SHIBIRT__smc__last_candle": "2026-09-10 23:00:00",
   "SOLIRT__smc__last_candle": "2026-09-09 21:00:00",
@@ -41,7 +41,7 @@
   "SUIIRT__smc__last_candle": "2026-09-10 11:30:00",
   "TIAIRT__smc__last_candle": "2026-09-11 06:15:00",
   "XRPIRT__smc__last_candle": "2026-09-10 23:00:00",
-  "_trade_counter": 27,
+  "_trade_counter": 28,
   "NOTIRT__smc__last_candle": "2026-09-10 16:00:00",
   "TRBIRT__smc__last_candle": "2026-09-10 11:30:00",
   "NOTIRT__smc": {
@@ -111,7 +111,7 @@
   "TRBIRT__st": {
     "direction": "long",
     "entry": 3983367.0,
-    "sl": 3884051.195381768,
+    "sl": 3983367.0,
     "tp1": 4132340.7069273475,
     "tp2": 4281314.413854695,
     "source_label": "Supertrend+ADX",
@@ -121,12 +121,33 @@
     "margin_irt": 150000.0,
     "lot_a": {
       "qty": 0.0564,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 0.0565,
       "status": "open"
-    }
+    },
+    "realized_pnl": 8432.9562
   },
-  "TRBIRT__st__last_candle": "2026-09-10 23:00:00"
+  "TRBIRT__st__last_candle": "2026-09-10 23:00:00",
+  "LINKIRT__smc": {
+    "direction": "long",
+    "entry": 2721324.5,
+    "sl": 2699586.572666823,
+    "tp1": 2753931.390999766,
+    "tp2": 2786538.2819995317,
+    "source_label": "ICT/SMC Scalp Pro",
+    "opened_at": "2026-09-12 01:15:00",
+    "margin_symbol": "LINK_IRT",
+    "trade_id": 28,
+    "margin_irt": 50000.0,
+    "lot_a": {
+      "qty": 0.0091,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.0092,
+      "status": "open"
+    }
+  }
 }
