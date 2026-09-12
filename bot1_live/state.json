@@ -40,8 +40,8 @@
   "SUIIRT__st__last_candle": "2026-09-09 09:45:00",
   "SUIIRT__smc__last_candle": "2026-09-10 11:30:00",
   "TIAIRT__smc__last_candle": "2026-09-11 06:15:00",
-  "XRPIRT__smc__last_candle": "2026-09-10 23:00:00",
-  "_trade_counter": 34,
+  "XRPIRT__smc__last_candle": "2026-09-12 10:30:00",
+  "_trade_counter": 36,
   "NOTIRT__smc__last_candle": "2026-09-10 16:00:00",
   "TRBIRT__smc__last_candle": "2026-09-10 11:30:00",
   "NOTIRT__smc": {
@@ -188,6 +188,47 @@
     },
     "lot_b": {
       "qty": 31386.3,
+      "status": "open"
+    }
+  },
+  "XRPIRT__st": {
+    "direction": "short",
+    "entry": 322744.0,
+    "sl": 325091.9260325825,
+    "tp1": 319222.11095112626,
+    "tp2": 315700.22190225264,
+    "source_label": "Supertrend+ADX",
+    "opened_at": "2026-09-12 10:30:00",
+    "margin_symbol": "XRP_IRT",
+    "trade_id": 35,
+    "margin_irt": 150000.0,
+    "lot_a": {
+      "qty": 0.6,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.7,
+      "status": "open"
+    }
+  },
+  "XRPIRT__st__last_candle": "2026-09-12 10:30:00",
+  "XRPIRT__smc": {
+    "direction": "short",
+    "entry": 322744.0,
+    "sl": 323926.6643377602,
+    "tp1": 320970.0034933597,
+    "tp2": 319196.00698671944,
+    "source_label": "ICT/SMC Scalp Pro",
+    "opened_at": "2026-09-12 10:30:00",
+    "margin_symbol": "XRP_IRT",
+    "trade_id": 36,
+    "margin_irt": 50000.0,
+    "lot_a": {
+      "qty": 0.1,
+      "status": "closed"
+    },
+    "lot_b": {
+      "qty": 0.1,
       "status": "open"
     }
   }
