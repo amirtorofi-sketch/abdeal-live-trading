@@ -2,7 +2,7 @@
   "BTCIRT__smc__last_candle": "2026-09-10 06:15:00",
   "XLMIRT__smc__last_candle": "2026-09-10 23:00:00",
   "ARBIRT__smc__last_candle": "2026-09-10 23:00:00",
-  "_paper_balance_irt": 4942363.592947824,
+  "_paper_balance_irt": 4942184.265883824,
   "TRXIRT__smc__last_candle": "2026-09-10 18:45:00",
   "WIFIRT__smc__last_candle": "2026-09-12 08:00:00",
   "SEIIRT__smc__last_candle": "2026-09-10 16:00:00",
@@ -191,25 +191,5 @@
       "status": "open"
     }
   },
-  "DOGSIRT__smc__last_candle": "2026-09-12 08:45:00",
-  "ETHIRT__smc": {
-    "direction": "short",
-    "entry": 593758820.5,
-    "sl": 595534833.5295372,
-    "tp1": 591094800.9556941,
-    "tp2": 588430781.4113883,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-12 09:00:00",
-    "margin_symbol": "ETH_IRT",
-    "trade_id": 32,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 4.2e-05,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 4.2e-05,
-      "status": "open"
-    }
-  }
+  "DOGSIRT__smc__last_candle": "2026-09-12 08:45:00"
 }
