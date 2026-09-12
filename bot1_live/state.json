@@ -39,9 +39,9 @@
   "SOLIRT__smc__last_candle": "2026-09-12 15:30:00",
   "SUIIRT__st__last_candle": "2026-09-09 09:45:00",
   "SUIIRT__smc__last_candle": "2026-09-10 11:30:00",
-  "TIAIRT__smc__last_candle": "2026-09-11 06:15:00",
+  "TIAIRT__smc__last_candle": "2026-09-12 22:45:00",
   "XRPIRT__smc__last_candle": "2026-09-12 17:45:00",
-  "_trade_counter": 57,
+  "_trade_counter": 58,
   "NOTIRT__smc__last_candle": "2026-09-10 16:00:00",
   "TRBIRT__smc__last_candle": "2026-09-12 17:15:00",
   "DOGEIRT__smc__last_candle": "2026-09-10 23:00:00",
@@ -209,6 +209,26 @@
     },
     "lot_b": {
       "qty": 1.4498,
+      "status": "open"
+    }
+  },
+  "TIAIRT__smc": {
+    "direction": "long",
+    "entry": 80926.5,
+    "sl": 80363.0799746661,
+    "tp1": 81771.63003800082,
+    "tp2": 82616.76007600165,
+    "source_label": "ICT/SMC Scalp Pro",
+    "opened_at": "2026-09-12 22:45:00",
+    "margin_symbol": "TIA_IRT",
+    "trade_id": 58,
+    "margin_irt": 50000.0,
+    "lot_a": {
+      "qty": 0.3089,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.3089,
       "status": "open"
     }
   }
