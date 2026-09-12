@@ -2,7 +2,7 @@
   "BTCIRT__smc__last_candle": "2026-09-12 12:30:00",
   "XLMIRT__smc__last_candle": "2026-09-10 23:00:00",
   "ARBIRT__smc__last_candle": "2026-09-10 23:00:00",
-  "_paper_balance_irt": 4941445.911716447,
+  "_paper_balance_irt": 4941259.477416447,
   "TRXIRT__smc__last_candle": "2026-09-10 18:45:00",
   "WIFIRT__smc__last_candle": "2026-09-12 13:00:00",
   "SEIIRT__smc__last_candle": "2026-09-10 16:00:00",
@@ -330,26 +330,6 @@
     },
     "lot_b": {
       "qty": 2011.3,
-      "status": "open"
-    }
-  },
-  "TRBIRT__smc": {
-    "direction": "long",
-    "entry": 4076149.0,
-    "sl": 4062310.8972877664,
-    "tp1": 4096906.1540683503,
-    "tp2": 4117663.308136702,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-12 13:00:00",
-    "margin_symbol": "TRB_IRT",
-    "trade_id": 45,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 0.0061,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 0.0061,
       "status": "open"
     }
   },
