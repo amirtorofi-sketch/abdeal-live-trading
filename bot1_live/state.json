@@ -2,7 +2,7 @@
   "BTCIRT__smc__last_candle": "2026-09-12 12:30:00",
   "XLMIRT__smc__last_candle": "2026-09-12 15:30:00",
   "ARBIRT__smc__last_candle": "2026-09-12 19:30:00",
-  "_paper_balance_irt": 4954201.822119248,
+  "_paper_balance_irt": 4960358.845714248,
   "TRXIRT__smc__last_candle": "2026-09-10 18:45:00",
   "WIFIRT__smc__last_candle": "2026-09-12 13:00:00",
   "SEIIRT__smc__last_candle": "2026-09-10 16:00:00",
@@ -44,48 +44,6 @@
   "_trade_counter": 55,
   "NOTIRT__smc__last_candle": "2026-09-10 16:00:00",
   "TRBIRT__smc__last_candle": "2026-09-12 17:15:00",
-  "NOTIRT__smc": {
-    "direction": "long",
-    "entry": 99.5,
-    "sl": 99.5,
-    "tp1": 101.53929707820933,
-    "tp2": 103.57859415641869,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-10 16:00:00",
-    "margin_symbol": "NOT_IRT",
-    "trade_id": 14,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 251.2,
-      "status": "closed"
-    },
-    "lot_b": {
-      "qty": 251.3,
-      "status": "open"
-    },
-    "realized_pnl": 828.9599999999992
-  },
-  "DOGEIRT__smc": {
-    "direction": "long",
-    "entry": 19598.5,
-    "sl": 19598.5,
-    "tp1": 19823.835965158214,
-    "tp2": 20049.171930316432,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-10 23:00:00",
-    "margin_symbol": "DOGE_IRT",
-    "trade_id": 19,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 1.27,
-      "status": "closed"
-    },
-    "lot_b": {
-      "qty": 1.27,
-      "status": "open"
-    },
-    "realized_pnl": 454.66
-  },
   "DOGEIRT__smc__last_candle": "2026-09-10 23:00:00",
   "TRBIRT__st": {
     "direction": "long",
@@ -132,27 +90,6 @@
   },
   "GRAMIRT__smc__last_candle": "2026-09-12 07:15:00",
   "DOGSIRT__smc__last_candle": "2026-09-12 12:30:00",
-  "DOGEIRT__st": {
-    "direction": "short",
-    "entry": 20017.5,
-    "sl": 20017.5,
-    "tp1": 19808.42355178504,
-    "tp2": 19599.34710357008,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-09-12 10:00:00",
-    "margin_symbol": "DOGE_IRT",
-    "trade_id": 33,
-    "margin_irt": 150000.0,
-    "lot_a": {
-      "qty": 11.24,
-      "status": "closed"
-    },
-    "lot_b": {
-      "qty": 11.24,
-      "status": "open"
-    },
-    "realized_pnl": 2714.46
-  },
   "PEPEIRT__smc": {
     "direction": "short",
     "entry": 0.7965249999999999,
@@ -174,27 +111,6 @@
     }
   },
   "XRPIRT__st__last_candle": "2026-09-12 10:30:00",
-  "SHIBIRT__smc": {
-    "direction": "short",
-    "entry": 1.255,
-    "sl": 1.255,
-    "tp1": 1.2370142320580744,
-    "tp2": 1.2190284641161486,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-12 11:30:00",
-    "margin_symbol": "SHIB_IRT",
-    "trade_id": 40,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 19920.3,
-      "status": "closed"
-    },
-    "lot_b": {
-      "qty": 19920.3,
-      "status": "open"
-    },
-    "realized_pnl": 419.3223149999958
-  },
   "DOGSIRT__smc": {
     "direction": "short",
     "entry": 12.43,
@@ -215,47 +131,6 @@
       "status": "open"
     },
     "realized_pnl": 724.0319999999989
-  },
-  "XLMIRT__smc": {
-    "direction": "short",
-    "entry": 42202.25,
-    "sl": 42202.25,
-    "tp1": 41862.62289206599,
-    "tp2": 41522.995784131985,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-12 15:30:00",
-    "margin_symbol": "XLM_IRT",
-    "trade_id": 49,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 0.5923,
-      "status": "closed"
-    },
-    "lot_b": {
-      "qty": 0.5924,
-      "status": "open"
-    },
-    "realized_pnl": 219.03254000000175
-  },
-  "XRPIRT__smc": {
-    "direction": "long",
-    "entry": 316019.0,
-    "sl": 315091.6195423762,
-    "tp1": 317410.0706864356,
-    "tp2": 318801.1413728713,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-12 17:45:00",
-    "margin_symbol": "XRP_IRT",
-    "trade_id": 51,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 0.1,
-      "status": "closed"
-    },
-    "lot_b": {
-      "qty": 0.1,
-      "status": "open"
-    }
   },
   "ADAIRT__smc": {
     "direction": "long",
