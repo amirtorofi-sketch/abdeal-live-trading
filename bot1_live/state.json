@@ -1,8 +1,8 @@
 {
   "BTCIRT__smc__last_candle": "2026-09-12 12:30:00",
   "XLMIRT__smc__last_candle": "2026-09-12 15:30:00",
-  "ARBIRT__smc__last_candle": "2026-09-10 23:00:00",
-  "_paper_balance_irt": 4949476.393119248,
+  "ARBIRT__smc__last_candle": "2026-09-12 19:30:00",
+  "_paper_balance_irt": 4954201.822119248,
   "TRXIRT__smc__last_candle": "2026-09-10 18:45:00",
   "WIFIRT__smc__last_candle": "2026-09-12 13:00:00",
   "SEIIRT__smc__last_candle": "2026-09-10 16:00:00",
@@ -33,7 +33,7 @@
   "ETHIRT__smc__last_candle": "2026-09-12 09:00:00",
   "FLOKIIRT__smc__last_candle": "2026-09-12 11:30:00",
   "HBARIRT__smc__last_candle": "2026-09-12 15:00:00",
-  "LINKIRT__smc__last_candle": "2026-09-12 01:15:00",
+  "LINKIRT__smc__last_candle": "2026-09-12 19:30:00",
   "PEPEIRT__smc__last_candle": "2026-09-12 10:00:00",
   "SHIBIRT__smc__last_candle": "2026-09-12 11:30:00",
   "SOLIRT__smc__last_candle": "2026-09-12 15:30:00",
@@ -41,7 +41,7 @@
   "SUIIRT__smc__last_candle": "2026-09-10 11:30:00",
   "TIAIRT__smc__last_candle": "2026-09-11 06:15:00",
   "XRPIRT__smc__last_candle": "2026-09-12 17:45:00",
-  "_trade_counter": 52,
+  "_trade_counter": 55,
   "NOTIRT__smc__last_candle": "2026-09-10 16:00:00",
   "TRBIRT__smc__last_candle": "2026-09-12 17:15:00",
   "NOTIRT__smc": {
@@ -173,27 +173,6 @@
       "status": "open"
     }
   },
-  "XRPIRT__st": {
-    "direction": "short",
-    "entry": 322744.0,
-    "sl": 322744.0,
-    "tp1": 319222.11095112626,
-    "tp2": 315700.22190225264,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-09-12 10:30:00",
-    "margin_symbol": "XRP_IRT",
-    "trade_id": 35,
-    "margin_irt": 150000.0,
-    "lot_a": {
-      "qty": 0.6,
-      "status": "closed"
-    },
-    "lot_b": {
-      "qty": 0.7,
-      "status": "open"
-    },
-    "realized_pnl": 2169.6
-  },
   "XRPIRT__st__last_candle": "2026-09-12 10:30:00",
   "SHIBIRT__smc": {
     "direction": "short",
@@ -258,26 +237,6 @@
     },
     "realized_pnl": 219.03254000000175
   },
-  "TRBIRT__smc": {
-    "direction": "long",
-    "entry": 4018490.5,
-    "sl": 4002196.1576416055,
-    "tp1": 4042932.013537592,
-    "tp2": 4067373.5270751845,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-12 17:15:00",
-    "margin_symbol": "TRB_IRT",
-    "trade_id": 50,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 0.0062,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 0.0062,
-      "status": "open"
-    }
-  },
   "XRPIRT__smc": {
     "direction": "long",
     "entry": 316019.0,
@@ -315,6 +274,67 @@
     },
     "lot_b": {
       "qty": 0.520383,
+      "status": "open"
+    }
+  },
+  "ARBIRT__smc": {
+    "direction": "long",
+    "entry": 32233.0,
+    "sl": 31869.309514531178,
+    "tp1": 32778.53572820323,
+    "tp2": 33324.07145640646,
+    "source_label": "ICT/SMC Scalp Pro",
+    "opened_at": "2026-09-12 19:30:00",
+    "margin_symbol": "ARB_IRT",
+    "trade_id": 53,
+    "margin_irt": 50000.0,
+    "lot_a": {
+      "qty": 0.7756,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.7756,
+      "status": "open"
+    }
+  },
+  "HBARIRT__st": {
+    "direction": "long",
+    "entry": 17192.5,
+    "sl": 17066.27265240341,
+    "tp1": 17381.84102139488,
+    "tp2": 17571.182042789762,
+    "source_label": "Supertrend+ADX",
+    "opened_at": "2026-09-12 19:30:00",
+    "margin_symbol": "HBAR_IRT",
+    "trade_id": 54,
+    "margin_irt": 150000.0,
+    "lot_a": {
+      "qty": 13.0871,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 13.0871,
+      "status": "open"
+    }
+  },
+  "HBARIRT__st__last_candle": "2026-09-12 19:30:00",
+  "LINKIRT__smc": {
+    "direction": "long",
+    "entry": 2654396.0,
+    "sl": 2641781.4371015704,
+    "tp1": 2673317.8443476446,
+    "tp2": 2692239.688695289,
+    "source_label": "ICT/SMC Scalp Pro",
+    "opened_at": "2026-09-12 19:30:00",
+    "margin_symbol": "LINK_IRT",
+    "trade_id": 55,
+    "margin_irt": 50000.0,
+    "lot_a": {
+      "qty": 0.0094,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.0094,
       "status": "open"
     }
   }
