@@ -2,8 +2,10 @@ name: Bot1 Live (Supertrend+ADX -> Tabdeal)
 
 on:
   workflow_dispatch: {}
-  schedule:
-    - cron: "3-59/15 * * * *"  # هر ۱۵ دقیقه، ولی از دقیقه‌ی ۳ شروع می‌شه (نه رند) تا صف اجرا خلوت‌تر باشه
+  # ⚠️ کرون داخلی گیت‌هاب حذف شد چون غیرقابل‌اعتماده. از cron-job.org استفاده کن:
+  # POST https://api.github.com/repos/<owner>/<repo>/actions/workflows/bot1_live.yml/dispatches
+  # هدرها: Authorization: token <YOUR_GITHUB_PAT> و Accept: application/vnd.github+json
+  # بادی: {"ref": "main"}
 
 permissions:
   contents: write
