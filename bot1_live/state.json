@@ -2,7 +2,7 @@
   "BTCIRT__smc__last_candle": "2026-09-13 13:15:00",
   "XLMIRT__smc__last_candle": "2026-09-13 08:15:00",
   "ARBIRT__smc__last_candle": "2026-09-13 19:00:00",
-  "_paper_balance_irt": 4938558.796350281,
+  "_paper_balance_irt": 4930639.611710281,
   "TRXIRT__smc__last_candle": "2026-09-13 11:30:00",
   "WIFIRT__smc__last_candle": "2026-09-13 07:45:00",
   "SEIIRT__smc__last_candle": "2026-09-13 13:45:00",
@@ -115,26 +115,6 @@
     },
     "lot_b": {
       "qty": 2226.6,
-      "status": "open"
-    }
-  },
-  "XLMIRT__st": {
-    "direction": "short",
-    "entry": 41094.9,
-    "sl": 41670.16356713906,
-    "tp1": 40232.00464929141,
-    "tp2": 39369.10929858283,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-09-13 14:00:00",
-    "margin_symbol": "XLM_IRT",
-    "trade_id": 122,
-    "margin_irt": 150000.0,
-    "lot_a": {
-      "qty": 5.4751,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 5.4751,
       "status": "open"
     }
   },
