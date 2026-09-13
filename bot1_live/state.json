@@ -2,7 +2,7 @@
   "BTCIRT__smc__last_candle": "2026-09-13 06:00:00",
   "XLMIRT__smc__last_candle": "2026-09-13 02:30:00",
   "ARBIRT__smc__last_candle": "2026-09-12 19:30:00",
-  "_paper_balance_irt": 4949609.283988436,
+  "_paper_balance_irt": 4949736.605094391,
   "TRXIRT__smc__last_candle": "2026-09-13 01:45:00",
   "WIFIRT__smc__last_candle": "2026-09-12 20:15:00",
   "SEIIRT__smc__last_candle": "2026-09-13 02:00:00",
@@ -220,7 +220,7 @@
   "DOGEIRT__smc": {
     "direction": "short",
     "entry": 19657.5,
-    "sl": 19723.63495544379,
+    "sl": 19657.5,
     "tp1": 19558.297566834317,
     "tp2": 19459.095133668634,
     "source_label": "ICT/SMC Scalp Pro",
@@ -230,17 +230,18 @@
     "margin_irt": 50000.0,
     "lot_a": {
       "qty": 1.27,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 1.27,
       "status": "open"
-    }
+    },
+    "realized_pnl": 127.635
   },
   "SOLIRT__smc": {
     "direction": "short",
     "entry": 23610916.0,
-    "sl": 23694971.227630783,
+    "sl": 23610916.0,
     "tp1": 23484833.158553828,
     "tp2": 23358750.31710766,
     "source_label": "ICT/SMC Scalp Pro",
@@ -250,12 +251,13 @@
     "margin_irt": 50000.0,
     "lot_a": {
       "qty": 0.001,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 0.001,
       "status": "open"
-    }
+    },
+    "realized_pnl": 163.8095
   },
   "XLMIRT__smc": {
     "direction": "short",
@@ -334,47 +336,6 @@
     },
     "lot_b": {
       "qty": 0.520427,
-      "status": "open"
-    }
-  },
-  "ETHIRT__smc": {
-    "direction": "long",
-    "entry": 582608560.5,
-    "sl": 582608560.5,
-    "tp1": 584106661.8694315,
-    "tp2": 585604763.2388631,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-13 05:45:00",
-    "margin_symbol": "ETH_IRT",
-    "trade_id": 80,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 4.2e-05,
-      "status": "closed"
-    },
-    "lot_b": {
-      "qty": 4.3e-05,
-      "status": "open"
-    },
-    "realized_pnl": 70.472262
-  },
-  "BTCIRT__smc": {
-    "direction": "long",
-    "entry": 17875399135.0,
-    "sl": 17858088647.36851,
-    "tp1": 17901364866.44723,
-    "tp2": 17927330597.894466,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-13 06:00:00",
-    "margin_symbol": "BTC_IRT",
-    "trade_id": 81,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 1.39e-06,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 1.4e-06,
       "status": "open"
     }
   },
