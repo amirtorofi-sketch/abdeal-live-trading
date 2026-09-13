@@ -1,11 +1,71 @@
 {
-  "_trade_counter": 21,
-  "DOGEIRT__smc__last_candle": "2026-09-13 06:15:00",
-  "BTCIRT__smc__last_candle": "2026-09-13 08:00:00",
+  "_trade_counter": 24,
+  "DOGEIRT__smc__last_candle": "2026-09-13 13:45:00",
+  "BTCIRT__smc__last_candle": "2026-09-13 13:45:00",
   "_paper_balance_irt": 4969868.041728095,
   "SOLIRT__smc__last_candle": "2026-09-13 02:15:00",
   "ETHIRT__st__last_candle": "2026-09-10 23:00:00",
-  "ETHIRT__smc__last_candle": "2026-09-13 07:30:00",
+  "ETHIRT__smc__last_candle": "2026-09-13 13:45:00",
   "DOGEIRT__st__last_candle": "2026-09-12 10:00:00",
-  "SOLIRT__st__last_candle": "2026-09-13 01:15:00"
+  "SOLIRT__st__last_candle": "2026-09-13 01:15:00",
+  "BTCIRT__smc": {
+    "direction": "short",
+    "entry": 17561146537.5,
+    "sl": 17614011220.55598,
+    "tp1": 17481849512.916027,
+    "tp2": 17402552488.332054,
+    "source_label": "ICT/SMC v2",
+    "opened_at": "2026-09-13 13:45:00",
+    "margin_symbol": "BTC_IRT",
+    "trade_id": 22,
+    "margin_irt": 100000.0,
+    "lot_a": {
+      "qty": 5.69e-06,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 5.69e-06,
+      "status": "open"
+    }
+  },
+  "ETHIRT__smc": {
+    "direction": "short",
+    "entry": 565832295.0,
+    "sl": 568951529.5563587,
+    "tp1": 561153443.1654619,
+    "tp2": 556474591.3309238,
+    "source_label": "ICT/SMC v2",
+    "opened_at": "2026-09-13 13:45:00",
+    "margin_symbol": "ETH_IRT",
+    "trade_id": 23,
+    "margin_irt": 100000.0,
+    "lot_a": {
+      "qty": 0.000176,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.000177,
+      "status": "open"
+    }
+  },
+  "DOGEIRT__smc": {
+    "direction": "short",
+    "entry": 19060.0,
+    "sl": 19172.507611492274,
+    "tp1": 18891.23858276159,
+    "tp2": 18722.477165523178,
+    "source_label": "ICT/SMC v2",
+    "opened_at": "2026-09-13 13:45:00",
+    "margin_symbol": "DOGE_IRT",
+    "trade_id": 24,
+    "margin_irt": 100000.0,
+    "lot_a": {
+      "qty": 5.24,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 5.25,
+      "status": "open"
+    }
+  }
 }
