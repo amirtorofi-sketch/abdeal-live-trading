@@ -2,8 +2,8 @@
   "BTCIRT__smc__last_candle": "2026-09-13 06:45:00",
   "XLMIRT__smc__last_candle": "2026-09-13 08:15:00",
   "ARBIRT__smc__last_candle": "2026-09-13 07:45:00",
-  "_paper_balance_irt": 4936495.56165048,
-  "TRXIRT__smc__last_candle": "2026-09-13 11:15:00",
+  "_paper_balance_irt": 4934521.551650479,
+  "TRXIRT__smc__last_candle": "2026-09-13 11:30:00",
   "WIFIRT__smc__last_candle": "2026-09-13 07:45:00",
   "SEIIRT__smc__last_candle": "2026-09-13 02:00:00",
   "ADAIRT__smc__last_candle": "2026-09-13 07:45:00",
@@ -22,7 +22,7 @@
   "SUIIRT__smc__last_candle": "2026-09-10 11:30:00",
   "TIAIRT__smc__last_candle": "2026-09-12 22:45:00",
   "XRPIRT__smc__last_candle": "2026-09-13 08:15:00",
-  "_trade_counter": 105,
+  "_trade_counter": 106,
   "NOTIRT__smc__last_candle": "2026-09-13 07:00:00",
   "TRBIRT__smc__last_candle": "2026-09-13 07:45:00",
   "DOGEIRT__smc__last_candle": "2026-09-13 08:15:00",
@@ -116,36 +116,16 @@
       "status": "open"
     }
   },
-  "TRXIRT__st": {
-    "direction": "short",
-    "entry": 77693.5,
-    "sl": 77994.80633604714,
-    "tp1": 77241.54049592928,
-    "tp2": 76789.58099185856,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-09-13 11:15:00",
-    "margin_symbol": "TRX_IRT",
-    "trade_id": 104,
-    "margin_irt": 150000.0,
-    "lot_a": {
-      "qty": 2.89,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 2.9,
-      "status": "open"
-    }
-  },
   "TRXIRT__smc": {
     "direction": "short",
-    "entry": 77693.5,
-    "sl": 77803.34075366502,
-    "tp1": 77528.73886950247,
-    "tp2": 77363.97773900494,
+    "entry": 78000.5,
+    "sl": 78108.74988007886,
+    "tp1": 77838.12517988171,
+    "tp2": 77675.75035976343,
     "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-13 11:15:00",
+    "opened_at": "2026-09-13 11:30:00",
     "margin_symbol": "TRX_IRT",
-    "trade_id": 105,
+    "trade_id": 106,
     "margin_irt": 50000.0,
     "lot_a": {
       "qty": 0.32,
