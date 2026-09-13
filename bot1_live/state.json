@@ -41,7 +41,7 @@
   "SUIIRT__smc__last_candle": "2026-09-10 11:30:00",
   "TIAIRT__smc__last_candle": "2026-09-12 22:45:00",
   "XRPIRT__smc__last_candle": "2026-09-12 17:45:00",
-  "_trade_counter": 63,
+  "_trade_counter": 64,
   "NOTIRT__smc__last_candle": "2026-09-13 00:45:00",
   "TRBIRT__smc__last_candle": "2026-09-12 17:15:00",
   "DOGEIRT__smc__last_candle": "2026-09-10 23:00:00",
@@ -312,5 +312,26 @@
       "qty": 248.0,
       "status": "open"
     }
-  }
+  },
+  "SOLIRT__st": {
+    "direction": "short",
+    "entry": 23551433.0,
+    "sl": 23695672.11548094,
+    "tp1": 23335074.32677859,
+    "tp2": 23118715.65355718,
+    "source_label": "Supertrend+ADX",
+    "opened_at": "2026-09-13 01:15:00",
+    "margin_symbol": "SOL_IRT",
+    "trade_id": 64,
+    "margin_irt": 150000.0,
+    "lot_a": {
+      "qty": 0.009,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.01,
+      "status": "open"
+    }
+  },
+  "SOLIRT__st__last_candle": "2026-09-13 01:15:00"
 }
