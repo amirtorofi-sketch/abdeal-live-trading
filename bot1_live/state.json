@@ -2,14 +2,14 @@
   "BTCIRT__smc__last_candle": "2026-09-13 13:15:00",
   "XLMIRT__smc__last_candle": "2026-09-13 08:15:00",
   "ARBIRT__smc__last_candle": "2026-09-13 07:45:00",
-  "_paper_balance_irt": 4942897.075144782,
+  "_paper_balance_irt": 4943317.655144782,
   "TRXIRT__smc__last_candle": "2026-09-13 11:30:00",
   "WIFIRT__smc__last_candle": "2026-09-13 07:45:00",
   "SEIIRT__smc__last_candle": "2026-09-13 13:45:00",
   "ADAIRT__smc__last_candle": "2026-09-13 13:15:00",
   "ARBIRT__st__last_candle": "2026-09-13 06:45:00",
   "BTCIRT__st__last_candle": "2026-09-09 09:45:00",
-  "DOGEIRT__st__last_candle": "2026-09-12 10:00:00",
+  "DOGEIRT__st__last_candle": "2026-09-13 17:00:00",
   "ETHIRT__st__last_candle": "2026-09-09 09:45:00",
   "ETHIRT__smc__last_candle": "2026-09-13 13:15:00",
   "FLOKIIRT__smc__last_candle": "2026-09-13 14:15:00",
@@ -22,7 +22,7 @@
   "SUIIRT__smc__last_candle": "2026-09-13 13:15:00",
   "TIAIRT__smc__last_candle": "2026-09-12 22:45:00",
   "XRPIRT__smc__last_candle": "2026-09-13 13:15:00",
-  "_trade_counter": 123,
+  "_trade_counter": 124,
   "NOTIRT__smc__last_candle": "2026-09-13 14:00:00",
   "TRBIRT__smc__last_candle": "2026-09-13 13:15:00",
   "DOGEIRT__smc__last_candle": "2026-09-13 13:15:00",
@@ -347,7 +347,7 @@
   "NOTIRT__smc": {
     "direction": "short",
     "entry": 101.05,
-    "sl": 101.9970420909413,
+    "sl": 101.05,
     "tp1": 99.62943686358803,
     "tp2": 98.20887372717607,
     "source_label": "ICT/SMC Scalp Pro",
@@ -357,12 +357,13 @@
     "margin_irt": 50000.0,
     "lot_a": {
       "qty": 247.4,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 247.4,
       "status": "open"
-    }
+    },
+    "realized_pnl": 420.5800000000007
   },
   "XLMIRT__st": {
     "direction": "short",
@@ -384,5 +385,25 @@
       "status": "open"
     }
   },
-  "XLMIRT__st__last_candle": "2026-09-13 14:00:00"
+  "XLMIRT__st__last_candle": "2026-09-13 14:00:00",
+  "DOGEIRT__st": {
+    "direction": "short",
+    "entry": 19095.0,
+    "sl": 19337.894703747632,
+    "tp1": 18730.657944378552,
+    "tp2": 18366.315888757104,
+    "source_label": "Supertrend+ADX",
+    "opened_at": "2026-09-13 17:00:00",
+    "margin_symbol": "DOGE_IRT",
+    "trade_id": 124,
+    "margin_irt": 150000.0,
+    "lot_a": {
+      "qty": 11.78,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 11.78,
+      "status": "open"
+    }
+  }
 }
