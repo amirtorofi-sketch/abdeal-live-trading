@@ -3,7 +3,7 @@
   "XLMIRT__smc__last_candle": "2026-09-13 08:15:00",
   "ARBIRT__smc__last_candle": "2026-09-13 07:45:00",
   "_paper_balance_irt": 4936495.56165048,
-  "TRXIRT__smc__last_candle": "2026-09-13 09:30:00",
+  "TRXIRT__smc__last_candle": "2026-09-13 11:15:00",
   "WIFIRT__smc__last_candle": "2026-09-13 07:45:00",
   "SEIIRT__smc__last_candle": "2026-09-13 02:00:00",
   "ADAIRT__smc__last_candle": "2026-09-13 07:45:00",
@@ -22,7 +22,7 @@
   "SUIIRT__smc__last_candle": "2026-09-10 11:30:00",
   "TIAIRT__smc__last_candle": "2026-09-12 22:45:00",
   "XRPIRT__smc__last_candle": "2026-09-13 08:15:00",
-  "_trade_counter": 103,
+  "_trade_counter": 105,
   "NOTIRT__smc__last_candle": "2026-09-13 07:00:00",
   "TRBIRT__smc__last_candle": "2026-09-13 07:45:00",
   "DOGEIRT__smc__last_candle": "2026-09-13 08:15:00",
@@ -54,7 +54,7 @@
   "HBARIRT__st__last_candle": "2026-09-12 19:30:00",
   "NOTIRT__st__last_candle": "2026-09-13 00:30:00",
   "SOLIRT__st__last_candle": "2026-09-13 01:15:00",
-  "TRXIRT__st__last_candle": "2026-09-13 03:45:00",
+  "TRXIRT__st__last_candle": "2026-09-13 11:15:00",
   "FLOKIIRT__smc": {
     "direction": "long",
     "entry": 5.580535,
@@ -113,6 +113,46 @@
     },
     "lot_b": {
       "qty": 0.6153,
+      "status": "open"
+    }
+  },
+  "TRXIRT__st": {
+    "direction": "short",
+    "entry": 77693.5,
+    "sl": 77994.80633604714,
+    "tp1": 77241.54049592928,
+    "tp2": 76789.58099185856,
+    "source_label": "Supertrend+ADX",
+    "opened_at": "2026-09-13 11:15:00",
+    "margin_symbol": "TRX_IRT",
+    "trade_id": 104,
+    "margin_irt": 150000.0,
+    "lot_a": {
+      "qty": 2.89,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 2.9,
+      "status": "open"
+    }
+  },
+  "TRXIRT__smc": {
+    "direction": "short",
+    "entry": 77693.5,
+    "sl": 77803.34075366502,
+    "tp1": 77528.73886950247,
+    "tp2": 77363.97773900494,
+    "source_label": "ICT/SMC Scalp Pro",
+    "opened_at": "2026-09-13 11:15:00",
+    "margin_symbol": "TRX_IRT",
+    "trade_id": 105,
+    "margin_irt": 50000.0,
+    "lot_a": {
+      "qty": 0.32,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.32,
       "status": "open"
     }
   }
