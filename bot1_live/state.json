@@ -1,8 +1,8 @@
 {
   "BTCIRT__smc__last_candle": "2026-09-13 13:15:00",
-  "XLMIRT__smc__last_candle": "2026-09-13 20:45:00",
+  "XLMIRT__smc__last_candle": "2026-09-13 21:30:00",
   "ARBIRT__smc__last_candle": "2026-09-13 19:00:00",
-  "_paper_balance_irt": 4920981.90108378,
+  "_paper_balance_irt": 4920220.85599378,
   "TRXIRT__smc__last_candle": "2026-09-13 11:30:00",
   "WIFIRT__smc__last_candle": "2026-09-13 20:45:00",
   "SEIIRT__smc__last_candle": "2026-09-13 13:45:00",
@@ -22,7 +22,7 @@
   "SUIIRT__smc__last_candle": "2026-09-13 13:15:00",
   "TIAIRT__smc__last_candle": "2026-09-12 22:45:00",
   "XRPIRT__smc__last_candle": "2026-09-13 13:15:00",
-  "_trade_counter": 129,
+  "_trade_counter": 130,
   "NOTIRT__smc__last_candle": "2026-09-13 14:00:00",
   "TRBIRT__smc__last_candle": "2026-09-13 13:15:00",
   "DOGEIRT__smc__last_candle": "2026-09-13 13:15:00",
@@ -139,43 +139,23 @@
       "status": "open"
     }
   },
-  "WIFIRT__smc": {
-    "direction": "short",
-    "entry": 44759.0,
-    "sl": 45052.417317997155,
-    "tp1": 44318.87402300426,
-    "tp2": 43878.74804600852,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-13 20:45:00",
-    "margin_symbol": "WIF_IRT",
-    "trade_id": 128,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 0.55,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 0.56,
-      "status": "open"
-    }
-  },
   "XLMIRT__smc": {
     "direction": "short",
-    "entry": 41994.85,
-    "sl": 42209.474465493564,
-    "tp1": 41672.91330175965,
-    "tp2": 41350.9766035193,
+    "entry": 42297.5,
+    "sl": 42517.697137263196,
+    "tp1": 41967.2042941052,
+    "tp2": 41636.9085882104,
     "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-13 20:45:00",
+    "opened_at": "2026-09-13 21:30:00",
     "margin_symbol": "XLM_IRT",
-    "trade_id": 129,
+    "trade_id": 130,
     "margin_irt": 50000.0,
     "lot_a": {
-      "qty": 0.5953,
+      "qty": 0.591,
       "status": "open"
     },
     "lot_b": {
-      "qty": 0.5953,
+      "qty": 0.5911,
       "status": "open"
     }
   }
