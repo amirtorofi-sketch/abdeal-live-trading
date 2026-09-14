@@ -99,6 +99,29 @@ def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+DIRECTION_FA = {"long": "خرید (Long)", "short": "فروش (Short)"}
+DIRECTION_EMOJI = {"long": "🟢", "short": "🔴"}
+
+
+def format_candle_time(candle_time) -> str:
+    """زمان کندل را به فرمت HH:MM:SS DD-MM-YYYY برمی‌گرداند (برای نمایش در تلگرام)."""
+    try:
+        return candle_time.strftime("%H:%M:%S %d-%m-%Y")
+    except Exception:
+        return str(candle_time)
+
+
+def open_positions_totals(state: dict):
+    """جمع مارجین و ارزش اسمی همه‌ی پوزیشن‌های باز فعلی (هر دو استراتژی، همه‌ی نمادها)."""
+    total_margin = 0.0
+    total_notional = 0.0
+    for key, val in state.items():
+        if isinstance(val, dict) and "margin_irt" in val:
+            total_margin += val.get("margin_irt", 0.0) or 0.0
+            total_notional += val.get("notional_irt", 0.0) or 0.0
+    return total_margin, total_notional
+
+
 def resolve_direction_and_risk_pct(raw_direction: str, entry: float, raw_sl: float):
     """
     دقیقاً همون منطق trading_bot.py برای معکوس‌کردن جهت. ولی برخلاف نسخه‌ی
@@ -262,7 +285,7 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
     base_fields = {
         "direction": direction, "entry": real_price, "sl": sl, "tp1": tp1, "tp2": tp2,
         "source_label": source_label, "opened_at": str(candle_time), "margin_symbol": margin_symbol,
-        "trade_id": trade_id, "margin_irt": cfg["margin_irt"],
+        "trade_id": trade_id, "margin_irt": cfg["margin_irt"], "notional_irt": notional_irt,
     }
     if qty_b <= 0:
         state[position_key] = {**base_fields, "lot_a": {"qty": qty_a, "status": "closed"}, "lot_b": {"qty": qty_a, "status": "open"}}
@@ -271,6 +294,11 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
     state[signal_key] = str(candle_time)
 
     cur = currency_label(spot_symbol)
+    emoji = DIRECTION_EMOJI[direction]
+    dir_fa = DIRECTION_FA[direction]
+    candle_str = format_candle_time(candle_time)
+    leverage = cfg["leverage"]
+    total_margin, total_notional = open_positions_totals(state)
 
     if DRY_RUN:
         balance_before = state.get("_paper_balance_irt", PAPER_STARTING_BALANCE_IRT)
@@ -279,16 +307,38 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
             real_price, sl, tp1, tp2, qty, notional_irt,
         )
         notify(
-            f"🟢 [آزمایشی] معامله #{trade_id} باز شد | {spot_symbol} | {source_label}{extra_label}\n"
-            f"جهت: {direction.upper()} | موجودی قبل از این معامله: {balance_before:,.0f} {cur}\n"
-            f"قیمت ورود: {real_price:,.0f} {cur} | ارزش این پوزیشن≈{notional_irt:,.0f} {cur} (مقدار: {qty})\n"
-            f"SL={sl:,.0f} | TP1={tp1:,.0f} | TP2={tp2:,.0f} (هیچ سفارش واقعی ثبت نشد)"
+            f"#{trade_id} {emoji} پوزیشن فرضی {dir_fa} باز شد\n"
+            f"{source_label}{extra_label} |\n"
+            f"نماد: {spot_symbol}\n"
+            f"زمان کندل: {candle_str}\n"
+            f"حجم: {qty}\n"
+            f"ارزش معامله: {notional_irt:,.0f} {cur} (لوریج {leverage:g}x)\n"
+            f"مارجین این معامله: {cfg['margin_irt']:,.0f} {cur}\n"
+            f"ورود: {real_price:,.0f}\n"
+            f"SL: {sl:,.0f}\n"
+            f"TP1: {tp1:,.0f}\n"
+            f"TP2: {tp2:,.0f}\n"
+            f"—\n"
+            f"موجودی نقدی: {balance_before:,.0f} {cur}\n"
+            f"مارجین درگیر در پوزیشن‌های باز: {total_margin:,.0f} {cur}\n"
+            f"ارزش کل پوزیشن‌های باز (اسمی): {total_notional:,.0f} {cur}"
         )
     else:
         notify(
-            f"🟢 معامله #{trade_id} باز شد [واقعی] | {spot_symbol} | {source_label}{extra_label}\n"
-            f"جهت: {direction.upper()} | قیمت ورود: {real_price:,.0f} {cur} | ارزش این پوزیشن≈{notional_irt:,.0f} {cur} (مقدار: {qty})\n"
-            f"SL={sl:,.0f} | TP1={tp1:,.0f} | TP2={tp2:,.0f}"
+            f"#{trade_id} {emoji} پوزیشن {dir_fa} باز شد [واقعی]\n"
+            f"{source_label}{extra_label} |\n"
+            f"نماد: {spot_symbol}\n"
+            f"زمان کندل: {candle_str}\n"
+            f"حجم: {qty}\n"
+            f"ارزش معامله: {notional_irt:,.0f} {cur} (لوریج {leverage:g}x)\n"
+            f"مارجین این معامله: {cfg['margin_irt']:,.0f} {cur}\n"
+            f"ورود: {real_price:,.0f}\n"
+            f"SL: {sl:,.0f}\n"
+            f"TP1: {tp1:,.0f}\n"
+            f"TP2: {tp2:,.0f}\n"
+            f"—\n"
+            f"مارجین درگیر در پوزیشن‌های باز: {total_margin:,.0f} {cur}\n"
+            f"ارزش کل پوزیشن‌های باز (اسمی): {total_notional:,.0f} {cur}"
         )
 
     save_state(state)
