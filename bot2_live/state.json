@@ -1,6 +1,6 @@
 {
-  "_trade_counter": 3,
-  "_paper_balance_irt": 4000000.0,
+  "_trade_counter": 5,
+  "_paper_balance_irt": 3997386.865660522,
   "BTCIRT__smc": {
     "direction": "long",
     "entry": 17994918303.0,
@@ -20,7 +20,7 @@
       "qty": 1.111e-05,
       "status": "open"
     },
-    "last_checked_ms": 1789391008202
+    "last_checked_ms": 1789391911921
   },
   "BTCIRT__smc__last_candle": "2026-09-14 06:30:00",
   "SOLIRT__smc": {
@@ -42,30 +42,54 @@
       "qty": 0.008,
       "status": "open"
     },
-    "last_checked_ms": 1789391012226
+    "last_checked_ms": 1789391919822
   },
   "SOLIRT__smc__last_candle": "2026-09-14 06:30:00",
-  "DOGEIRT__smc": {
-    "direction": "long",
-    "entry": 19506.5,
-    "sl": 19379.0300322206,
-    "tp1": 19697.7049516691,
-    "tp2": 19888.9099033382,
-    "source_label": "ICT/SMC v2",
-    "opened_at": "2026-09-14 09:15:00",
-    "margin_symbol": "DOGE_IRT",
-    "trade_id": 3,
+  "DOGEIRT__smc__last_candle": "2026-09-14 09:15:00",
+  "ETHIRT__st": {
+    "direction": "short",
+    "entry": 580838581.0,
+    "sl": 587623681.1551692,
+    "tp1": 570660930.7672462,
+    "tp2": 560483280.5344925,
+    "source_label": "Supertrend+ADX",
+    "opened_at": "2026-09-14 13:00:00",
+    "margin_symbol": "ETH_IRT",
+    "trade_id": 4,
     "margin_irt": 200000.0,
-    "notional_irt": 400000.0,
+    "notional_irt": 600000.0,
+    "last_checked_ms": 1789391916409,
     "lot_a": {
-      "qty": 10.25,
+      "qty": 0.000516,
       "status": "open"
     },
     "lot_b": {
-      "qty": 10.25,
+      "qty": 0.000516,
+      "status": "open"
+    }
+  },
+  "ETHIRT__st__last_candle": "2026-09-14 13:00:00",
+  "DOGEIRT__st": {
+    "direction": "short",
+    "entry": 19436.5,
+    "sl": 19712.836600541872,
+    "tp1": 19021.99509918719,
+    "tp2": 18607.49019837438,
+    "source_label": "Supertrend+ADX",
+    "opened_at": "2026-09-14 13:00:00",
+    "margin_symbol": "DOGE_IRT",
+    "trade_id": 5,
+    "margin_irt": 200000.0,
+    "notional_irt": 600000.0,
+    "last_checked_ms": 1789391926059,
+    "lot_a": {
+      "qty": 15.43,
       "status": "open"
     },
-    "last_checked_ms": 1789391014737
+    "lot_b": {
+      "qty": 15.43,
+      "status": "open"
+    }
   },
-  "DOGEIRT__smc__last_candle": "2026-09-14 09:15:00"
+  "DOGEIRT__st__last_candle": "2026-09-14 13:00:00"
 }
