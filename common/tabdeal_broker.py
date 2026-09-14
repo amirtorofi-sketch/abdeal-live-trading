@@ -22,6 +22,7 @@
 import os
 import json
 import math
+import time
 from decimal import Decimal, ROUND_DOWN
 
 from tabdeal.spot import Spot
@@ -192,6 +193,59 @@ def get_mid_price(spot_client: Spot, symbol: str) -> float:
     best_bid = float(book["bids"][0][0])
     best_ask = float(book["asks"][0][0])
     return (best_bid + best_ask) / 2.0
+
+
+def now_ms() -> int:
+    return int(time.time() * 1000)
+
+
+def get_price_range_since(spot_client: Spot, symbol: str, since_ms: int,
+                           fallback_mid: float = None, trade_limit: int = 1000):
+    """
+    بازه‌ی [کمینه, بیشینه]ی قیمت واقعی تبدیل از زمان since_ms تا الان را از
+    روی آخرین معاملات عمومی (public trades) این نماد می‌سازد.
+
+    چرا از trades و نه kline؟ چون API عمومی تبدیل endpoint کندل تاریخی
+    (kline/OHLCV) ندارد - فقط دفتر سفارش (depth) و لیست آخرین معاملات
+    (trades). این تابع جایگزین «چک قیمت لحظه‌ای» قبلی است: به‌جای مقایسه‌ی
+    SL/TP با یک نقطه‌ی لحظه‌ای، کل بازه‌ی نوسان قیمت از آخرین باری که این
+    پوزیشن چک شده تا الان را می‌بیند - دقیقاً مثل رفتار واقعی یک سفارش
+    Stop/Limit روی صرافی، و مطابق منطق trading_bot.py قدیمی که به‌جای قیمت
+    لحظه‌ای، High/Low کندل را چک می‌کرد.
+
+    ⚠️ محدودیت شناخته‌شده: اگر تعداد معاملات واقعی این نماد در بازه‌ی
+    since_ms..الان بیشتر از trade_limit باشد (نمادهای خیلی پرحجم)، ممکن است
+    ابتدای بازه از دست برود و High/Low واقعی کمی دست‌کم‌گرفته‌شود. برای اکثر
+    جفت‌ارزهای تومانی کم‌حجم تبدیل این عملاً بی‌اثر است.
+
+    اگر معامله‌ای در بازه پیدا نشد یا خطایی رخ داد، فقط fallback_mid
+    (قیمت لحظه‌ای Bid/Ask) برگردانده می‌شود - یعنی در بدترین حالت رفتار
+    دقیقاً مثل نسخه‌ی قبلی (تک‌نقطه‌ای) می‌شود، نه بدتر.
+    """
+    prices = []
+    try:
+        raw = spot_client.trades(symbol=symbol, limit=trade_limit)
+        items = raw if isinstance(raw, list) else raw.get("trades", raw) if isinstance(raw, dict) else []
+        for t in items:
+            t_time = t.get("time") or t.get("timestamp") or t.get("T")
+            if t_time is None:
+                continue
+            t_time = int(t_time)
+            if t_time < 10**12:  # بعضی endpointها زمان رو به ثانیه می‌دن نه میلی‌ثانیه
+                t_time *= 1000
+            if t_time >= since_ms:
+                p = t.get("price")
+                if p is not None:
+                    prices.append(float(p))
+    except Exception:
+        pass
+
+    if fallback_mid is not None:
+        prices.append(fallback_mid)
+
+    if not prices:
+        return None, None
+    return min(prices), max(prices)
 
 
 def extract_real_price(order: dict, fallback_price: float) -> float:
