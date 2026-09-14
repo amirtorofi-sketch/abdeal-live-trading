@@ -1,31 +1,9 @@
 {
   "_trade_counter": 6,
-  "_paper_balance_irt": 3991964.3951700306,
+  "_paper_balance_irt": 3984962.1718098964,
   "BTCIRT__smc__last_candle": "2026-09-14 06:30:00",
   "SOLIRT__smc__last_candle": "2026-09-14 06:30:00",
   "DOGEIRT__smc__last_candle": "2026-09-14 15:30:00",
-  "ETHIRT__st": {
-    "direction": "short",
-    "entry": 580838581.0,
-    "sl": 587623681.1551692,
-    "tp1": 570660930.7672462,
-    "tp2": 560483280.5344925,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-09-14 13:00:00",
-    "margin_symbol": "ETH_IRT",
-    "trade_id": 4,
-    "margin_irt": 200000.0,
-    "notional_irt": 600000.0,
-    "last_checked_ms": 1789416208404,
-    "lot_a": {
-      "qty": 0.000516,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 0.000516,
-      "status": "open"
-    }
-  },
   "ETHIRT__st__last_candle": "2026-09-14 13:00:00",
   "DOGEIRT__st": {
     "direction": "short",
@@ -39,7 +17,7 @@
     "trade_id": 5,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789416213801,
+    "last_checked_ms": 1789417128564,
     "lot_a": {
       "qty": 15.43,
       "status": "open"
