@@ -2,7 +2,7 @@
   "_trade_counter": 36,
   "DOGEIRT__smc__last_candle": "2026-09-13 23:30:00",
   "BTCIRT__smc__last_candle": "2026-09-14 01:30:00",
-  "_paper_balance_irt": 4974375.023499336,
+  "_paper_balance_irt": 4971195.788478836,
   "SOLIRT__smc__last_candle": "2026-09-13 21:30:00",
   "ETHIRT__st__last_candle": "2026-09-13 22:00:00",
   "ETHIRT__smc__last_candle": "2026-09-14 00:00:00",
@@ -28,26 +28,6 @@
       "status": "open"
     },
     "realized_pnl": 4333.5599999999995
-  },
-  "BTCIRT__st": {
-    "direction": "short",
-    "entry": 17953329067.5,
-    "sl": 18075851553.87351,
-    "tp1": 17769545337.939735,
-    "tp2": 17585761608.37947,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-09-13 22:00:00",
-    "margin_symbol": "BTC_IRT",
-    "trade_id": 30,
-    "margin_irt": 150000.0,
-    "lot_a": {
-      "qty": 1.253e-05,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 1.253e-05,
-      "status": "open"
-    }
   },
   "BTCIRT__st__last_candle": "2026-09-13 22:00:00",
   "ETHIRT__st": {
