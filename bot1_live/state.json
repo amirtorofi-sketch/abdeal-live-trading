@@ -1,5 +1,5 @@
 {
-  "_trade_counter": 8,
+  "_trade_counter": 10,
   "_paper_balance_irt": 3998271.0,
   "ADAIRT__smc": {
     "direction": "short",
@@ -148,5 +148,47 @@
       "status": "open"
     }
   },
-  "XLMIRT__smc__last_candle": "2026-09-14 06:45:00"
+  "XLMIRT__smc__last_candle": "2026-09-14 06:45:00",
+  "BTCIRT__smc": {
+    "direction": "short",
+    "entry": 18016635379.0,
+    "sl": 18099655668.338226,
+    "tp1": 17892104944.99266,
+    "tp2": 17767574510.985325,
+    "source_label": "ICT/SMC Scalp Pro",
+    "opened_at": "2026-09-14 07:00:00",
+    "margin_symbol": "BTC_IRT",
+    "trade_id": 9,
+    "margin_irt": 200000.0,
+    "lot_a": {
+      "qty": 5.55e-06,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 5.55e-06,
+      "status": "open"
+    }
+  },
+  "BTCIRT__smc__last_candle": "2026-09-14 07:00:00",
+  "ETHIRT__smc": {
+    "direction": "short",
+    "entry": 585332799.0,
+    "sl": 588751437.4588858,
+    "tp1": 580204841.3116714,
+    "tp2": 575076883.6233429,
+    "source_label": "ICT/SMC Scalp Pro",
+    "opened_at": "2026-09-14 07:00:00",
+    "margin_symbol": "ETH_IRT",
+    "trade_id": 10,
+    "margin_irt": 200000.0,
+    "lot_a": {
+      "qty": 0.00017,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.00017,
+      "status": "open"
+    }
+  },
+  "ETHIRT__smc__last_candle": "2026-09-14 07:00:00"
 }
