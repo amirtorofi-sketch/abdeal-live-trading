@@ -37,10 +37,14 @@ from signal_bot_v2 import check_strategy_smc_v2, get_htf_bias_v2, SL_ATR_MULT, T
 from common.tabdeal_broker import (  # noqa: E402
     open_margin_position, close_margin_position, get_public_client, get_mid_price,
     discover_irt_margin_symbols, extract_real_price, get_market_info, split_into_two_lots,
-    currency_label, BrokerError, DRY_RUN, _float_env,
+    currency_label, BrokerError, DRY_RUN, _float_env, get_price_range_since, now_ms,
 )
 from common.telegram_notify import send_telegram  # noqa: E402
 from common import paper_ledger  # noqa: E402
+
+# اگه پوزیشنی از نسخه‌ی قبلی (بدون last_checked_ms) باقی مونده باشه، برای
+# اولین چک این‌قدر عقب‌تر می‌ریم تا بازه‌ی معقولی از معاملات اخیر رو ببینیم.
+FALLBACK_LOOKBACK_MS = 30 * 60 * 1000
 
 CANDIDATE_BASES = ["BTC", "ETH", "SOL", "BNB", "DOGE"]
 
@@ -179,33 +183,47 @@ def manage_open_position(state: dict, position_key: str, spot_symbol: str):
     است؛ وقتی TP1 خورد، SL برای لات b (باقی‌مانده) به نقطه‌ی ورود (Breakeven)
     منتقل می‌شود. لات b هدفش TP2 است. اگر هر دو لات بسته شدند، پوزیشن از
     state حذف می‌شود.
+
+    ⚠️ به‌جای چک قیمت لحظه‌ای تک‌نقطه‌ای، بازه‌ی کامل نوسان قیمت (Low/High)
+    از آخرین باری که این پوزیشن چک شده تا الان بررسی می‌شود (با استفاده از
+    آخرین معاملات عمومی تبدیل) - دقیقاً مثل چک High/Low کندل در
+    trading_bot_v2.py قدیمی، ولی روی داده‌ی واقعی تبدیل نه بایننس.
     """
     pos = state.get(position_key)
     if not pos:
         return
     spot_client = get_public_client()
-    price = get_mid_price(spot_client, spot_symbol)
+    mid_price = get_mid_price(spot_client, spot_symbol)
+
+    since_ms = int(pos.get("last_checked_ms") or 0) or (now_ms() - FALLBACK_LOOKBACK_MS)
+    window_low, window_high = get_price_range_since(spot_client, spot_symbol, since_ms, fallback_mid=mid_price)
+    if window_low is None:
+        window_low = window_high = mid_price
+    pos["last_checked_ms"] = now_ms()
+
     is_long = pos["direction"] == "long"
     source_label = pos["source_label"]
 
     lot_a = pos["lot_a"]
     if lot_a["status"] == "open":
-        hit_sl = (price <= pos["sl"]) if is_long else (price >= pos["sl"])
-        hit_tp1 = (price >= pos["tp1"]) if is_long else (price <= pos["tp1"])
+        hit_sl = (window_low <= pos["sl"]) if is_long else (window_high >= pos["sl"])
+        hit_tp1 = (window_high >= pos["tp1"]) if is_long else (window_low <= pos["tp1"])
         if hit_sl or hit_tp1:
             reason = "SL" if hit_sl else "TP1"
-            ok = _close_lot(state, spot_symbol, pos, "lot_a", price, reason, source_label)
+            exit_price = pos["sl"] if hit_sl else pos["tp1"]
+            ok = _close_lot(state, spot_symbol, pos, "lot_a", exit_price, reason, source_label)
             if ok and reason == "TP1" and pos["lot_b"]["status"] == "open":
                 pos["sl"] = pos["entry"]
                 notify(f"🔵 معامله #{pos.get('trade_id','؟')} — SL لات باقی‌مانده‌ی {spot_symbol} ({source_label}) به نقطه‌ی ورود (Breakeven={pos['entry']:,.0f}) منتقل شد.")
 
     lot_b = pos["lot_b"]
     if lot_b["status"] == "open":
-        hit_sl = (price <= pos["sl"]) if is_long else (price >= pos["sl"])
-        hit_tp2 = (price >= pos["tp2"]) if is_long else (price <= pos["tp2"])
+        hit_sl = (window_low <= pos["sl"]) if is_long else (window_high >= pos["sl"])
+        hit_tp2 = (window_high >= pos["tp2"]) if is_long else (window_low <= pos["tp2"])
         if hit_sl or hit_tp2:
             reason = "SL" if hit_sl else "TP2"
-            _close_lot(state, spot_symbol, pos, "lot_b", price, reason, source_label)
+            exit_price = pos["sl"] if hit_sl else pos["tp2"]
+            _close_lot(state, spot_symbol, pos, "lot_b", exit_price, reason, source_label)
 
     if pos["lot_a"]["status"] == "closed" and pos["lot_b"]["status"] == "closed":
         cur = currency_label(spot_symbol)
@@ -272,6 +290,7 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
         "direction": direction, "entry": real_price, "sl": sl, "tp1": tp1, "tp2": tp2,
         "source_label": source_label, "opened_at": str(candle_time), "margin_symbol": margin_symbol,
         "trade_id": trade_id, "margin_irt": cfg["margin_irt"], "notional_irt": notional_irt,
+        "last_checked_ms": now_ms(),
     }
     if qty_b <= 0:
         state[position_key] = {**base_fields, "lot_a": {"qty": qty_a, "status": "closed"}, "lot_b": {"qty": qty_a, "status": "open"}}
