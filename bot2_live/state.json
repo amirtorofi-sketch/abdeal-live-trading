@@ -2,7 +2,7 @@
   "_trade_counter": 35,
   "DOGEIRT__smc__last_candle": "2026-09-13 23:30:00",
   "BTCIRT__smc__last_candle": "2026-09-14 00:00:00",
-  "_paper_balance_irt": 4979781.441571634,
+  "_paper_balance_irt": 4979122.051493924,
   "SOLIRT__smc__last_candle": "2026-09-13 21:30:00",
   "ETHIRT__st__last_candle": "2026-09-13 22:00:00",
   "ETHIRT__smc__last_candle": "2026-09-14 00:00:00",
@@ -107,26 +107,6 @@
     },
     "lot_b": {
       "qty": 5.21,
-      "status": "open"
-    }
-  },
-  "BTCIRT__smc": {
-    "direction": "short",
-    "entry": 17877968380.0,
-    "sl": 17936869620.818893,
-    "tp1": 17789616518.77166,
-    "tp2": 17701264657.543324,
-    "source_label": "ICT/SMC v2",
-    "opened_at": "2026-09-14 00:00:00",
-    "margin_symbol": "BTC_IRT",
-    "trade_id": 34,
-    "margin_irt": 100000.0,
-    "lot_a": {
-      "qty": 5.59e-06,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 5.59e-06,
       "status": "open"
     }
   },
