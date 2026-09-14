@@ -1,5 +1,5 @@
 {
-  "_trade_counter": 2,
+  "_trade_counter": 3,
   "_paper_balance_irt": 4000000.0,
   "BTCIRT__smc": {
     "direction": "long",
@@ -42,5 +42,27 @@
       "status": "open"
     }
   },
-  "SOLIRT__smc__last_candle": "2026-09-14 06:30:00"
+  "SOLIRT__smc__last_candle": "2026-09-14 06:30:00",
+  "DOGEIRT__smc": {
+    "direction": "long",
+    "entry": 19506.5,
+    "sl": 19379.0300322206,
+    "tp1": 19697.7049516691,
+    "tp2": 19888.9099033382,
+    "source_label": "ICT/SMC v2",
+    "opened_at": "2026-09-14 09:15:00",
+    "margin_symbol": "DOGE_IRT",
+    "trade_id": 3,
+    "margin_irt": 200000.0,
+    "notional_irt": 400000.0,
+    "lot_a": {
+      "qty": 10.25,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 10.25,
+      "status": "open"
+    }
+  },
+  "DOGEIRT__smc__last_candle": "2026-09-14 09:15:00"
 }
