@@ -2,9 +2,9 @@
   "BTCIRT__smc__last_candle": "2026-09-14 00:15:00",
   "XLMIRT__smc__last_candle": "2026-09-13 22:00:00",
   "ARBIRT__smc__last_candle": "2026-09-13 22:30:00",
-  "_paper_balance_irt": 4920936.319710471,
+  "_paper_balance_irt": 4921094.0797104705,
   "TRXIRT__smc__last_candle": "2026-09-13 23:30:00",
-  "WIFIRT__smc__last_candle": "2026-09-13 20:45:00",
+  "WIFIRT__smc__last_candle": "2026-09-14 01:00:00",
   "SEIIRT__smc__last_candle": "2026-09-13 13:45:00",
   "ADAIRT__smc__last_candle": "2026-09-13 13:15:00",
   "ARBIRT__st__last_candle": "2026-09-13 22:00:00",
@@ -22,7 +22,7 @@
   "SUIIRT__smc__last_candle": "2026-09-13 22:30:00",
   "TIAIRT__smc__last_candle": "2026-09-12 22:45:00",
   "XRPIRT__smc__last_candle": "2026-09-13 22:15:00",
-  "_trade_counter": 166,
+  "_trade_counter": 167,
   "NOTIRT__smc__last_candle": "2026-09-13 14:00:00",
   "TRBIRT__smc__last_candle": "2026-09-13 22:00:00",
   "DOGEIRT__smc__last_candle": "2026-09-13 22:00:00",
@@ -604,27 +604,6 @@
       "status": "open"
     }
   },
-  "TRXIRT__smc": {
-    "direction": "long",
-    "entry": 78693.5,
-    "sl": 78693.5,
-    "tp1": 78911.83617618064,
-    "tp2": 79130.17235236129,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-13 23:30:00",
-    "margin_symbol": "TRX_IRT",
-    "trade_id": 162,
-    "margin_irt": 50000.0,
-    "lot_a": {
-      "qty": 0.31,
-      "status": "closed"
-    },
-    "lot_b": {
-      "qty": 0.32,
-      "status": "open"
-    },
-    "realized_pnl": 105.4
-  },
   "SOLIRT__smc": {
     "direction": "long",
     "entry": 23087579.0,
@@ -702,6 +681,26 @@
     },
     "lot_b": {
       "qty": 0.07974,
+      "status": "open"
+    }
+  },
+  "WIFIRT__smc": {
+    "direction": "long",
+    "entry": 43949.5,
+    "sl": 43457.16924509931,
+    "tp1": 44687.99613235104,
+    "tp2": 45426.49226470208,
+    "source_label": "ICT/SMC Scalp Pro",
+    "opened_at": "2026-09-14 01:00:00",
+    "margin_symbol": "WIF_IRT",
+    "trade_id": 167,
+    "margin_irt": 50000.0,
+    "lot_a": {
+      "qty": 0.56,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.56,
       "status": "open"
     }
   }
