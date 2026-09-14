@@ -41,7 +41,7 @@ from common.tabdeal_broker import (  # noqa: E402
     open_margin_position, close_margin_position, get_public_client, get_mid_price,
     discover_all_irt_margin_bases, discover_irt_margin_symbols, extract_real_price,
     get_market_info, split_into_two_lots, currency_label, BrokerError, DRY_RUN, _float_env,
-    get_price_range_since, now_ms,
+    get_price_range_since, now_ms, HARD_CAP_MARGIN_IRT,
 )
 
 # اگه پوزیشنی از نسخه‌ی قبلی (بدون last_checked_ms) باقی مونده باشه، برای
@@ -117,13 +117,24 @@ def format_candle_time(candle_time) -> str:
 
 
 def open_positions_totals(state: dict):
-    """جمع مارجین و ارزش اسمی همه‌ی پوزیشن‌های باز فعلی (هر دو استراتژی، همه‌ی نمادها)."""
+    """
+    جمع مارجین و ارزش اسمی *واقعاً درگیر* در پوزیشن‌های باز فعلی — بر مبنای
+    سهمِ لات‌هایی که هنوز واقعاً بازن (نه کل پوزیشن)، چون وقتی لات a با TP1
+    بسته می‌شه، نیمی از مارجین آزاد می‌شه ولی رکورد پوزیشن هنوز توی state
+    هست (تا لات b هم بسته بشه). دقیقاً معادل open_margin_sum در
+    trading_bot.py قدیمی.
+    """
     total_margin = 0.0
     total_notional = 0.0
     for key, val in state.items():
-        if isinstance(val, dict) and "margin_irt" in val:
-            total_margin += val.get("margin_irt", 0.0) or 0.0
-            total_notional += val.get("notional_irt", 0.0) or 0.0
+        if isinstance(val, dict) and "margin_irt" in val and "lot_a" in val and "lot_b" in val:
+            open_fraction = 0.0
+            if val["lot_a"]["status"] == "open":
+                open_fraction += 0.5
+            if val["lot_b"]["status"] == "open":
+                open_fraction += 0.5
+            total_margin += (val.get("margin_irt", 0.0) or 0.0) * open_fraction
+            total_notional += (val.get("notional_irt", 0.0) or 0.0) * open_fraction
     return total_margin, total_notional
 
 
@@ -271,6 +282,26 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
     direction, risk_pct = resolve_direction_and_risk_pct(raw_direction, entry_price, raw_sl)
     side = "BUY" if direction == "long" else "SELL"
     cfg = SOURCE_CONFIG[source_label]
+
+    # --- چک سرمایه‌ی آزاد - دقیقاً معادل open_margin_sum/free_margin در
+    # trading_bot.py قدیمی: مجموع مارجین درگیر در همه‌ی پوزیشن‌های باز
+    # (این بات) نباید از موجودی فرضی بیشتر بشه. margin_needed پیش از گرفتن
+    # real_price هم معلومه چون مارجین یه مقدار ثابت پیکربندی‌شده‌ست، نه
+    # وابسته به قیمت لحظه‌ای. ---
+    margin_needed = min(cfg["margin_irt"], HARD_CAP_MARGIN_IRT)
+    balance = state.get("_paper_balance_irt", PAPER_STARTING_BALANCE_IRT)
+    used_margin, _ = open_positions_totals(state)
+    free_margin = balance - used_margin
+    if margin_needed > free_margin:
+        cur = currency_label(spot_symbol)
+        notify(
+            f"⛔ سیگنال {direction} روی {spot_symbol} ({source_label}) رد شد: سرمایه‌ی آزاد کافی نیست.\n"
+            f"مارجین موردنیاز: {margin_needed:,.0f} {cur} | مارجین آزاد: {free_margin:,.0f} {cur}\n"
+            f"(موجودی نقدی: {balance:,.0f} {cur} | مارجین درگیر: {used_margin:,.0f} {cur})"
+        )
+        state[signal_key] = str(candle_time)
+        save_state(state)
+        return
 
     try:
         order = open_margin_position(spot_symbol, margin_symbol, side, cfg["margin_irt"], cfg["leverage"], logger=print)
