@@ -1,5 +1,5 @@
 {
-  "_trade_counter": 5,
+  "_trade_counter": 6,
   "_paper_balance_irt": 4000000.0,
   "ADAIRT__smc": {
     "direction": "short",
@@ -105,5 +105,26 @@
       "status": "open"
     }
   },
-  "TRXIRT__st__last_candle": "2026-09-14 06:00:00"
+  "TRXIRT__st__last_candle": "2026-09-14 06:00:00",
+  "XRPIRT__smc": {
+    "direction": "short",
+    "entry": 321229.5,
+    "sl": 323996.9303966963,
+    "tp1": 317078.3544049555,
+    "tp2": 312927.20880991104,
+    "source_label": "ICT/SMC Scalp Pro",
+    "opened_at": "2026-09-14 06:30:00",
+    "margin_symbol": "XRP_IRT",
+    "trade_id": 6,
+    "margin_irt": 200000.0,
+    "lot_a": {
+      "qty": 0.3,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.3,
+      "status": "open"
+    }
+  },
+  "XRPIRT__smc__last_candle": "2026-09-14 06:30:00"
 }
