@@ -1,5 +1,5 @@
 {
-  "_trade_counter": 10,
+  "_trade_counter": 11,
   "_paper_balance_irt": 3975778.036558684,
   "BTCIRT__smc__last_candle": "2026-09-14 20:45:00",
   "SOLIRT__smc__last_candle": "2026-09-14 21:00:00",
@@ -17,7 +17,7 @@
     "trade_id": 5,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789452211877,
+    "last_checked_ms": 1789453119964,
     "lot_a": {
       "qty": 15.43,
       "status": "closed"
@@ -29,5 +29,27 @@
     "realized_pnl": 6395.810619541684
   },
   "DOGEIRT__st__last_candle": "2026-09-14 13:00:00",
-  "ETHIRT__smc__last_candle": "2026-09-14 21:00:00"
+  "ETHIRT__smc__last_candle": "2026-09-15 06:00:00",
+  "ETHIRT__smc": {
+    "direction": "short",
+    "entry": 573399589.0,
+    "sl": 577008888.6872789,
+    "tp1": 567985639.4690818,
+    "tp2": 562571689.9381635,
+    "source_label": "ICT/SMC v2",
+    "opened_at": "2026-09-15 06:00:00",
+    "margin_symbol": "ETH_IRT",
+    "trade_id": 11,
+    "margin_irt": 200000.0,
+    "notional_irt": 400000.0,
+    "last_checked_ms": 1789453115215,
+    "lot_a": {
+      "qty": 0.000348,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.000349,
+      "status": "open"
+    }
+  }
 }
