@@ -1,7 +1,7 @@
 {
-  "_trade_counter": 20,
+  "_trade_counter": 21,
   "_paper_balance_irt": 4008252.1759681837,
-  "BTCIRT__smc__last_candle": "2026-09-15 15:15:00",
+  "BTCIRT__smc__last_candle": "2026-09-15 20:00:00",
   "SOLIRT__smc__last_candle": "2026-09-15 12:00:00",
   "DOGEIRT__smc__last_candle": "2026-09-15 17:30:00",
   "ETHIRT__st__last_candle": "2026-09-14 13:00:00",
@@ -19,7 +19,7 @@
     "trade_id": 18,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789502604112,
+    "last_checked_ms": 1789503515475,
     "lot_a": {
       "qty": 0.000356,
       "status": "closed"
@@ -42,7 +42,7 @@
     "trade_id": 20,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789502601128,
+    "last_checked_ms": 1789503510183,
     "lot_a": {
       "qty": 1.728e-05,
       "status": "open"
@@ -52,5 +52,27 @@
       "status": "open"
     }
   },
-  "BTCIRT__st__last_candle": "2026-09-15 18:30:00"
+  "BTCIRT__st__last_candle": "2026-09-15 18:30:00",
+  "BTCIRT__smc": {
+    "direction": "short",
+    "entry": 17586225728.0,
+    "sl": 17776554250.195267,
+    "tp1": 17300732944.707096,
+    "tp2": 17015240161.414192,
+    "source_label": "ICT/SMC v2",
+    "opened_at": "2026-09-15 20:00:00",
+    "margin_symbol": "BTC_IRT",
+    "trade_id": 21,
+    "margin_irt": 200000.0,
+    "notional_irt": 400000.0,
+    "last_checked_ms": 1789503513303,
+    "lot_a": {
+      "qty": 1.137e-05,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 1.137e-05,
+      "status": "open"
+    }
+  }
 }
