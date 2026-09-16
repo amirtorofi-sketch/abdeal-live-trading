@@ -33,7 +33,7 @@ from datetime import datetime, timezone
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from signal_bot import get_klines, check_strategy_supertrend, TIMEFRAME, KLINES_LIMIT, ST_TP1_RR, ST_TP2_RR  # noqa: E402
-from signal_bot_v2 import check_strategy_smc_v2, get_htf_bias_v2, SL_ATR_MULT, TP1_RR, TP2_RR  # noqa: E402
+from signal_bot_v2 import check_strategy_smc_v2, get_htf_bias_v2, get_sl_atr_mult, TP1_RR, TP2_RR  # noqa: E402
 from common.tabdeal_broker import (  # noqa: E402
     open_margin_position, close_margin_position, get_public_client, get_mid_price,
     discover_irt_margin_symbols, extract_real_price, get_market_info, split_into_two_lots,
@@ -447,7 +447,8 @@ def main():
                 if direction is not None:
                     price2 = res["price"]
                     atr2 = res["atr"]
-                    raw_sl = price2 - atr2 * SL_ATR_MULT if direction == "long" else price2 + atr2 * SL_ATR_MULT
+                    sl_mult = get_sl_atr_mult(spot_symbol.replace("IRT", "USDT"))
+                    raw_sl = price2 - atr2 * sl_mult if direction == "long" else price2 + atr2 * sl_mult
                     score = res["bull_score"] if direction == "long" else res["bear_score"]
                     try_open_position(
                         state, spot_client, spot_symbol, margin_symbol, smc_key,
