@@ -5,6 +5,10 @@
 (Dasttrade) انجام می‌ده: هر دو استراتژی به‌طور مستقل روی هر نماد اجرا می‌شن
 و می‌تونن هم‌زمان پوزیشن جدا داشته باشن (کلید پوزیشن = نماد + نام استراتژی).
 
+نماد اینجا دست‌نخورده مونده (کشف پویای کل بازار)؛ فقط برای مقایسه‌ی
+کنترل‌شده‌تر با بات ۲، حجم/مارجین هر استراتژی با بات ۲ یکی شده (به درخواست
+کاربر) — نماد و جهت (معکوس/غیرمعکوس) دست‌نخورده باقی موندن.
+
 سیگنال از داده‌ی دلاری بایننس گرفته می‌شود؛ قیمت اجرا و بستن پوزیشن از
 قیمت لحظه‌ای *واقعی* تبدیل (Depth) خوانده می‌شود.
 
@@ -50,18 +54,21 @@ FALLBACK_LOOKBACK_MS = 30 * 60 * 1000
 from common.telegram_notify import send_telegram  # noqa: E402
 from common import paper_ledger  # noqa: E402
 
-# مارجین/اهرم جدا به‌ازای هر استراتژی - دقیقاً معادل نسبت ۳۰۰$/۳x (Supertrend)
-# در برابر ۱۰۰$/۱x (ICT/SMC) در trading_bot.py تلگرامی اصلی.
+# --- هم‌سان‌سازی حجم با بات ۲ برای مقایسه‌ی کنترل‌شده‌تر (به درخواست کاربر) ---
+# نماد دست‌نخورده مونده (همچنان کل بازار تومانی مارجین‌دار، مثل قبل)، فقط
+# مارجین/اهرم هر استراتژی با بات ۲ یکی شده (۱۰۰هزار × ۲x برای هر دو استراتژی)
+# تا حجم پوزیشن یه متغیر کنترل‌نشده‌ی دیگه نباشه. قبلاً Supertrend سه برابر
+# ICT/SMC حجم داشت که با توجه به نرخ برد پایینش ریسک رو غیرمنطقی بزرگ می‌کرد.
 SOURCE_ST = "Supertrend+ADX"
 SOURCE_SMC = "ICT/SMC Scalp Pro"
 SOURCE_CONFIG = {
     SOURCE_ST: {
-        "margin_irt": _float_env("BOT1_MARGIN_IRT", "150000"),
-        "leverage": _float_env("BOT1_LEVERAGE", "3"),
+        "margin_irt": _float_env("BOT1_MARGIN_IRT", "100000"),
+        "leverage": _float_env("BOT1_LEVERAGE", "2"),
     },
     SOURCE_SMC: {
-        "margin_irt": _float_env("BOT1_SMC_MARGIN_IRT", "50000"),
-        "leverage": _float_env("BOT1_SMC_LEVERAGE", "1"),
+        "margin_irt": _float_env("BOT1_SMC_MARGIN_IRT", "100000"),
+        "leverage": _float_env("BOT1_SMC_LEVERAGE", "2"),
     },
 }
 PAPER_STARTING_BALANCE_IRT = _float_env("PAPER_STARTING_BALANCE_IRT", "5000000")
