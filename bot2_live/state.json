@@ -1,9 +1,9 @@
 {
-  "_trade_counter": 24,
+  "_trade_counter": 25,
   "_paper_balance_irt": 4008246.448375414,
   "BTCIRT__smc__last_candle": "2026-09-15 20:00:00",
   "SOLIRT__smc__last_candle": "2026-09-16 02:15:00",
-  "DOGEIRT__smc__last_candle": "2026-09-16 02:30:00",
+  "DOGEIRT__smc__last_candle": "2026-09-16 18:30:00",
   "ETHIRT__st__last_candle": "2026-09-14 13:00:00",
   "DOGEIRT__st__last_candle": "2026-09-14 13:00:00",
   "ETHIRT__smc__last_candle": "2026-09-15 17:30:00",
@@ -19,7 +19,7 @@
     "trade_id": 18,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789583607239,
+    "last_checked_ms": 1789584509523,
     "lot_a": {
       "qty": 0.000356,
       "status": "closed"
@@ -42,7 +42,7 @@
     "trade_id": 20,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789583603680,
+    "last_checked_ms": 1789584505666,
     "lot_a": {
       "qty": 1.728e-05,
       "status": "open"
@@ -65,7 +65,7 @@
     "trade_id": 21,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789583604675,
+    "last_checked_ms": 1789584506936,
     "lot_a": {
       "qty": 1.137e-05,
       "status": "closed"
@@ -76,28 +76,27 @@
     },
     "realized_pnl": 3246.0529460403172
   },
+  "SOLIRT__st__last_candle": "2026-09-16 14:00:00",
   "DOGEIRT__smc": {
-    "direction": "short",
-    "entry": 18523.5,
-    "sl": 18523.5,
-    "tp1": 18237.536119315882,
-    "tp2": 17951.572238631765,
+    "direction": "long",
+    "entry": 18401.5,
+    "sl": 18114.858551130823,
+    "tp1": 18831.462173303767,
+    "tp2": 19261.42434660753,
     "source_label": "ICT/SMC v2",
-    "opened_at": "2026-09-16 02:30:00",
+    "opened_at": "2026-09-16 18:30:00",
     "margin_symbol": "DOGE_IRT",
-    "trade_id": 23,
+    "trade_id": 25,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789583612104,
+    "last_checked_ms": 1789584518332,
     "lot_a": {
-      "qty": 10.79,
-      "status": "closed"
-    },
-    "lot_b": {
-      "qty": 10.8,
+      "qty": 10.86,
       "status": "open"
     },
-    "realized_pnl": 3085.5502725816286
-  },
-  "SOLIRT__st__last_candle": "2026-09-16 14:00:00"
+    "lot_b": {
+      "qty": 10.87,
+      "status": "open"
+    }
+  }
 }
