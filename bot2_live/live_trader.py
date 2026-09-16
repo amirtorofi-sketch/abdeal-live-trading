@@ -1,9 +1,10 @@
 """
 بات شماره ۲ — دو استراتژی (Supertrend+ADX + ICT/SMC Scalp Pro v2)، هر دو
-بدون معکوس‌سازی (برخلاف بات ۱)، فقط روی ارزهای اصلی/پدرمادردار
-(BTC, ETH, SOL, BNB, DOGE) — دقیقاً همون چیزی که ربات Paper Trading دوم
-(dasttrade2) قراره باشه: هر دو استراتژی مستقل روی هر نماد اجرا می‌شن و
-می‌تونن هم‌زمان پوزیشن جدا داشته باشن (کلید پوزیشن = نماد + نام استراتژی).
+بدون معکوس‌سازی (برخلاف بات ۱)، روی تمام ارزهایی که همین الان روی تبدیل
+بازار تومانیِ مارجین‌دار دارند (نه یک لیست ثابت) — به درخواست کاربر، دقیقاً
+هم‌سان با نمادهای بات ۱ شد (قبلاً محدود به ۵ ارز اصلی BTC/ETH/SOL/BNB/DOGE
+بود). هر دو استراتژی مستقل روی هر نماد اجرا می‌شن و می‌تونن هم‌زمان پوزیشن
+جدا داشته باشن (کلید پوزیشن = نماد + نام استراتژی).
 
 سیگنال از داده‌ی دلاری بایننس گرفته می‌شود؛ قیمت اجرا و بستن پوزیشن از
 قیمت لحظه‌ای *واقعی* تبدیل (Depth) خوانده می‌شود.
@@ -17,11 +18,8 @@
     TABDEAL_DRY_RUN=false -> حالت زنده: سفارش واقعی با پول واقعی ثبت می‌شود.
 
 ⚠️ برخلاف بات ۱، جهت سیگنال معکوس نمی‌شود - جهت خام همان جهت نهایی است
-(طبق مستندات پروژه، معکوس‌سازی فقط برای بات ۱ تایید شده بود).
-
-نمادهای EURUSDT و PAXGUSDT از ربات تلگرام دوم اینجا نیستند چون معادل تومانی
-مستقیم روی تبدیل ندارند/تایید نشدند؛ CANDIDATE_BASES ثابت و محدود به همون
-۵ ارز اصلیه (برخلاف بات ۱ که کل بازار تومانی رو پویا می‌گیرد).
+(طبق مستندات پروژه، معکوس‌سازی فقط برای بات ۱ تایید شده بود). این منطق
+دست‌نخورده مونده — فقط نماد و حجم با بات ۱ یکی شدن.
 """
 
 import os
@@ -33,12 +31,12 @@ from datetime import datetime, timezone
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from signal_bot import get_klines, check_strategy_supertrend, TIMEFRAME, KLINES_LIMIT, ST_TP1_RR, ST_TP2_RR  # noqa: E402
-from signal_bot_v2 import check_strategy_smc_v2, get_htf_bias_v2, get_sl_atr_mult, TP1_RR, TP2_RR  # noqa: E402
+from signal_bot_v2 import check_strategy_smc_v2, get_htf_bias_v2, SL_ATR_MULT, TP1_RR, TP2_RR  # noqa: E402
 from common.tabdeal_broker import (  # noqa: E402
     open_margin_position, close_margin_position, get_public_client, get_mid_price,
-    discover_irt_margin_symbols, extract_real_price, get_market_info, split_into_two_lots,
-    currency_label, BrokerError, DRY_RUN, _float_env, get_price_range_since, now_ms,
-    HARD_CAP_MARGIN_IRT,
+    discover_all_irt_margin_bases, discover_irt_margin_symbols, extract_real_price,
+    get_market_info, split_into_two_lots, currency_label, BrokerError, DRY_RUN, _float_env,
+    get_price_range_since, now_ms, HARD_CAP_MARGIN_IRT,
 )
 from common.telegram_notify import send_telegram  # noqa: E402
 from common import paper_ledger  # noqa: E402
@@ -46,8 +44,6 @@ from common import paper_ledger  # noqa: E402
 # اگه پوزیشنی از نسخه‌ی قبلی (بدون last_checked_ms) باقی مونده باشه، برای
 # اولین چک این‌قدر عقب‌تر می‌ریم تا بازه‌ی معقولی از معاملات اخیر رو ببینیم.
 FALLBACK_LOOKBACK_MS = 30 * 60 * 1000
-
-CANDIDATE_BASES = ["BTC", "ETH", "SOL", "BNB", "DOGE"]
 
 SOURCE_ST = "Supertrend+ADX"
 SOURCE_SMC = "ICT/SMC v2"
@@ -382,9 +378,10 @@ def main():
     state = load_state()
     spot_client = get_public_client()
 
-    active = discover_irt_margin_symbols(spot_client, CANDIDATE_BASES)
+    all_bases = discover_all_irt_margin_bases()
+    active = discover_irt_margin_symbols(spot_client, all_bases)
     if not active:
-        notify("⚠️ در حال حاضر هیچ‌کدام از نمادهای این استراتژی روی تبدیل بازار تومانی مارجین‌دار ندارند.")
+        notify("⚠️ در حال حاضر هیچ ارزی روی تبدیل بازار تومانی مارجین‌دار ندارد.")
         return
     binance_to_symbols = {f"{base}USDT": syms for base, syms in active.items()}
 
@@ -447,8 +444,7 @@ def main():
                 if direction is not None:
                     price2 = res["price"]
                     atr2 = res["atr"]
-                    sl_mult = get_sl_atr_mult(spot_symbol.replace("IRT", "USDT"))
-                    raw_sl = price2 - atr2 * sl_mult if direction == "long" else price2 + atr2 * sl_mult
+                    raw_sl = price2 - atr2 * SL_ATR_MULT if direction == "long" else price2 + atr2 * SL_ATR_MULT
                     score = res["bull_score"] if direction == "long" else res["bear_score"]
                     try_open_position(
                         state, spot_client, spot_symbol, margin_symbol, smc_key,
