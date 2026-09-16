@@ -47,9 +47,20 @@ USE_TREND_FILTER = True
 ADX_TREND_THRESHOLD = 22
 COOLDOWN_BARS = 6
 
-SL_ATR_MULT = 2.0           # <-- طبق درخواست از ۱.۰ به ۲.۰ افزایش یافت
+SL_ATR_MULT = 2.0           # <-- طبق درخواست از ۱.۰ به ۲.۰ افزایش یافت (کریپتو)
 TP1_RR = 1.5
 TP2_RR = 3.0
+
+# نمادهای کم‌نوسان (فارکس/طلا) - چون نوسانشون خیلی کمتر از کریپتوئه، ضریب ATR بزرگ
+# باعث می‌شه SL/TP خیلی دیر لمس بشه و پوزیشن هفته‌ها باز بمونه. برای این‌ها ضریب
+# جدا و کوچیک‌تر تعریف شده تا سریع‌تر به نتیجه برسن (RR نسبت‌ها همون قبلی می‌مونه).
+FOREX_SYMBOLS = {"EURUSDT", "PAXGUSDT"}
+SL_ATR_MULT_FOREX = 1.0
+
+
+def get_sl_atr_mult(symbol: str) -> float:
+    """ضریب ATR مناسب برای هر نماد؛ نمادهای فارکس/طلا ضریب کوچیک‌تر می‌گیرن."""
+    return SL_ATR_MULT_FOREX if symbol in FOREX_SYMBOLS else SL_ATR_MULT
 
 # --- تلگرام (ربات دوم، مستقل از ربات اول) ---
 TELEGRAM_BOT_TOKEN_2 = os.environ.get("TELEGRAM_BOT_TOKEN_2", "")
@@ -324,7 +335,7 @@ def main():
         key_sell = f"{symbol}_v2_sell"
 
         if res["buy"] and state.get(key_buy) != str(ct):
-            sl = price - atr_v * SL_ATR_MULT
+            sl = price - atr_v * get_sl_atr_mult(symbol)
             risk = price - sl
             tp1 = price + risk * TP1_RR
             tp2 = price + risk * TP2_RR
@@ -335,7 +346,7 @@ def main():
             state[key_buy] = str(ct)
 
         if res["sell"] and state.get(key_sell) != str(ct):
-            sl = price + atr_v * SL_ATR_MULT
+            sl = price + atr_v * get_sl_atr_mult(symbol)
             risk = sl - price
             tp1 = price - risk * TP1_RR
             tp2 = price - risk * TP2_RR
