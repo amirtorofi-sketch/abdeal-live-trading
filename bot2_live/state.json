@@ -1,5 +1,5 @@
 {
-  "_trade_counter": 25,
+  "_trade_counter": 27,
   "_paper_balance_irt": 4008246.448375414,
   "BTCIRT__smc__last_candle": "2026-09-15 20:00:00",
   "SOLIRT__smc__last_candle": "2026-09-16 02:15:00",
@@ -19,7 +19,7 @@
     "trade_id": 18,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789605214361,
+    "last_checked_ms": 1789606121088,
     "lot_a": {
       "qty": 0.000356,
       "status": "closed"
@@ -42,7 +42,7 @@
     "trade_id": 20,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789605207028,
+    "last_checked_ms": 1789606112684,
     "lot_a": {
       "qty": 1.728e-05,
       "status": "open"
@@ -65,7 +65,7 @@
     "trade_id": 21,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789605208374,
+    "last_checked_ms": 1789606114178,
     "lot_a": {
       "qty": 1.137e-05,
       "status": "closed"
@@ -89,7 +89,7 @@
     "trade_id": 25,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789605210568,
+    "last_checked_ms": 1789606117251,
     "lot_a": {
       "qty": 10.86,
       "status": "open"
@@ -98,5 +98,51 @@
       "qty": 10.87,
       "status": "open"
     }
-  }
+  },
+  "TRBIRT__smc": {
+    "direction": "long",
+    "entry": 3854777.5,
+    "sl": 3796754.3666763636,
+    "tp1": 3941812.199985455,
+    "tp2": 4028846.8999709096,
+    "source_label": "ICT/SMC v2",
+    "opened_at": "2026-09-17 00:30:00",
+    "margin_symbol": "TRB_IRT",
+    "trade_id": 26,
+    "margin_irt": 200000.0,
+    "notional_irt": 400000.0,
+    "last_checked_ms": 1789606146067,
+    "lot_a": {
+      "qty": 0.0518,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.0519,
+      "status": "open"
+    }
+  },
+  "TRBIRT__smc__last_candle": "2026-09-17 00:30:00",
+  "WIFIRT__smc": {
+    "direction": "long",
+    "entry": 41874.5,
+    "sl": 41272.810733312166,
+    "tp1": 42777.03390003175,
+    "tp2": 43679.567800063494,
+    "source_label": "ICT/SMC v2",
+    "opened_at": "2026-09-17 00:30:00",
+    "margin_symbol": "WIF_IRT",
+    "trade_id": 27,
+    "margin_irt": 200000.0,
+    "notional_irt": 400000.0,
+    "last_checked_ms": 1789606150986,
+    "lot_a": {
+      "qty": 4.77,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 4.78,
+      "status": "open"
+    }
+  },
+  "WIFIRT__smc__last_candle": "2026-09-17 00:30:00"
 }
