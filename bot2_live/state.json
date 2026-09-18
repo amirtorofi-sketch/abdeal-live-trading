@@ -1,6 +1,6 @@
 {
   "_trade_counter": 74,
-  "_paper_balance_irt": 4335953.955585688,
+  "_paper_balance_irt": 4338363.493285053,
   "BTCIRT__smc__last_candle": "2026-09-18 04:00:00",
   "SOLIRT__smc__last_candle": "2026-09-18 08:00:00",
   "DOGEIRT__smc__last_candle": "2026-09-16 18:30:00",
@@ -19,7 +19,7 @@
     "trade_id": 20,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789719517752,
+    "last_checked_ms": 1789720409545,
     "lot_a": {
       "qty": 1.728e-05,
       "status": "open"
@@ -59,7 +59,7 @@
     "trade_id": 49,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789719527778,
+    "last_checked_ms": 1789720419480,
     "lot_a": {
       "qty": 54095.8,
       "status": "open"
@@ -82,7 +82,7 @@
     "trade_id": 50,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789719559540,
+    "last_checked_ms": 1789720451399,
     "lot_a": {
       "qty": 0.0772,
       "status": "closed"
@@ -106,7 +106,7 @@
     "trade_id": 51,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789719564592,
+    "last_checked_ms": 1789720456732,
     "lot_a": {
       "qty": 7.06,
       "status": "open"
@@ -132,7 +132,7 @@
     "trade_id": 62,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789719513751,
+    "last_checked_ms": 1789720404410,
     "lot_a": {
       "qty": 4.112307,
       "status": "open"
@@ -154,7 +154,7 @@
     "trade_id": 63,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789719519148,
+    "last_checked_ms": 1789720410431,
     "lot_a": {
       "qty": 1.137e-05,
       "status": "closed"
@@ -177,7 +177,7 @@
     "trade_id": 64,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789719529416,
+    "last_checked_ms": 1789720420774,
     "lot_a": {
       "qty": 35462.5,
       "status": "open"
@@ -199,7 +199,7 @@
     "trade_id": 65,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789719547707,
+    "last_checked_ms": 1789720438906,
     "lot_a": {
       "qty": 164277.7,
       "status": "open"
@@ -221,7 +221,7 @@
     "trade_id": 67,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789719543652,
+    "last_checked_ms": 1789720434309,
     "lot_a": {
       "qty": 241375.3,
       "status": "open"
@@ -243,7 +243,7 @@
     "trade_id": 69,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789719536231,
+    "last_checked_ms": 1789720428825,
     "lot_a": {
       "qty": 0.0746,
       "status": "open"
@@ -265,7 +265,7 @@
     "trade_id": 70,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789719554250,
+    "last_checked_ms": 1789720444054,
     "lot_a": {
       "qty": 1.1259,
       "status": "open"
@@ -278,7 +278,7 @@
   "XRPIRT__smc": {
     "direction": "long",
     "entry": 300713.5,
-    "sl": 298036.23588959465,
+    "sl": 300713.5,
     "tp1": 304729.396165608,
     "tp2": 308745.2923312159,
     "source_label": "ICT/SMC v2",
@@ -287,15 +287,16 @@
     "trade_id": 72,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789719568922,
+    "last_checked_ms": 1789720461911,
     "lot_a": {
       "qty": 0.6,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 0.7,
       "status": "open"
-    }
+    },
+    "realized_pnl": 2409.5376993648124
   },
   "NOTIRT__smc": {
     "direction": "short",
@@ -309,7 +310,7 @@
     "trade_id": 73,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789719540930,
+    "last_checked_ms": 1789720431310,
     "lot_a": {
       "qty": 1885.0,
       "status": "open"
@@ -331,7 +332,7 @@
     "trade_id": 74,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789719551447,
+    "last_checked_ms": 1789720441394,
     "lot_a": {
       "qty": 0.008,
       "status": "open"
