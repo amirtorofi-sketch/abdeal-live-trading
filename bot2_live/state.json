@@ -1,9 +1,9 @@
 {
-  "_trade_counter": 120,
+  "_trade_counter": 121,
   "_paper_balance_irt": 4474936.003926187,
   "BTCIRT__smc__last_candle": "2026-09-19 09:30:00",
   "SOLIRT__smc__last_candle": "2026-09-19 08:15:00",
-  "DOGEIRT__smc__last_candle": "2026-09-19 12:45:00",
+  "DOGEIRT__smc__last_candle": "2026-09-19 23:15:00",
   "ETHIRT__st__last_candle": "2026-09-14 13:00:00",
   "DOGEIRT__st__last_candle": "2026-09-17 12:15:00",
   "ETHIRT__smc__last_candle": "2026-09-19 09:30:00",
@@ -43,7 +43,7 @@
     "trade_id": 98,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789859907560,
+    "last_checked_ms": 1789860805878,
     "lot_a": {
       "qty": 3.909571,
       "status": "closed"
@@ -66,7 +66,7 @@
     "trade_id": 101,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789859939859,
+    "last_checked_ms": 1789860844434,
     "lot_a": {
       "qty": 1.5711,
       "status": "closed"
@@ -90,7 +90,7 @@
     "trade_id": 102,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789859924034,
+    "last_checked_ms": 1789860827071,
     "lot_a": {
       "qty": 16.2968,
       "status": "open"
@@ -114,7 +114,7 @@
     "trade_id": 108,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789859934980,
+    "last_checked_ms": 1789860839203,
     "lot_a": {
       "qty": 237699.0,
       "status": "open"
@@ -137,7 +137,7 @@
     "trade_id": 110,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789859930040,
+    "last_checked_ms": 1789860833838,
     "lot_a": {
       "qty": 334871.8,
       "status": "closed"
@@ -149,5 +149,27 @@
     "realized_pnl": 21051.84084002639
   },
   "PEPEIRT__st__last_candle": "2026-09-19 16:00:00",
-  "TRXIRT__st__last_candle": "2026-09-19 16:15:00"
+  "TRXIRT__st__last_candle": "2026-09-19 16:15:00",
+  "DOGEIRT__smc": {
+    "direction": "short",
+    "entry": 20086.5,
+    "sl": 20347.65342730292,
+    "tp1": 19694.769859045617,
+    "tp2": 19303.039718091237,
+    "source_label": "ICT/SMC v2",
+    "opened_at": "2026-09-19 23:15:00",
+    "margin_symbol": "DOGE_IRT",
+    "trade_id": 121,
+    "margin_irt": 200000.0,
+    "notional_irt": 400000.0,
+    "last_checked_ms": 1789860814782,
+    "lot_a": {
+      "qty": 9.95,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 9.96,
+      "status": "open"
+    }
+  }
 }
