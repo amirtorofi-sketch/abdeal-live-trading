@@ -1,6 +1,6 @@
 {
   "_trade_counter": 120,
-  "_paper_balance_irt": 4479633.618322712,
+  "_paper_balance_irt": 4474936.003926187,
   "BTCIRT__smc__last_candle": "2026-09-19 09:30:00",
   "SOLIRT__smc__last_candle": "2026-09-19 08:15:00",
   "DOGEIRT__smc__last_candle": "2026-09-19 12:45:00",
@@ -43,7 +43,7 @@
     "trade_id": 98,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789857206960,
+    "last_checked_ms": 1789858108176,
     "lot_a": {
       "qty": 3.909571,
       "status": "closed"
@@ -66,7 +66,7 @@
     "trade_id": 101,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789857242709,
+    "last_checked_ms": 1789858143684,
     "lot_a": {
       "qty": 1.5711,
       "status": "closed"
@@ -90,7 +90,7 @@
     "trade_id": 102,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789857226552,
+    "last_checked_ms": 1789858127435,
     "lot_a": {
       "qty": 16.2968,
       "status": "open"
@@ -114,7 +114,7 @@
     "trade_id": 108,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789857237536,
+    "last_checked_ms": 1789858138774,
     "lot_a": {
       "qty": 237699.0,
       "status": "open"
@@ -137,7 +137,7 @@
     "trade_id": 110,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789857233040,
+    "last_checked_ms": 1789858133975,
     "lot_a": {
       "qty": 334871.8,
       "status": "closed"
@@ -149,27 +149,5 @@
     "realized_pnl": 21051.84084002639
   },
   "PEPEIRT__st__last_candle": "2026-09-19 16:00:00",
-  "TRXIRT__st__last_candle": "2026-09-19 16:15:00",
-  "DOGSIRT__smc": {
-    "direction": "short",
-    "entry": 10.74,
-    "sl": 10.866131108625186,
-    "tp1": 10.550803337062222,
-    "tp2": 10.361606674124443,
-    "source_label": "ICT/SMC v2",
-    "opened_at": "2026-09-19 21:00:00",
-    "margin_symbol": "DOGS_IRT",
-    "trade_id": 120,
-    "margin_irt": 200000.0,
-    "notional_irt": 400000.0,
-    "last_checked_ms": 1789857217332,
-    "lot_a": {
-      "qty": 18621.9,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 18622.0,
-      "status": "open"
-    }
-  }
+  "TRXIRT__st__last_candle": "2026-09-19 16:15:00"
 }
