@@ -1,6 +1,6 @@
 {
   "_trade_counter": 133,
-  "_paper_balance_irt": 4460997.265261419,
+  "_paper_balance_irt": 4453886.253003422,
   "BTCIRT__smc__last_candle": "2026-09-20 04:00:00",
   "SOLIRT__smc__last_candle": "2026-09-20 03:15:00",
   "DOGEIRT__smc__last_candle": "2026-09-19 23:15:00",
@@ -47,7 +47,7 @@
     "trade_id": 110,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789887830154,
+    "last_checked_ms": 1789888736474,
     "lot_a": {
       "qty": 334871.8,
       "status": "closed"
@@ -72,7 +72,7 @@
     "trade_id": 121,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789887813222,
+    "last_checked_ms": 1789888715486,
     "lot_a": {
       "qty": 9.95,
       "status": "closed"
@@ -95,7 +95,7 @@
     "trade_id": 122,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789887843931,
+    "last_checked_ms": 1789888753838,
     "lot_a": {
       "qty": 0.0469,
       "status": "closed"
@@ -119,7 +119,7 @@
     "trade_id": 126,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1789887806988,
+    "last_checked_ms": 1789888710117,
     "lot_a": {
       "qty": 6.2379,
       "status": "open"
@@ -141,7 +141,7 @@
     "trade_id": 127,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789887808386,
+    "last_checked_ms": 1789888711150,
     "lot_a": {
       "qty": 4.2579,
       "status": "closed"
@@ -164,7 +164,7 @@
     "trade_id": 128,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789887839783,
+    "last_checked_ms": 1789888749166,
     "lot_a": {
       "qty": 2.0689,
       "status": "open"
@@ -186,7 +186,7 @@
     "trade_id": 129,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789887835835,
+    "last_checked_ms": 1789888743653,
     "lot_a": {
       "qty": 0.008,
       "status": "open"
@@ -197,28 +197,6 @@
     }
   },
   "TRXIRT__smc__last_candle": "2026-09-20 04:00:00",
-  "HBARIRT__smc": {
-    "direction": "short",
-    "entry": 18460.5,
-    "sl": 18788.683399237405,
-    "tp1": 17968.22490114389,
-    "tp2": 17475.949802287785,
-    "source_label": "ICT/SMC v2",
-    "opened_at": "2026-09-20 04:30:00",
-    "margin_symbol": "HBAR_IRT",
-    "trade_id": 132,
-    "margin_irt": 200000.0,
-    "notional_irt": 400000.0,
-    "last_checked_ms": 1789887823372,
-    "lot_a": {
-      "qty": 10.8339,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 10.8339,
-      "status": "open"
-    }
-  },
   "ADAIRT__smc": {
     "direction": "short",
     "entry": 50620.0,
@@ -231,7 +209,7 @@
     "trade_id": 133,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1789887804380,
+    "last_checked_ms": 1789888707197,
     "lot_a": {
       "qty": 3.951007,
       "status": "open"
