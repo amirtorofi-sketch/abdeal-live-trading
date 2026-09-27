@@ -47,6 +47,7 @@ FALLBACK_LOOKBACK_MS = 30 * 60 * 1000
 
 SOURCE_ST = "Supertrend+ADX"
 SOURCE_SMC = "ICT/SMC v2"
+BOT_NAME = "bot2"
 SOURCE_CONFIG = {
     SOURCE_ST: {
         "margin_irt": _float_env("BOT2_ST_MARGIN_IRT", "100000"),
@@ -157,9 +158,10 @@ def _close_lot(state, spot_symbol, pos, lot_key, price, reason, source_label):
 
     if DRY_RUN:
         balance = state.get("_paper_balance_irt", PAPER_STARTING_BALANCE_IRT)
+        lot_letter = lot_key.replace("lot_", "")
         pnl = paper_ledger.record_close(
-            PAPER_LOG_FILE, now_iso(), spot_symbol, source_label, pos["direction"],
-            pos["entry"], price, lot["qty"], balance, reason,
+            PAPER_LOG_FILE, now_iso(), BOT_NAME, spot_symbol, source_label, pos["direction"],
+            pos.get("trade_id"), lot_letter, pos["entry"], price, lot["qty"], balance, reason,
         )
         new_balance = balance + pnl
         state["_paper_balance_irt"] = new_balance
@@ -252,7 +254,8 @@ def manage_open_position(state: dict, position_key: str, spot_symbol: str):
 
 
 def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_key, signal_key,
-                       direction, entry_price, raw_sl, candle_time, rr1, rr2, source_label, extra_label=""):
+                       direction, entry_price, raw_sl, candle_time, rr1, rr2, source_label, extra_label="",
+                       adx_value=None, signal_score=None):
     """
     منطق مشترک باز کردن پوزیشن (دو-لاتی) برای هر دو استراتژی. برخلاف بات ۱،
     direction همان جهت خام است (بدون معکوس‌سازی).
@@ -333,8 +336,9 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
     if DRY_RUN:
         balance_before = state.get("_paper_balance_irt", PAPER_STARTING_BALANCE_IRT)
         paper_ledger.record_open(
-            PAPER_LOG_FILE, now_iso(), spot_symbol, source_label, direction,
-            real_price, sl, tp1, tp2, qty, notional_irt,
+            PAPER_LOG_FILE, now_iso(), BOT_NAME, spot_symbol, source_label, direction,
+            trade_id, real_price, sl, tp1, tp2, qty, notional_irt,
+            adx_value=adx_value, signal_score=signal_score,
         )
         notify(
             f"#{trade_id} {emoji} پوزیشن فرضی {dir_fa} باز شد\n"
@@ -426,6 +430,7 @@ def main():
                         direction=direction, entry_price=price, raw_sl=st_line,
                         candle_time=candle_time, rr1=ST_TP1_RR, rr2=ST_TP2_RR,
                         source_label=SOURCE_ST, extra_label=f" | ADX={adx_value:.1f}",
+                        adx_value=adx_value,
                     )
 
         # --- استراتژی ۲: ICT/SMC v2 (بدون معکوس‌سازی) ---
@@ -452,6 +457,7 @@ def main():
                         direction=direction, entry_price=price2, raw_sl=raw_sl,
                         candle_time=res["candle_time"], rr1=TP1_RR, rr2=TP2_RR,
                         source_label=SOURCE_SMC, extra_label=f" | امتیاز={score}/7",
+                        signal_score=score,
                     )
 
         time.sleep(0.5)
