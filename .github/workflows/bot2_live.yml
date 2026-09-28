@@ -45,8 +45,6 @@ jobs:
         run: python bot2_live/live_trader.py
 
       - name: Commit updated state and paper log
-        env:
-          PAPER_STARTING_BALANCE_IRT: ${{ vars.PAPER_STARTING_BALANCE_IRT }}
         run: |
           git config user.name "bot2-live"
           git config user.email "bot2-live@users.noreply.github.com"
@@ -54,15 +52,8 @@ jobs:
           [ -f bot2_live/paper_trades_log.csv ] && git add bot2_live/paper_trades_log.csv
           if ! git diff --staged --quiet; then
             git commit -m "update bot2 state/paper log [skip ci]"
+            git pull --rebase origin main
+            git push
+          else
+            echo "تغییری در وضعیت نبود."
           fi
-          git pull --rebase origin main
-
-          # --- لایه‌ی دوم دفاعی در برابر تریگر دوگانه‌ی بیرونی (توضیح کامل
-          # توی common/reconcile_ledger.py و ورک‌فلوی بات۱) ---
-          python common/reconcile_ledger.py bot2_live --starting-balance "${PAPER_STARTING_BALANCE_IRT:-4000000}"
-
-          git add bot2_live/state.json bot2_live/paper_trades_log.csv
-          if ! git diff --staged --quiet; then
-            git commit -m "reconcile bot2 ledger [skip ci]"
-          fi
-          git push
