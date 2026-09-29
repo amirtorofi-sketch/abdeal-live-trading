@@ -1,12 +1,12 @@
 {
-  "_trade_counter": 500,
+  "_trade_counter": 501,
   "_paper_balance_irt": 4602699.006582169,
   "BTCIRT__smc__last_candle": "2026-09-28 22:00:00",
   "SOLIRT__smc__last_candle": "2026-09-28 23:00:00",
   "DOGEIRT__smc__last_candle": "2026-09-28 23:00:00",
   "ETHIRT__st__last_candle": "2026-09-29 06:00:00",
   "DOGEIRT__st__last_candle": "2026-09-25 03:15:00",
-  "ETHIRT__smc__last_candle": "2026-09-29 01:00:00",
+  "ETHIRT__smc__last_candle": "2026-09-29 07:45:00",
   "BTCIRT__st__last_candle": "2026-09-29 01:15:00",
   "SOLIRT__st__last_candle": "2026-09-25 09:15:00",
   "TRBIRT__smc__last_candle": "2026-09-29 01:30:00",
@@ -57,7 +57,7 @@
     "trade_id": 322,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790668158729,
+    "last_checked_ms": 1790669071180,
     "lot_a": {
       "qty": 5.31,
       "status": "open"
@@ -79,7 +79,7 @@
     "trade_id": 380,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790668135176,
+    "last_checked_ms": 1790669047331,
     "lot_a": {
       "qty": 292594.4,
       "status": "open"
@@ -101,7 +101,7 @@
     "trade_id": 387,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790668141141,
+    "last_checked_ms": 1790669053803,
     "lot_a": {
       "qty": 217100.2,
       "status": "closed"
@@ -124,7 +124,7 @@
     "trade_id": 486,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1790668163622,
+    "last_checked_ms": 1790669074146,
     "lot_a": {
       "qty": 3.5697,
       "status": "open"
@@ -146,7 +146,7 @@
     "trade_id": 489,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790668131238,
+    "last_checked_ms": 1790669043717,
     "lot_a": {
       "qty": 2480.3,
       "status": "open"
@@ -168,7 +168,7 @@
     "trade_id": 492,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1790668153150,
+    "last_checked_ms": 1790669064792,
     "lot_a": {
       "qty": 0.0431,
       "status": "closed"
@@ -191,7 +191,7 @@
     "trade_id": 496,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1790668138216,
+    "last_checked_ms": 1790669050672,
     "lot_a": {
       "qty": 10.7,
       "status": "open"
@@ -214,7 +214,7 @@
     "trade_id": 498,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1790668126025,
+    "last_checked_ms": 1790669037453,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -264,7 +264,7 @@
     "trade_id": 499,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790668118112,
+    "last_checked_ms": 1790669023817,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -304,7 +304,7 @@
     "trade_id": 500,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790668155169,
+    "last_checked_ms": 1790669067172,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -328,6 +328,56 @@
     },
     "lot_b": {
       "qty": 3.59,
+      "status": "open"
+    }
+  },
+  "ETHIRT__smc": {
+    "direction": "long",
+    "entry": 675199355.5,
+    "sl": 670766761.5928172,
+    "sl_initial": 670766761.5928172,
+    "tp1": 681848246.3607743,
+    "tp2": 688497137.2215483,
+    "source_label": "ICT/SMC v2",
+    "opened_at": "2026-09-29 07:45:00",
+    "margin_symbol": "ETH_IRT",
+    "trade_id": 501,
+    "margin_irt": 200000.0,
+    "notional_irt": 400000.0,
+    "last_checked_ms": 1790669029912,
+    "raw_direction": "long",
+    "leverage": 2.0,
+    "timeframe": "15m",
+    "candle_time": "2026-09-29 07:45:00",
+    "session": "آسیا",
+    "adx_value": null,
+    "signal_score": 3,
+    "market_snapshot": {
+      "recent_bull_sweep": false,
+      "recent_bear_sweep": false,
+      "vol_spike": true,
+      "strong_bull_rej": false,
+      "strong_bear_rej": false,
+      "htf_bullish": true,
+      "htf_bearish": false,
+      "discount_zone": false,
+      "premium_zone": true,
+      "rsi_value": 74.41,
+      "rsi_bull_ok": false,
+      "rsi_bear_ok": false,
+      "trend_strong": true,
+      "trend": 1,
+      "bull_fvg_count": 6,
+      "bear_fvg_count": 0,
+      "bull_ob_count": 1,
+      "bear_ob_count": 0
+    },
+    "lot_a": {
+      "qty": 0.000296,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 0.000296,
       "status": "open"
     }
   }
