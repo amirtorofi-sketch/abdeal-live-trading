@@ -53,6 +53,7 @@ from common.tabdeal_broker import (  # noqa: E402
 FALLBACK_LOOKBACK_MS = 30 * 60 * 1000
 from common.telegram_notify import send_telegram  # noqa: E402
 from common import paper_ledger  # noqa: E402
+from common.paper_ledger import session_of  # noqa: E402
 
 # --- هم‌سان‌سازی حجم با بات ۲ برای مقایسه‌ی کنترل‌شده‌تر (به درخواست کاربر) ---
 # نماد دست‌نخورده مونده (همچنان کل بازار تومانی مارجین‌دار، مثل قبل)، فقط
@@ -185,6 +186,7 @@ def _close_lot(state, spot_symbol, pos, lot_key, price, reason, source_label):
         pnl = paper_ledger.record_close(
             PAPER_LOG_FILE, now_iso(), BOT_NAME, spot_symbol, source_label, pos["direction"],
             pos.get("trade_id"), lot_letter, pos["entry"], price, lot["qty"], balance, reason,
+            entry_row=paper_ledger.entry_row_from_pos(pos),
         )
         new_balance = balance + pnl
         state["_paper_balance_irt"] = new_balance
@@ -249,6 +251,12 @@ def manage_open_position(state: dict, position_key: str, spot_symbol: str):
             ok = _close_lot(state, spot_symbol, pos, "lot_a", exit_price, reason, source_label)
             if ok and reason == "TP1" and pos["lot_b"]["status"] == "open":
                 pos["sl"] = pos["entry"]
+                if DRY_RUN:
+                    paper_ledger.record_event(
+                        PAPER_LOG_FILE, now_iso(), BOT_NAME, "sl_to_be", spot_symbol, source_label,
+                        pos["direction"], pos.get("trade_id"), pos["entry"],
+                        entry_row=paper_ledger.entry_row_from_pos(pos), sl=pos["entry"],
+                    )
                 notify(f"🔵 معامله #{pos.get('trade_id','؟')} — SL لات باقی‌مانده‌ی {spot_symbol} ({source_label}) به نقطه‌ی ورود (Breakeven={pos['entry']:,.0f}) منتقل شد.")
 
     lot_b = pos["lot_b"]
@@ -275,12 +283,19 @@ def manage_open_position(state: dict, position_key: str, spot_symbol: str):
             )
         else:
             notify(f"🏁 معامله #{pos.get('trade_id','؟')} کاملاً بسته شد | {spot_symbol} ({source_label}) — سود/زیان و موجودی دقیق رو از پنل تبدیل چک کن.")
+        if DRY_RUN:
+            paper_ledger.record_event(
+                PAPER_LOG_FILE, now_iso(), BOT_NAME, "full_close", spot_symbol, source_label,
+                pos["direction"], pos.get("trade_id"), pos["entry"],
+                entry_row=paper_ledger.entry_row_from_pos(pos),
+                balance_after_irt=state.get("_paper_balance_irt", PAPER_STARTING_BALANCE_IRT),
+            )
         del state[position_key]
 
 
 def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_key, signal_key,
                        raw_direction, entry_price, raw_sl, candle_time, rr1, rr2, source_label, extra_label="",
-                       adx_value=None, signal_score=None):
+                       adx_value=None, signal_score=None, market_snapshot=None, timeframe=""):
     """
     منطق مشترک باز کردن پوزیشن (دو-لاتی) برای هر دو استراتژی - تا کد برای
     Supertrend و SMC دوباره‌نویسی نشود. مارجین/اهرم از SOURCE_CONFIG بر اساس
@@ -345,10 +360,14 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
 
     trade_id = next_trade_id(state)
     base_fields = {
-        "direction": direction, "entry": real_price, "sl": sl, "tp1": tp1, "tp2": tp2,
+        "direction": direction, "entry": real_price, "sl": sl, "sl_initial": sl, "tp1": tp1, "tp2": tp2,
         "source_label": source_label, "opened_at": str(candle_time), "margin_symbol": margin_symbol,
         "trade_id": trade_id, "margin_irt": cfg["margin_irt"], "notional_irt": notional_irt,
         "last_checked_ms": now_ms(),
+        # جزئیات اضافه برای ثبت کامل در CSV (مثل dasttrade)
+        "raw_direction": raw_direction, "leverage": cfg["leverage"], "timeframe": timeframe,
+        "candle_time": str(candle_time), "session": session_of(candle_time),
+        "adx_value": adx_value, "signal_score": signal_score, "market_snapshot": market_snapshot,
     }
     if qty_b <= 0:
         state[position_key] = {**base_fields, "lot_a": {"qty": qty_a, "status": "closed"}, "lot_b": {"qty": qty_a, "status": "open"}}
@@ -369,6 +388,7 @@ def try_open_position(state, spot_client, spot_symbol, margin_symbol, position_k
             PAPER_LOG_FILE, now_iso(), BOT_NAME, spot_symbol, source_label, direction,
             trade_id, real_price, sl, tp1, tp2, qty, notional_irt,
             adx_value=adx_value, signal_score=signal_score,
+            details=paper_ledger.entry_row_from_pos(state[position_key]),
         )
         notify(
             f"#{trade_id} {emoji} پوزیشن فرضی {dir_fa} باز شد\n"
@@ -449,7 +469,7 @@ def main():
         # --- استراتژی ۱: Supertrend + ADX ---
         if st_key not in state:
             try:
-                buy, sell, candle_time, price, st_line, adx_value = check_strategy_supertrend(df)
+                buy, sell, candle_time, price, st_line, adx_value, snap_st = check_strategy_supertrend(df)
             except Exception as e:
                 notify(f"❌ خطا در سیگنال Supertrend {binance_symbol}: {e}")
             else:
@@ -461,7 +481,7 @@ def main():
                         raw_direction=raw_direction, entry_price=price, raw_sl=st_line,
                         candle_time=candle_time, rr1=ST_TP1_RR, rr2=ST_TP2_RR,
                         source_label=SOURCE_ST, extra_label=f" | ADX={adx_value:.1f}",
-                        adx_value=adx_value,
+                        adx_value=adx_value, market_snapshot=snap_st, timeframe=TIMEFRAME,
                     )
 
         # --- استراتژی ۲: ICT/SMC Scalp Pro ---
@@ -488,7 +508,7 @@ def main():
                         raw_direction=raw_direction, entry_price=price2, raw_sl=raw_sl,
                         candle_time=res["candle_time"], rr1=TP1_RR, rr2=TP2_RR,
                         source_label=SOURCE_SMC, extra_label=f" | امتیاز={score}/7",
-                        signal_score=score,
+                        signal_score=score, market_snapshot=res.get("confluence"), timeframe=TIMEFRAME,
                     )
 
         time.sleep(0.5)
