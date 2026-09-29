@@ -30,7 +30,12 @@ import argparse
 import pandas as pd
 
 DUP_WINDOW_SECONDS = 300  # ۵ دقیقه - آستانه‌ی «همون معامله، دوبار ثبت شده»
-KEY_COLS = ["symbol", "source", "direction", "entry_price", "exit_price", "quantity", "exit_reason"]
+# ⚠️ "lot" حتماً باید توی کلید باشه. وقتی پوزیشن مستقیم SL بخوره (بدون TP1)،
+# لات a و لات b با هم و با یک قیمت SL بسته می‌شن - یعنی symbol/source/direction/
+# entry_price/exit_price/quantity/exit_reason هر دو دقیقاً یکیه. بدون "lot" این
+# دو ردیفِ کاملاً واقعی به اشتباه «تکراری» تشخیص داده می‌شدن و لات b حذف می‌شد
+# (باگی که مکرراً موجودی را بالاتر از واقعیت نشون می‌داد).
+KEY_COLS = ["symbol", "source", "direction", "entry_price", "exit_price", "quantity", "exit_reason", "lot"]
 
 
 def _amount_col(df: pd.DataFrame) -> str:
