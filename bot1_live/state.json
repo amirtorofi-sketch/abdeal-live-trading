@@ -1,6 +1,6 @@
 {
-  "_trade_counter": 889,
-  "_paper_balance_irt": 3923691.433739292,
+  "_trade_counter": 890,
+  "_paper_balance_irt": 3924633.965204732,
   "ADAIRT__smc__last_candle": "2026-09-29 02:00:00",
   "SEIIRT__smc__last_candle": "2026-09-28 21:45:00",
   "SHIBIRT__smc__last_candle": "2026-09-29 01:15:00",
@@ -9,7 +9,7 @@
   "XRPIRT__smc__last_candle": "2026-09-28 22:00:00",
   "DOGSIRT__smc__last_candle": "2026-09-27 16:45:00",
   "XLMIRT__smc__last_candle": "2026-09-29 07:00:00",
-  "BTCIRT__smc__last_candle": "2026-09-29 01:00:00",
+  "BTCIRT__smc__last_candle": "2026-09-29 09:45:00",
   "ETHIRT__smc__last_candle": "2026-09-29 06:45:00",
   "TRXIRT__smc__last_candle": "2026-09-29 07:15:00",
   "DOGEIRT__smc__last_candle": "2026-09-29 02:45:00",
@@ -57,7 +57,7 @@
     "trade_id": 720,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790675169235,
+    "last_checked_ms": 1790676084159,
     "lot_a": {
       "qty": 292411.9,
       "status": "open"
@@ -79,7 +79,7 @@
     "trade_id": 781,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790675146811,
+    "last_checked_ms": 1790676064688,
     "lot_a": {
       "qty": 23971.2,
       "status": "open"
@@ -101,7 +101,7 @@
     "trade_id": 813,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790675163745,
+    "last_checked_ms": 1790676079019,
     "lot_a": {
       "qty": 2440.0,
       "status": "open"
@@ -123,7 +123,7 @@
     "trade_id": 861,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1790675157845,
+    "last_checked_ms": 1790676074096,
     "lot_a": {
       "qty": 3.4429,
       "status": "open"
@@ -145,7 +145,7 @@
     "trade_id": 864,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1790675172622,
+    "last_checked_ms": 1790676089153,
     "lot_a": {
       "qty": 5.3,
       "status": "open"
@@ -167,7 +167,7 @@
     "trade_id": 877,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790675185523,
+    "last_checked_ms": 1790676099389,
     "lot_a": {
       "qty": 0.0644,
       "status": "closed"
@@ -177,78 +177,6 @@
       "status": "open"
     },
     "realized_pnl": 13864.162925184393
-  },
-  "NOTIRT__smc": {
-    "direction": "long",
-    "entry": 120.7,
-    "sl": 120.7,
-    "tp1": 123.21117495438016,
-    "tp2": 125.7223499087603,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-29 03:45:00",
-    "margin_symbol": "NOT_IRT",
-    "trade_id": 881,
-    "margin_irt": 200000.0,
-    "notional_irt": 200000.0,
-    "last_checked_ms": 1790675166859,
-    "lot_a": {
-      "qty": 828.5,
-      "status": "closed"
-    },
-    "lot_b": {
-      "qty": 828.5,
-      "status": "open"
-    },
-    "realized_pnl": 2080.508449703956
-  },
-  "PEPEIRT__smc": {
-    "direction": "short",
-    "entry": 1.06677,
-    "sl": 1.0839369219837227,
-    "sl_initial": 1.0839369219837227,
-    "tp1": 1.0410196170244157,
-    "tp2": 1.0152692340488316,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-09-29 08:15:00",
-    "margin_symbol": "PEPE_IRT",
-    "trade_id": 887,
-    "margin_irt": 200000.0,
-    "notional_irt": 200000.0,
-    "last_checked_ms": 1790675170180,
-    "raw_direction": "long",
-    "leverage": 1.0,
-    "timeframe": "15m",
-    "candle_time": "2026-09-29 08:15:00",
-    "session": "لندن",
-    "adx_value": null,
-    "signal_score": 5,
-    "market_snapshot": {
-      "recent_bull_sweep": false,
-      "recent_bear_sweep": false,
-      "vol_spike": true,
-      "strong_bull_rej": true,
-      "strong_bear_rej": false,
-      "htf_bullish": true,
-      "htf_bearish": false,
-      "discount_zone": false,
-      "premium_zone": true,
-      "rsi_value": 67.95,
-      "rsi_bull_ok": true,
-      "rsi_bear_ok": false,
-      "bull_fvg_count": 1,
-      "bear_fvg_count": 1,
-      "bull_ob_count": 0,
-      "bear_ob_count": 2,
-      "trend": 1
-    },
-    "lot_a": {
-      "qty": 93740.9,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 93740.9,
-      "status": "open"
-    }
   },
   "LINKIRT__st": {
     "direction": "short",
@@ -263,7 +191,7 @@
     "trade_id": 888,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790675160161,
+    "last_checked_ms": 1790676076292,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -303,7 +231,7 @@
     "trade_id": 889,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1790675188275,
+    "last_checked_ms": 1790676100404,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -336,6 +264,55 @@
     },
     "lot_b": {
       "qty": 0.0198,
+      "status": "open"
+    }
+  },
+  "BTCIRT__smc": {
+    "direction": "short",
+    "entry": 21305383791.0,
+    "sl": 21393159084.411858,
+    "sl_initial": 21393159084.411858,
+    "tp1": 21173720850.88221,
+    "tp2": 21042057910.76442,
+    "source_label": "ICT/SMC Scalp Pro",
+    "opened_at": "2026-09-29 09:45:00",
+    "margin_symbol": "BTC_IRT",
+    "trade_id": 890,
+    "margin_irt": 200000.0,
+    "notional_irt": 200000.0,
+    "last_checked_ms": 1790676060699,
+    "raw_direction": "long",
+    "leverage": 1.0,
+    "timeframe": "15m",
+    "candle_time": "2026-09-29 09:45:00",
+    "session": "لندن",
+    "adx_value": null,
+    "signal_score": 5,
+    "market_snapshot": {
+      "recent_bull_sweep": false,
+      "recent_bear_sweep": false,
+      "vol_spike": true,
+      "strong_bull_rej": true,
+      "strong_bear_rej": false,
+      "htf_bullish": true,
+      "htf_bearish": false,
+      "discount_zone": false,
+      "premium_zone": true,
+      "rsi_value": 68.0,
+      "rsi_bull_ok": true,
+      "rsi_bear_ok": false,
+      "bull_fvg_count": 5,
+      "bear_fvg_count": 0,
+      "bull_ob_count": 2,
+      "bear_ob_count": 0,
+      "trend": 1
+    },
+    "lot_a": {
+      "qty": 4.69e-06,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 4.69e-06,
       "status": "open"
     }
   }
