@@ -1,5 +1,5 @@
 {
-  "_trade_counter": 504,
+  "_trade_counter": 505,
   "_paper_balance_irt": 4599758.4294885425,
   "BTCIRT__smc__last_candle": "2026-09-28 22:00:00",
   "SOLIRT__smc__last_candle": "2026-09-28 23:00:00",
@@ -19,7 +19,7 @@
   "GRAMIRT__smc__last_candle": "2026-09-28 02:45:00",
   "ARBIRT__smc__last_candle": "2026-09-27 19:45:00",
   "HBARIRT__smc__last_candle": "2026-09-29 05:00:00",
-  "DOGSIRT__smc__last_candle": "2026-09-28 20:15:00",
+  "DOGSIRT__smc__last_candle": "2026-09-29 10:30:00",
   "SHIBIRT__smc__last_candle": "2026-09-28 23:30:00",
   "ADAIRT__smc__last_candle": "2026-09-27 08:00:00",
   "PEPEIRT__smc__last_candle": "2026-09-29 02:15:00",
@@ -57,7 +57,7 @@
     "trade_id": 322,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790678055987,
+    "last_checked_ms": 1790678956669,
     "lot_a": {
       "qty": 5.31,
       "status": "closed"
@@ -80,7 +80,7 @@
     "trade_id": 387,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790678040436,
+    "last_checked_ms": 1790678940572,
     "lot_a": {
       "qty": 217100.2,
       "status": "closed"
@@ -103,7 +103,7 @@
     "trade_id": 486,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1790678058959,
+    "last_checked_ms": 1790678959743,
     "lot_a": {
       "qty": 3.5697,
       "status": "closed"
@@ -127,7 +127,7 @@
     "trade_id": 498,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1790678028510,
+    "last_checked_ms": 1790678926172,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -177,7 +177,7 @@
     "trade_id": 499,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790678019027,
+    "last_checked_ms": 1790678917675,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -218,7 +218,7 @@
     "trade_id": 502,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1790678031010,
+    "last_checked_ms": 1790678931750,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -258,7 +258,7 @@
     "trade_id": 503,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1790678031904,
+    "last_checked_ms": 1790678932750,
     "raw_direction": "short",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -308,7 +308,7 @@
     "trade_id": 504,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1790678051565,
+    "last_checked_ms": 1790678951173,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -342,6 +342,56 @@
     },
     "lot_b": {
       "qty": 0.0402,
+      "status": "open"
+    }
+  },
+  "DOGSIRT__smc": {
+    "direction": "long",
+    "entry": 12.325,
+    "sl": 12.193097808722145,
+    "sl_initial": 12.193097808722145,
+    "tp1": 12.522853286916781,
+    "tp2": 12.720706573833562,
+    "source_label": "ICT/SMC v2",
+    "opened_at": "2026-09-29 10:30:00",
+    "margin_symbol": "DOGS_IRT",
+    "trade_id": 505,
+    "margin_irt": 200000.0,
+    "notional_irt": 400000.0,
+    "last_checked_ms": 1790678915614,
+    "raw_direction": "long",
+    "leverage": 2.0,
+    "timeframe": "15m",
+    "candle_time": "2026-09-29 10:30:00",
+    "session": "لندن",
+    "adx_value": null,
+    "signal_score": 3,
+    "market_snapshot": {
+      "recent_bull_sweep": true,
+      "recent_bear_sweep": true,
+      "vol_spike": false,
+      "strong_bull_rej": false,
+      "strong_bear_rej": false,
+      "htf_bullish": true,
+      "htf_bearish": false,
+      "discount_zone": false,
+      "premium_zone": true,
+      "rsi_value": 64.12,
+      "rsi_bull_ok": false,
+      "rsi_bear_ok": false,
+      "trend_strong": true,
+      "trend": 1,
+      "bull_fvg_count": 5,
+      "bear_fvg_count": 1,
+      "bull_ob_count": 1,
+      "bear_ob_count": 1
+    },
+    "lot_a": {
+      "qty": 16227.1,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 16227.1,
       "status": "open"
     }
   }
