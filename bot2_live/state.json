@@ -1,6 +1,6 @@
 {
   "_trade_counter": 816,
-  "_paper_balance_irt": 3820769.183187988,
+  "_paper_balance_irt": 3818828.7035721526,
   "BTCIRT__smc__last_candle": "2026-10-05 00:30:00",
   "SOLIRT__smc__last_candle": "2026-10-04 23:00:00",
   "DOGEIRT__smc__last_candle": "2026-10-04 23:30:00",
@@ -58,7 +58,7 @@
     "trade_id": 699,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791164041774,
+    "last_checked_ms": 1791164938710,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -99,7 +99,7 @@
     "trade_id": 786,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791164032453,
+    "last_checked_ms": 1791164930408,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -139,7 +139,7 @@
     "trade_id": 804,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1791164052492,
+    "last_checked_ms": 1791164954486,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -189,7 +189,7 @@
     "trade_id": 805,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1791164011326,
+    "last_checked_ms": 1791164911885,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -240,7 +240,7 @@
     "trade_id": 809,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1791164042946,
+    "last_checked_ms": 1791164940134,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -291,7 +291,7 @@
     "trade_id": 815,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791164038406,
+    "last_checked_ms": 1791164935307,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -315,46 +315,6 @@
     },
     "lot_b": {
       "qty": 0.9305,
-      "status": "open"
-    }
-  },
-  "TRXIRT__st": {
-    "direction": "long",
-    "entry": 89457.5,
-    "sl": 89167.87617674096,
-    "sl_initial": 89167.87617674096,
-    "tp1": 89891.93573488857,
-    "tp2": 90326.3714697771,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-10-05 01:15:00",
-    "margin_symbol": "TRX_IRT",
-    "trade_id": 816,
-    "margin_irt": 200000.0,
-    "notional_irt": 600000.0,
-    "last_checked_ms": 1791164049659,
-    "raw_direction": "long",
-    "leverage": 3.0,
-    "timeframe": "15m",
-    "candle_time": "2026-10-05 01:15:00",
-    "session": "آسیا",
-    "adx_value": 23.149846944351335,
-    "signal_score": null,
-    "market_snapshot": {
-      "adx": 23.15,
-      "di_plus": 27.19,
-      "di_minus": 11.536,
-      "ema_trend": 0.335593,
-      "close_vs_ema": "above",
-      "volume": 1779856.3,
-      "vol_ma": 582746.525,
-      "vol_above_ma": true
-    },
-    "lot_a": {
-      "qty": 3.35,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 3.35,
       "status": "open"
     }
   }
