@@ -1,6 +1,6 @@
 {
   "_trade_counter": 933,
-  "_paper_balance_irt": 3710442.7847635616,
+  "_paper_balance_irt": 3696953.3405081136,
   "BTCIRT__smc__last_candle": "2026-10-06 23:30:00",
   "SOLIRT__smc__last_candle": "2026-10-06 23:30:00",
   "DOGEIRT__smc__last_candle": "2026-10-06 21:30:00",
@@ -58,7 +58,7 @@
     "trade_id": 893,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791343135849,
+    "last_checked_ms": 1791344028127,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -86,46 +86,6 @@
     },
     "realized_pnl": 9407.022015038778
   },
-  "BTCIRT__st": {
-    "direction": "short",
-    "entry": 22987856000.5,
-    "sl": 23317269183.666397,
-    "sl_initial": 23317269183.666397,
-    "tp1": 22493736225.750404,
-    "tp2": 21999616451.000813,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-10-06 15:45:00",
-    "margin_symbol": "BTC_IRT",
-    "trade_id": 906,
-    "margin_irt": 200000.0,
-    "notional_irt": 600000.0,
-    "last_checked_ms": 1791343116944,
-    "raw_direction": "short",
-    "leverage": 3.0,
-    "timeframe": "15m",
-    "candle_time": "2026-10-06 15:45:00",
-    "session": "لندن",
-    "adx_value": 20.693954531350975,
-    "signal_score": null,
-    "market_snapshot": {
-      "adx": 20.694,
-      "di_plus": 18.542,
-      "di_minus": 30.836,
-      "ema_trend": 85759.659304,
-      "close_vs_ema": "below",
-      "volume": 298.3312,
-      "vol_ma": 195.5047,
-      "vol_above_ma": true
-    },
-    "lot_a": {
-      "qty": 1.305e-05,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 1.305e-05,
-      "status": "open"
-    }
-  },
   "ARBIRT__st": {
     "direction": "short",
     "entry": 53393.5,
@@ -139,7 +99,7 @@
     "trade_id": 921,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791343113954,
+    "last_checked_ms": 1791344007671,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -180,7 +140,7 @@
     "trade_id": 929,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791343152868,
+    "last_checked_ms": 1791344044007,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -220,7 +180,7 @@
     "trade_id": 931,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1791343131280,
+    "last_checked_ms": 1791344024142,
     "raw_direction": "short",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -270,7 +230,7 @@
     "trade_id": 932,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1791343138829,
+    "last_checked_ms": 1791344029916,
     "raw_direction": "short",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -304,56 +264,6 @@
     },
     "lot_b": {
       "qty": 1566.8,
-      "status": "open"
-    }
-  },
-  "SEIIRT__smc": {
-    "direction": "short",
-    "entry": 19117.5,
-    "sl": 19352.680777634858,
-    "sl_initial": 19352.680777634858,
-    "tp1": 18764.728833547717,
-    "tp2": 18411.957667095434,
-    "source_label": "ICT/SMC v2",
-    "opened_at": "2026-10-07 03:00:00",
-    "margin_symbol": "SEI_IRT",
-    "trade_id": 933,
-    "margin_irt": 200000.0,
-    "notional_irt": 400000.0,
-    "last_checked_ms": 1791343143808,
-    "raw_direction": "short",
-    "leverage": 2.0,
-    "timeframe": "15m",
-    "candle_time": "2026-10-07 03:00:00",
-    "session": "آسیا",
-    "adx_value": null,
-    "signal_score": 4,
-    "market_snapshot": {
-      "recent_bull_sweep": false,
-      "recent_bear_sweep": false,
-      "vol_spike": false,
-      "strong_bull_rej": false,
-      "strong_bear_rej": true,
-      "htf_bullish": false,
-      "htf_bearish": true,
-      "discount_zone": true,
-      "premium_zone": false,
-      "rsi_value": 26.74,
-      "rsi_bull_ok": false,
-      "rsi_bear_ok": true,
-      "trend_strong": true,
-      "trend": -1,
-      "bull_fvg_count": 0,
-      "bear_fvg_count": 6,
-      "bull_ob_count": 0,
-      "bear_ob_count": 1
-    },
-    "lot_a": {
-      "qty": 10.4,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 10.4,
       "status": "open"
     }
   }
