@@ -1,6 +1,6 @@
 {
   "_trade_counter": 1581,
-  "_paper_balance_irt": 4296376.578313019,
+  "_paper_balance_irt": 4302308.883231272,
   "ADAIRT__smc__last_candle": "2026-10-08 15:15:00",
   "SEIIRT__smc__last_candle": "2026-10-08 15:15:00",
   "SHIBIRT__smc__last_candle": "2026-10-08 15:15:00",
@@ -57,7 +57,7 @@
     "trade_id": 781,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791483359633,
+    "last_checked_ms": 1791484259260,
     "lot_a": {
       "qty": 23971.2,
       "status": "closed"
@@ -71,7 +71,7 @@
   "TIAIRT__smc": {
     "direction": "long",
     "entry": 121346.0,
-    "sl": 116546.40055157572,
+    "sl": 121346.0,
     "sl_initial": 116546.40055157572,
     "tp1": 128545.39917263642,
     "tp2": 135744.79834527284,
@@ -81,7 +81,7 @@
     "trade_id": 1576,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791483396809,
+    "last_checked_ms": 1791484289505,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -110,12 +110,13 @@
     },
     "lot_a": {
       "qty": 0.824,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 0.824,
       "status": "open"
-    }
+    },
+    "realized_pnl": 5932.304918252408
   },
   "ARBIRT__smc": {
     "direction": "long",
@@ -130,7 +131,7 @@
     "trade_id": 1578,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791483351758,
+    "last_checked_ms": 1791484249990,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -179,7 +180,7 @@
     "trade_id": 1579,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791483371019,
+    "last_checked_ms": 1791484269150,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -228,7 +229,7 @@
     "trade_id": 1580,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791483354051,
+    "last_checked_ms": 1791484252903,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
