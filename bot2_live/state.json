@@ -1,6 +1,6 @@
 {
   "_trade_counter": 1014,
-  "_paper_balance_irt": 3791355.462441493,
+  "_paper_balance_irt": 3782283.4050141387,
   "BTCIRT__smc__last_candle": "2026-10-08 05:30:00",
   "SOLIRT__smc__last_candle": "2026-10-08 07:15:00",
   "DOGEIRT__smc__last_candle": "2026-10-07 16:00:00",
@@ -58,7 +58,7 @@
     "trade_id": 1007,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791486228437,
+    "last_checked_ms": 1791487132128,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -98,7 +98,7 @@
     "trade_id": 1010,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1791486217152,
+    "last_checked_ms": 1791487118502,
     "raw_direction": "short",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -132,56 +132,6 @@
     },
     "lot_b": {
       "qty": 17977.5,
-      "status": "open"
-    }
-  },
-  "GRAMIRT__smc": {
-    "direction": "short",
-    "entry": 362993.5,
-    "sl": 371226.3052592284,
-    "sl_initial": 371226.3052592284,
-    "tp1": 350644.29211115744,
-    "tp2": 338295.0842223149,
-    "source_label": "ICT/SMC v2",
-    "opened_at": "2026-10-08 16:30:00",
-    "margin_symbol": "GRAM_IRT",
-    "trade_id": 1013,
-    "margin_irt": 200000.0,
-    "notional_irt": 400000.0,
-    "last_checked_ms": 1791486225335,
-    "raw_direction": "short",
-    "leverage": 2.0,
-    "timeframe": "15m",
-    "candle_time": "2026-10-08 16:30:00",
-    "session": "نیویورک",
-    "adx_value": null,
-    "signal_score": 3,
-    "market_snapshot": {
-      "recent_bull_sweep": false,
-      "recent_bear_sweep": false,
-      "vol_spike": true,
-      "strong_bull_rej": false,
-      "strong_bear_rej": false,
-      "htf_bullish": false,
-      "htf_bearish": true,
-      "discount_zone": true,
-      "premium_zone": false,
-      "rsi_value": 32.21,
-      "rsi_bull_ok": false,
-      "rsi_bear_ok": false,
-      "trend_strong": true,
-      "trend": -1,
-      "bull_fvg_count": 0,
-      "bear_fvg_count": 5,
-      "bull_ob_count": 0,
-      "bear_ob_count": 3
-    },
-    "lot_a": {
-      "qty": 0.55097,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 0.55097,
       "status": "open"
     }
   }
