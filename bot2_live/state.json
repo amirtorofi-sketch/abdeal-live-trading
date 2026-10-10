@@ -1,6 +1,6 @@
 {
   "_trade_counter": 1077,
-  "_paper_balance_irt": 3644792.254910152,
+  "_paper_balance_irt": 3642848.787871485,
   "BTCIRT__smc__last_candle": "2026-10-10 00:00:00",
   "SOLIRT__smc__last_candle": "2026-10-09 20:15:00",
   "DOGEIRT__smc__last_candle": "2026-10-09 20:15:00",
@@ -58,7 +58,7 @@
     "trade_id": 1007,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791613124527,
+    "last_checked_ms": 1791614020980,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -98,7 +98,7 @@
     "trade_id": 1069,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791613139881,
+    "last_checked_ms": 1791614037566,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -138,7 +138,7 @@
     "trade_id": 1071,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1791613126336,
+    "last_checked_ms": 1791614022082,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -188,7 +188,7 @@
     "trade_id": 1072,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1791613148381,
+    "last_checked_ms": 1791614046404,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -222,46 +222,6 @@
     },
     "lot_b": {
       "qty": 3.42,
-      "status": "open"
-    }
-  },
-  "BTCIRT__st": {
-    "direction": "long",
-    "entry": 22138337140.5,
-    "sl": 22066622489.62667,
-    "sl_initial": 22066622489.62667,
-    "tp1": 22245909116.81,
-    "tp2": 22353481093.119995,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-10-10 05:45:00",
-    "margin_symbol": "BTC_IRT",
-    "trade_id": 1077,
-    "margin_irt": 200000.0,
-    "notional_irt": 600000.0,
-    "last_checked_ms": 1791613111936,
-    "raw_direction": "long",
-    "leverage": 3.0,
-    "timeframe": "15m",
-    "candle_time": "2026-10-10 05:45:00",
-    "session": "آسیا",
-    "adx_value": 18.518670899057867,
-    "signal_score": null,
-    "market_snapshot": {
-      "adx": 18.519,
-      "di_plus": 36.557,
-      "di_minus": 13.108,
-      "ema_trend": 82657.863766,
-      "close_vs_ema": "above",
-      "volume": 84.0222,
-      "vol_ma": 52.906,
-      "vol_above_ma": true
-    },
-    "lot_a": {
-      "qty": 1.355e-05,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 1.355e-05,
       "status": "open"
     }
   }
