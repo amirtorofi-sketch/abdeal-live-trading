@@ -1,6 +1,6 @@
 {
   "_trade_counter": 1818,
-  "_paper_balance_irt": 4255092.691300236,
+  "_paper_balance_irt": 4260592.796121675,
   "ADAIRT__smc__last_candle": "2026-10-12 04:45:00",
   "SEIIRT__smc__last_candle": "2026-10-12 04:30:00",
   "SHIBIRT__smc__last_candle": "2026-10-12 06:30:00",
@@ -57,7 +57,7 @@
     "trade_id": 781,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791792951753,
+    "last_checked_ms": 1791793867512,
     "lot_a": {
       "qty": 23971.2,
       "status": "closed"
@@ -81,7 +81,7 @@
     "trade_id": 1654,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792972524,
+    "last_checked_ms": 1791793892905,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -131,7 +131,7 @@
     "trade_id": 1711,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792988104,
+    "last_checked_ms": 1791793912215,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -181,7 +181,7 @@
     "trade_id": 1729,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791792940833,
+    "last_checked_ms": 1791793856954,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -221,7 +221,7 @@
     "trade_id": 1738,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792942772,
+    "last_checked_ms": 1791793858870,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -271,7 +271,7 @@
     "trade_id": 1778,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791792992186,
+    "last_checked_ms": 1791793916224,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -311,7 +311,7 @@
     "trade_id": 1781,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792993342,
+    "last_checked_ms": 1791793917483,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -361,7 +361,7 @@
     "trade_id": 1789,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791792963940,
+    "last_checked_ms": 1791793881208,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -401,7 +401,7 @@
     "trade_id": 1795,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791792957905,
+    "last_checked_ms": 1791793873563,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -442,7 +442,7 @@
     "trade_id": 1797,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792949225,
+    "last_checked_ms": 1791793864222,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -492,7 +492,7 @@
     "trade_id": 1798,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792953351,
+    "last_checked_ms": 1791793869443,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -541,7 +541,7 @@
     "trade_id": 1801,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791792937642,
+    "last_checked_ms": 1791793853704,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -571,7 +571,7 @@
   "SEIIRT__smc": {
     "direction": "short",
     "entry": 18693.0,
-    "sl": 18904.635667833038,
+    "sl": 18693.0,
     "sl_initial": 18904.635667833038,
     "tp1": 18375.546498250445,
     "tp2": 18058.09299650089,
@@ -581,7 +581,7 @@
     "trade_id": 1804,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792977831,
+    "last_checked_ms": 1791793899382,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -610,17 +610,18 @@
     },
     "lot_a": {
       "qty": 5.3,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 5.3,
       "status": "open"
-    }
+    },
+    "realized_pnl": 1682.5035592726392
   },
   "SOLIRT__smc": {
     "direction": "short",
     "entry": 29723325.5,
-    "sl": 29925138.50158146,
+    "sl": 29723325.5,
     "sl_initial": 29925138.50158146,
     "tp1": 29420605.997627806,
     "tp2": 29117886.495255616,
@@ -630,7 +631,7 @@
     "trade_id": 1805,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792982560,
+    "last_checked_ms": 1791793904872,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -659,12 +660,13 @@
     },
     "lot_a": {
       "qty": 0.003,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 0.003,
       "status": "open"
-    }
+    },
+    "realized_pnl": 908.1585071165823
   },
   "FLOKIIRT__smc": {
     "direction": "short",
@@ -679,7 +681,7 @@
     "trade_id": 1808,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792959277,
+    "last_checked_ms": 1791793875386,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -728,7 +730,7 @@
     "trade_id": 1809,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792968106,
+    "last_checked_ms": 1791793886358,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -777,7 +779,7 @@
     "trade_id": 1810,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792974812,
+    "last_checked_ms": 1791793895713,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -827,7 +829,7 @@
     "trade_id": 1811,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792985508,
+    "last_checked_ms": 1791793909427,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -876,7 +878,7 @@
     "trade_id": 1812,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792997747,
+    "last_checked_ms": 1791793921482,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -916,7 +918,7 @@
   "XLMIRT__smc": {
     "direction": "short",
     "entry": 53727.95,
-    "sl": 54118.60531310149,
+    "sl": 53727.95,
     "sl_initial": 54118.60531310149,
     "tp1": 53141.967030347754,
     "tp2": 52555.984060695504,
@@ -926,7 +928,7 @@
     "trade_id": 1813,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792999891,
+    "last_checked_ms": 1791793923552,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -955,17 +957,18 @@
     },
     "lot_a": {
       "qty": 1.8612,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 1.8612,
       "status": "open"
-    }
+    },
+    "realized_pnl": 1090.6315031167544
   },
   "XRPIRT__smc": {
     "direction": "short",
     "entry": 374262.0,
-    "sl": 376299.6968802259,
+    "sl": 374262.0,
     "sl_initial": 376299.6968802259,
     "tp1": 371205.45467966114,
     "tp2": 368148.9093593223,
@@ -975,7 +978,7 @@
     "trade_id": 1814,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791793001797,
+    "last_checked_ms": 1791793926630,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -1004,12 +1007,13 @@
     },
     "lot_a": {
       "qty": 0.2,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 0.3,
       "status": "open"
-    }
+    },
+    "realized_pnl": 611.3090640677722
   },
   "GRAMIRT__smc": {
     "direction": "long",
@@ -1024,7 +1028,7 @@
     "trade_id": 1815,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792966145,
+    "last_checked_ms": 1791793883307,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -1073,7 +1077,7 @@
     "trade_id": 1816,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792980334,
+    "last_checked_ms": 1791793902768,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -1122,7 +1126,7 @@
     "trade_id": 1817,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792945478,
+    "last_checked_ms": 1791793860842,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -1162,7 +1166,7 @@
   "LINKIRT__smc": {
     "direction": "short",
     "entry": 3554207.0,
-    "sl": 3582854.7387394034,
+    "sl": 3554207.0,
     "sl_initial": 3582854.7387394034,
     "tp1": 3511235.3918908956,
     "tp2": 3468263.7837817906,
@@ -1172,7 +1176,7 @@
     "trade_id": 1818,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791792970326,
+    "last_checked_ms": 1791793889385,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -1201,11 +1205,12 @@
     },
     "lot_a": {
       "qty": 0.0281,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 0.0281,
       "status": "open"
-    }
+    },
+    "realized_pnl": 1207.502187865835
   }
 }
