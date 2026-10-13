@@ -1,5 +1,5 @@
 {
-  "_trade_counter": 1263,
+  "_trade_counter": 1264,
   "_paper_balance_irt": 3615187.4236573577,
   "BTCIRT__smc__last_candle": "2026-10-13 20:30:00",
   "SOLIRT__smc__last_candle": "2026-10-13 04:00:00",
@@ -36,7 +36,7 @@
   "XLMIRT__st__last_candle": "2026-10-13 09:15:00",
   "SHIBIRT__st__last_candle": "2026-10-13 10:15:00",
   "PEPEIRT__st__last_candle": "2026-10-11 03:45:00",
-  "TRXIRT__st__last_candle": "2026-10-13 10:30:00",
+  "TRXIRT__st__last_candle": "2026-10-13 21:30:00",
   "NOTIRT__st__last_candle": "2026-10-06 09:15:00",
   "TRXIRT__smc__last_candle": "2026-10-13 02:15:00",
   "LINKIRT__st__last_candle": "2026-10-13 10:30:00",
@@ -58,7 +58,7 @@
     "trade_id": 1007,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791927219937,
+    "last_checked_ms": 1791928127961,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -99,7 +99,7 @@
     "trade_id": 1225,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791927235674,
+    "last_checked_ms": 1791928147870,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -139,7 +139,7 @@
     "trade_id": 1256,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1791927229587,
+    "last_checked_ms": 1791928138993,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -190,7 +190,7 @@
     "trade_id": 1261,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1791927240305,
+    "last_checked_ms": 1791928153407,
     "raw_direction": "short",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -224,6 +224,46 @@
     },
     "lot_b": {
       "qty": 0.0403,
+      "status": "open"
+    }
+  },
+  "TRXIRT__st": {
+    "direction": "short",
+    "entry": 85420.5,
+    "sl": 85745.44896460726,
+    "sl_initial": 85745.44896460726,
+    "tp1": 84933.07655308911,
+    "tp2": 84445.65310617822,
+    "source_label": "Supertrend+ADX",
+    "opened_at": "2026-10-13 21:30:00",
+    "margin_symbol": "TRX_IRT",
+    "trade_id": 1264,
+    "margin_irt": 200000.0,
+    "notional_irt": 600000.0,
+    "last_checked_ms": 1791928157892,
+    "raw_direction": "short",
+    "leverage": 3.0,
+    "timeframe": "15m",
+    "candle_time": "2026-10-13 21:30:00",
+    "session": "نیویورک",
+    "adx_value": 29.345270128181927,
+    "signal_score": null,
+    "market_snapshot": {
+      "adx": 29.345,
+      "di_plus": 21.589,
+      "di_minus": 28.382,
+      "ema_trend": 0.329687,
+      "close_vs_ema": "below",
+      "volume": 1580006.3,
+      "vol_ma": 760666.35,
+      "vol_above_ma": true
+    },
+    "lot_a": {
+      "qty": 3.51,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 3.51,
       "status": "open"
     }
   }
