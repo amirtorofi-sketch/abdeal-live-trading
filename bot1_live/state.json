@@ -1,6 +1,6 @@
 {
   "_trade_counter": 1889,
-  "_paper_balance_irt": 4207864.883446921,
+  "_paper_balance_irt": 4201586.799477553,
   "ADAIRT__smc__last_candle": "2026-10-12 14:30:00",
   "SEIIRT__smc__last_candle": "2026-10-12 23:30:00",
   "SHIBIRT__smc__last_candle": "2026-10-12 23:00:00",
@@ -57,7 +57,7 @@
     "trade_id": 781,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791872145469,
+    "last_checked_ms": 1791873196214,
     "lot_a": {
       "qty": 23971.2,
       "status": "closed"
@@ -81,7 +81,7 @@
     "trade_id": 1886,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791872172831,
+    "last_checked_ms": 1791873495467,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -131,7 +131,7 @@
     "trade_id": 1888,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791872179415,
+    "last_checked_ms": 1791873503211,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -164,55 +164,6 @@
     },
     "lot_b": {
       "qty": 0.3,
-      "status": "open"
-    }
-  },
-  "TIAIRT__smc": {
-    "direction": "short",
-    "entry": 157281.5,
-    "sl": 162218.65316873806,
-    "sl_initial": 162218.65316873806,
-    "tp1": 149875.77024689293,
-    "tp2": 142470.04049378584,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-10-13 04:00:00",
-    "margin_symbol": "TIA_IRT",
-    "trade_id": 1889,
-    "margin_irt": 200000.0,
-    "notional_irt": 200000.0,
-    "last_checked_ms": 1791872168542,
-    "raw_direction": "long",
-    "leverage": 1.0,
-    "timeframe": "15m",
-    "candle_time": "2026-10-13 04:00:00",
-    "session": "آسیا",
-    "adx_value": null,
-    "signal_score": 5,
-    "market_snapshot": {
-      "recent_bull_sweep": false,
-      "recent_bear_sweep": false,
-      "vol_spike": true,
-      "strong_bull_rej": true,
-      "strong_bear_rej": false,
-      "htf_bullish": true,
-      "htf_bearish": false,
-      "discount_zone": false,
-      "premium_zone": true,
-      "rsi_value": 81.02,
-      "rsi_bull_ok": true,
-      "rsi_bear_ok": false,
-      "bull_fvg_count": 5,
-      "bear_fvg_count": 0,
-      "bull_ob_count": 1,
-      "bear_ob_count": 0,
-      "trend": 1
-    },
-    "lot_a": {
-      "qty": 0.6358,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 0.6358,
       "status": "open"
     }
   }
