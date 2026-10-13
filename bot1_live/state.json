@@ -1,6 +1,6 @@
 {
   "_trade_counter": 1884,
-  "_paper_balance_irt": 4233249.456888388,
+  "_paper_balance_irt": 4267201.006007242,
   "ADAIRT__smc__last_candle": "2026-10-12 14:30:00",
   "SEIIRT__smc__last_candle": "2026-10-12 23:30:00",
   "SHIBIRT__smc__last_candle": "2026-10-12 23:00:00",
@@ -57,7 +57,7 @@
     "trade_id": 781,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791851457048,
+    "last_checked_ms": 1791852354900,
     "lot_a": {
       "qty": 23971.2,
       "status": "closed"
@@ -67,47 +67,6 @@
       "status": "open"
     },
     "realized_pnl": 31132.95065093821
-  },
-  "ARBIRT__st": {
-    "direction": "short",
-    "entry": 51755.5,
-    "sl": 51755.5,
-    "sl_initial": 53707.91663756027,
-    "tp1": 48826.875043659595,
-    "tp2": 45898.25008731919,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-10-11 06:45:00",
-    "margin_symbol": "ARB_IRT",
-    "trade_id": 1729,
-    "margin_irt": 200000.0,
-    "notional_irt": 600000.0,
-    "last_checked_ms": 1791851450425,
-    "raw_direction": "long",
-    "leverage": 3.0,
-    "timeframe": "15m",
-    "candle_time": "2026-10-11 06:45:00",
-    "session": "آسیا",
-    "adx_value": 33.22246190169346,
-    "signal_score": null,
-    "market_snapshot": {
-      "adx": 33.222,
-      "di_plus": 41.34,
-      "di_minus": 15.695,
-      "ema_trend": 0.185832,
-      "close_vs_ema": "above",
-      "volume": 3449131.1,
-      "vol_ma": 845489.855,
-      "vol_above_ma": true
-    },
-    "lot_a": {
-      "qty": 5.7964,
-      "status": "closed"
-    },
-    "lot_b": {
-      "qty": 5.7965,
-      "status": "open"
-    },
-    "realized_pnl": 16975.481696931525
   },
   "TIAIRT__smc": {
     "direction": "long",
@@ -122,7 +81,7 @@
     "trade_id": 1881,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791851483708,
+    "last_checked_ms": 1791852384849,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -171,7 +130,7 @@
     "trade_id": 1883,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791851467586,
+    "last_checked_ms": 1791852364812,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -220,7 +179,7 @@
     "trade_id": 1884,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791851472563,
+    "last_checked_ms": 1791852372043,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
