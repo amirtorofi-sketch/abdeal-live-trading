@@ -1,6 +1,6 @@
 {
   "_trade_counter": 1920,
-  "_paper_balance_irt": 4128204.958489123,
+  "_paper_balance_irt": 4116359.7591936183,
   "ADAIRT__smc__last_candle": "2026-10-13 10:30:00",
   "SEIIRT__smc__last_candle": "2026-10-13 10:30:00",
   "SHIBIRT__smc__last_candle": "2026-10-13 09:00:00",
@@ -57,7 +57,7 @@
     "trade_id": 781,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791891949616,
+    "last_checked_ms": 1791892866726,
     "lot_a": {
       "qty": 23971.2,
       "status": "closed"
@@ -67,46 +67,6 @@
       "status": "open"
     },
     "realized_pnl": 31132.95065093821
-  },
-  "XLMIRT__st": {
-    "direction": "long",
-    "entry": 49453.55,
-    "sl": 48633.65077025308,
-    "sl_initial": 48633.65077025308,
-    "tp1": 50683.39884462039,
-    "tp2": 51913.247689240765,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-10-13 09:15:00",
-    "margin_symbol": "XLM_IRT",
-    "trade_id": 1901,
-    "margin_irt": 200000.0,
-    "notional_irt": 600000.0,
-    "last_checked_ms": 1791891983839,
-    "raw_direction": "short",
-    "leverage": 3.0,
-    "timeframe": "15m",
-    "candle_time": "2026-10-13 09:15:00",
-    "session": "لندن",
-    "adx_value": 20.178949401401976,
-    "signal_score": null,
-    "market_snapshot": {
-      "adx": 20.179,
-      "di_plus": 14.731,
-      "di_minus": 30.863,
-      "ema_trend": 0.196808,
-      "close_vs_ema": "below",
-      "volume": 570637.0,
-      "vol_ma": 435158.05,
-      "vol_above_ma": true
-    },
-    "lot_a": {
-      "qty": 6.0662,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 6.0663,
-      "status": "open"
-    }
   },
   "FLOKIIRT__st": {
     "direction": "long",
@@ -121,7 +81,7 @@
     "trade_id": 1905,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791891954714,
+    "last_checked_ms": 1791892871331,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -161,7 +121,7 @@
     "trade_id": 1907,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791891970627,
+    "last_checked_ms": 1791892888900,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -201,7 +161,7 @@
     "trade_id": 1908,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1791891941713,
+    "last_checked_ms": 1791892858625,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -237,55 +197,6 @@
       "status": "open"
     }
   },
-  "FLOKIIRT__smc": {
-    "direction": "long",
-    "entry": 6.58782,
-    "sl": 6.525308985454074,
-    "sl_initial": 6.525308985454074,
-    "tp1": 6.681586521818889,
-    "tp2": 6.775353043637779,
-    "source_label": "ICT/SMC Scalp Pro",
-    "opened_at": "2026-10-13 10:30:00",
-    "margin_symbol": "FLOKI_IRT",
-    "trade_id": 1910,
-    "margin_irt": 200000.0,
-    "notional_irt": 200000.0,
-    "last_checked_ms": 1791891955945,
-    "raw_direction": "short",
-    "leverage": 1.0,
-    "timeframe": "15m",
-    "candle_time": "2026-10-13 10:30:00",
-    "session": "لندن",
-    "adx_value": null,
-    "signal_score": 5,
-    "market_snapshot": {
-      "recent_bull_sweep": false,
-      "recent_bear_sweep": false,
-      "vol_spike": true,
-      "strong_bull_rej": false,
-      "strong_bear_rej": true,
-      "htf_bullish": false,
-      "htf_bearish": true,
-      "discount_zone": true,
-      "premium_zone": false,
-      "rsi_value": 35.7,
-      "rsi_bull_ok": false,
-      "rsi_bear_ok": true,
-      "bull_fvg_count": 0,
-      "bear_fvg_count": 6,
-      "bull_ob_count": 0,
-      "bear_ob_count": 3,
-      "trend": -1
-    },
-    "lot_a": {
-      "qty": 15179.5,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 15179.5,
-      "status": "open"
-    }
-  },
   "LINKIRT__st": {
     "direction": "long",
     "entry": 3301111.0,
@@ -299,7 +210,7 @@
     "trade_id": 1911,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1791891963167,
+    "last_checked_ms": 1791892881292,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
