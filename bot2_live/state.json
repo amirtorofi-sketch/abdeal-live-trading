@@ -1,5 +1,5 @@
 {
-  "_trade_counter": 1581,
+  "_trade_counter": 1582,
   "_paper_balance_irt": 3854829.500170217,
   "BTCIRT__smc__last_candle": "2026-10-20 02:45:00",
   "SOLIRT__smc__last_candle": "2026-10-19 07:45:00",
@@ -7,7 +7,7 @@
   "ETHIRT__st__last_candle": "2026-10-18 13:15:00",
   "DOGEIRT__st__last_candle": "2026-10-19 10:15:00",
   "ETHIRT__smc__last_candle": "2026-10-20 02:45:00",
-  "BTCIRT__st__last_candle": "2026-10-18 13:15:00",
+  "BTCIRT__st__last_candle": "2026-10-20 08:00:00",
   "SOLIRT__st__last_candle": "2026-10-20 01:00:00",
   "TRBIRT__smc__last_candle": "2026-10-20 04:00:00",
   "WIFIRT__smc__last_candle": "2026-10-20 05:30:00",
@@ -58,7 +58,7 @@
     "trade_id": 1458,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1792483414256,
+    "last_checked_ms": 1792484318736,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -99,7 +99,7 @@
     "trade_id": 1460,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1792483433667,
+    "last_checked_ms": 1792484339297,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -140,7 +140,7 @@
     "trade_id": 1511,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1792483430143,
+    "last_checked_ms": 1792484335470,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -181,7 +181,7 @@
     "trade_id": 1581,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1792483427779,
+    "last_checked_ms": 1792484332704,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -218,5 +218,45 @@
       "status": "open"
     },
     "realized_pnl": 3342.5958489605077
+  },
+  "BTCIRT__st": {
+    "direction": "short",
+    "entry": 21354196850.5,
+    "sl": 21502074484.86662,
+    "sl_initial": 21502074484.86662,
+    "tp1": 21132380398.950073,
+    "tp2": 20910563947.400146,
+    "source_label": "Supertrend+ADX",
+    "opened_at": "2026-10-20 08:00:00",
+    "margin_symbol": "BTC_IRT",
+    "trade_id": 1582,
+    "margin_irt": 200000.0,
+    "notional_irt": 600000.0,
+    "last_checked_ms": 1792484313058,
+    "raw_direction": "short",
+    "leverage": 3.0,
+    "timeframe": "15m",
+    "candle_time": "2026-10-20 08:00:00",
+    "session": "لندن",
+    "adx_value": 18.899134216261942,
+    "signal_score": null,
+    "market_snapshot": {
+      "adx": 18.899,
+      "di_plus": 15.752,
+      "di_minus": 34.461,
+      "ema_trend": 81944.480208,
+      "close_vs_ema": "below",
+      "volume": 387.3884,
+      "vol_ma": 144.8251,
+      "vol_above_ma": true
+    },
+    "lot_a": {
+      "qty": 1.404e-05,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 1.405e-05,
+      "status": "open"
+    }
   }
 }
