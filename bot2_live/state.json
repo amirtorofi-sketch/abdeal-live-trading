@@ -1,6 +1,6 @@
 {
-  "_trade_counter": 1602,
-  "_paper_balance_irt": 3916073.9526393604,
+  "_trade_counter": 1603,
+  "_paper_balance_irt": 3922598.0127651575,
   "BTCIRT__smc__last_candle": "2026-10-20 09:00:00",
   "SOLIRT__smc__last_candle": "2026-10-19 07:45:00",
   "DOGEIRT__smc__last_candle": "2026-10-19 12:00:00",
@@ -38,7 +38,7 @@
   "PEPEIRT__st__last_candle": "2026-10-18 22:00:00",
   "TRXIRT__st__last_candle": "2026-10-20 01:00:00",
   "NOTIRT__st__last_candle": "2026-10-16 15:00:00",
-  "TRXIRT__smc__last_candle": "2026-10-19 20:15:00",
+  "TRXIRT__smc__last_candle": "2026-10-20 14:15:00",
   "LINKIRT__st__last_candle": "2026-10-20 09:00:00",
   "ADAIRT__st__last_candle": "2026-10-17 21:15:00",
   "XRPIRT__st__last_candle": "2026-10-14 12:45:00",
@@ -58,7 +58,7 @@
     "trade_id": 1587,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1792505983763,
+    "last_checked_ms": 1792506846143,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -108,7 +108,7 @@
     "trade_id": 1592,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1792505933453,
+    "last_checked_ms": 1792506818925,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -139,7 +139,7 @@
   "TRBIRT__st": {
     "direction": "long",
     "entry": 4701774.0,
-    "sl": 4633602.002865235,
+    "sl": 4701774.0,
     "sl_initial": 4633602.002865235,
     "tp1": 4804031.995702147,
     "tp2": 4906289.991404294,
@@ -149,7 +149,7 @@
     "trade_id": 1593,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1792505988863,
+    "last_checked_ms": 1792506852069,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -169,12 +169,13 @@
     },
     "lot_a": {
       "qty": 0.0638,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 0.0638,
       "status": "open"
-    }
+    },
+    "realized_pnl": 6524.060125796949
   },
   "ARBIRT__st": {
     "direction": "long",
@@ -189,7 +190,7 @@
     "trade_id": 1600,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1792505916632,
+    "last_checked_ms": 1792506807259,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -229,7 +230,7 @@
     "trade_id": 1601,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1792505944966,
+    "last_checked_ms": 1792506825986,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -269,7 +270,7 @@
     "trade_id": 1602,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1792505950616,
+    "last_checked_ms": 1792506828777,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -293,6 +294,56 @@
     },
     "lot_b": {
       "qty": 13.4397,
+      "status": "open"
+    }
+  },
+  "TRXIRT__smc": {
+    "direction": "short",
+    "entry": 87133.5,
+    "sl": 87334.06361618488,
+    "sl_initial": 87334.06361618488,
+    "tp1": 86832.65457572268,
+    "tp2": 86531.80915144536,
+    "source_label": "ICT/SMC v2",
+    "opened_at": "2026-10-20 14:15:00",
+    "margin_symbol": "TRX_IRT",
+    "trade_id": 1603,
+    "margin_irt": 200000.0,
+    "notional_irt": 400000.0,
+    "last_checked_ms": 1792506858290,
+    "raw_direction": "short",
+    "leverage": 2.0,
+    "timeframe": "15m",
+    "candle_time": "2026-10-20 14:15:00",
+    "session": "لندن",
+    "adx_value": null,
+    "signal_score": 3,
+    "market_snapshot": {
+      "recent_bull_sweep": false,
+      "recent_bear_sweep": false,
+      "vol_spike": true,
+      "strong_bull_rej": true,
+      "strong_bear_rej": false,
+      "htf_bullish": false,
+      "htf_bearish": true,
+      "discount_zone": true,
+      "premium_zone": false,
+      "rsi_value": 50.14,
+      "rsi_bull_ok": true,
+      "rsi_bear_ok": false,
+      "trend_strong": true,
+      "trend": -1,
+      "bull_fvg_count": 1,
+      "bear_fvg_count": 3,
+      "bull_ob_count": 0,
+      "bear_ob_count": 2
+    },
+    "lot_a": {
+      "qty": 2.29,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 2.3,
       "status": "open"
     }
   }
