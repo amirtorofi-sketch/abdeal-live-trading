@@ -1,6 +1,6 @@
 {
   "_trade_counter": 1697,
-  "_paper_balance_irt": 3934241.9268701985,
+  "_paper_balance_irt": 3936699.047878045,
   "BTCIRT__smc__last_candle": "2026-10-23 00:30:00",
   "SOLIRT__smc__last_candle": "2026-10-22 22:00:00",
   "DOGEIRT__smc__last_candle": "2026-10-22 15:30:00",
@@ -58,7 +58,7 @@
     "trade_id": 1616,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1792731843127,
+    "last_checked_ms": 1792732738516,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -109,7 +109,7 @@
     "trade_id": 1657,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1792731815145,
+    "last_checked_ms": 1792732713090,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -136,47 +136,6 @@
       "status": "open"
     }
   },
-  "TRXIRT__st": {
-    "direction": "short",
-    "entry": 89470.0,
-    "sl": 89470.0,
-    "sl_initial": 90039.90812592923,
-    "tp1": 88615.13781110615,
-    "tp2": 87760.2756222123,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-10-22 16:45:00",
-    "margin_symbol": "TRX_IRT",
-    "trade_id": 1682,
-    "margin_irt": 200000.0,
-    "notional_irt": 600000.0,
-    "last_checked_ms": 1792731860683,
-    "raw_direction": "short",
-    "leverage": 3.0,
-    "timeframe": "15m",
-    "candle_time": "2026-10-22 16:45:00",
-    "session": "نیویورک",
-    "adx_value": 22.822805704101967,
-    "signal_score": null,
-    "market_snapshot": {
-      "adx": 22.823,
-      "di_plus": 7.767,
-      "di_minus": 46.859,
-      "ema_trend": 0.331125,
-      "close_vs_ema": "below",
-      "volume": 11930259.2,
-      "vol_ma": 1282326.69,
-      "vol_above_ma": true
-    },
-    "lot_a": {
-      "qty": 3.35,
-      "status": "closed"
-    },
-    "lot_b": {
-      "qty": 3.35,
-      "status": "open"
-    },
-    "realized_pnl": 2863.7883327943996
-  },
   "PEPEIRT__st": {
     "direction": "long",
     "entry": 1.21898,
@@ -190,7 +149,7 @@
     "trade_id": 1692,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1792731841635,
+    "last_checked_ms": 1792732737151,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -230,7 +189,7 @@
     "trade_id": 1695,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1792731830935,
+    "last_checked_ms": 1792732729136,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -267,56 +226,6 @@
       "status": "open"
     }
   },
-  "XLMIRT__smc": {
-    "direction": "long",
-    "entry": 48136.3,
-    "sl": 47742.03777994184,
-    "sl_initial": 47742.03777994184,
-    "tp1": 48727.69333008725,
-    "tp2": 49319.08666017449,
-    "source_label": "ICT/SMC v2",
-    "opened_at": "2026-10-23 03:15:00",
-    "margin_symbol": "XLM_IRT",
-    "trade_id": 1696,
-    "margin_irt": 200000.0,
-    "notional_irt": 400000.0,
-    "last_checked_ms": 1792731864999,
-    "raw_direction": "long",
-    "leverage": 2.0,
-    "timeframe": "15m",
-    "candle_time": "2026-10-23 03:15:00",
-    "session": "آسیا",
-    "adx_value": null,
-    "signal_score": 3,
-    "market_snapshot": {
-      "recent_bull_sweep": false,
-      "recent_bear_sweep": false,
-      "vol_spike": false,
-      "strong_bull_rej": true,
-      "strong_bear_rej": false,
-      "htf_bullish": false,
-      "htf_bearish": true,
-      "discount_zone": false,
-      "premium_zone": true,
-      "rsi_value": 68.13,
-      "rsi_bull_ok": true,
-      "rsi_bear_ok": false,
-      "trend_strong": true,
-      "trend": 1,
-      "bull_fvg_count": 4,
-      "bear_fvg_count": 2,
-      "bull_ob_count": 1,
-      "bear_ob_count": 1
-    },
-    "lot_a": {
-      "qty": 4.1548,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 4.1549,
-      "status": "open"
-    }
-  },
   "LINKIRT__smc": {
     "direction": "long",
     "entry": 3289517.0,
@@ -330,7 +239,7 @@
     "trade_id": 1697,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1792731835370,
+    "last_checked_ms": 1792732732065,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
