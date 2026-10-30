@@ -1,5 +1,5 @@
 {
-  "_trade_counter": 3070,
+  "_trade_counter": 3071,
   "_paper_balance_irt": 4097892.5894872593,
   "ADAIRT__smc__last_candle": "2026-10-29 20:30:00",
   "SEIIRT__smc__last_candle": "2026-10-29 01:45:00",
@@ -33,7 +33,7 @@
   "TRBIRT__st__last_candle": "2026-10-29 01:00:00",
   "HBARIRT__st__last_candle": "2026-10-20 14:00:00",
   "XRPIRT__st__last_candle": "2026-10-28 18:30:00",
-  "PEPEIRT__st__last_candle": "2026-10-29 20:30:00",
+  "PEPEIRT__st__last_candle": "2026-10-30 05:00:00",
   "LINKIRT__st__last_candle": "2026-10-29 10:30:00",
   "ADAIRT__st__last_candle": "2026-10-29 20:00:00",
   "BTCIRT__st__last_candle": "2026-10-29 20:00:00",
@@ -58,7 +58,7 @@
     "trade_id": 3063,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1793336499048,
+    "last_checked_ms": 1793337384234,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -108,7 +108,7 @@
     "trade_id": 3068,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1793336468208,
+    "last_checked_ms": 1793337349505,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -157,7 +157,7 @@
     "trade_id": 3070,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1793336492713,
+    "last_checked_ms": 1793337378009,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -190,6 +190,46 @@
     },
     "lot_b": {
       "qty": 0.7944,
+      "status": "open"
+    }
+  },
+  "PEPEIRT__st": {
+    "direction": "short",
+    "entry": 1.35113,
+    "sl": 1.4475067601678555,
+    "sl_initial": 1.4475067601678555,
+    "tp1": 1.2065648597482166,
+    "tp2": 1.0619997194964335,
+    "source_label": "Supertrend+ADX",
+    "opened_at": "2026-10-30 05:00:00",
+    "margin_symbol": "PEPE_IRT",
+    "trade_id": 3071,
+    "margin_irt": 200000.0,
+    "notional_irt": 600000.0,
+    "last_checked_ms": 1793337366155,
+    "raw_direction": "long",
+    "leverage": 3.0,
+    "timeframe": "15m",
+    "candle_time": "2026-10-30 05:00:00",
+    "session": "آسیا",
+    "adx_value": 22.064932841897193,
+    "signal_score": null,
+    "market_snapshot": {
+      "adx": 22.065,
+      "di_plus": 24.352,
+      "di_minus": 14.328,
+      "ema_trend": 5e-06,
+      "close_vs_ema": "above",
+      "volume": 460934610315.0,
+      "vol_ma": 441241701015.3,
+      "vol_above_ma": true
+    },
+    "lot_a": {
+      "qty": 222036.3,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 222036.4,
       "status": "open"
     }
   }
