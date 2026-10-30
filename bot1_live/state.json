@@ -1,6 +1,6 @@
 {
   "_trade_counter": 3069,
-  "_paper_balance_irt": 4080073.1998641626,
+  "_paper_balance_irt": 4084234.206133494,
   "ADAIRT__smc__last_candle": "2026-10-29 20:30:00",
   "SEIIRT__smc__last_candle": "2026-10-29 01:45:00",
   "SHIBIRT__smc__last_candle": "2026-10-29 15:45:00",
@@ -58,7 +58,7 @@
     "trade_id": 3063,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1793326580847,
+    "last_checked_ms": 1793327484293,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -107,7 +107,7 @@
     "trade_id": 3068,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1793326549474,
+    "last_checked_ms": 1793327456224,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -146,7 +146,7 @@
   "FLOKIIRT__smc": {
     "direction": "long",
     "entry": 5.8468,
-    "sl": 5.68460883340908,
+    "sl": 5.8468,
     "sl_initial": 5.68460883340908,
     "tp1": 6.090086749886379,
     "tp2": 6.333373499772758,
@@ -156,7 +156,7 @@
     "trade_id": 3069,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1793326552188,
+    "last_checked_ms": 1793327459235,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -185,11 +185,12 @@
     },
     "lot_a": {
       "qty": 17103.3,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 17103.3,
       "status": "open"
-    }
+    },
+    "realized_pnl": 4161.006269331708
   }
 }
