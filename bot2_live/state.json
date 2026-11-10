@@ -1,7 +1,7 @@
 {
-  "_trade_counter": 2537,
+  "_trade_counter": 2538,
   "_paper_balance_irt": 4150044.214319793,
-  "BTCIRT__smc__last_candle": "2026-11-10 11:15:00",
+  "BTCIRT__smc__last_candle": "2026-11-10 16:15:00",
   "SOLIRT__smc__last_candle": "2026-11-10 14:30:00",
   "DOGEIRT__smc__last_candle": "2026-11-10 14:30:00",
   "ETHIRT__st__last_candle": "2026-11-08 16:45:00",
@@ -44,5 +44,55 @@
   "XRPIRT__st__last_candle": "2026-11-07 12:30:00",
   "GRAMIRT__st__last_candle": "2026-11-07 11:00:00",
   "DOGSIRT__st__last_candle": "2026-11-10 15:30:00",
-  "SEIIRT__st__last_candle": "2026-11-09 22:00:00"
+  "SEIIRT__st__last_candle": "2026-11-09 22:00:00",
+  "BTCIRT__smc": {
+    "direction": "short",
+    "entry": 18892723308.0,
+    "sl": 19096705926.00262,
+    "sl_initial": 19096705926.00262,
+    "tp1": 18586749380.996063,
+    "tp2": 18280775453.99213,
+    "source_label": "ICT/SMC v2",
+    "opened_at": "2026-11-10 16:15:00",
+    "margin_symbol": "BTC_IRT",
+    "trade_id": 2538,
+    "margin_irt": 200000.0,
+    "notional_irt": 400000.0,
+    "last_checked_ms": 1794328411420,
+    "raw_direction": "short",
+    "leverage": 2.0,
+    "timeframe": "15m",
+    "candle_time": "2026-11-10 16:15:00",
+    "session": "نیویورک",
+    "adx_value": null,
+    "signal_score": 5,
+    "market_snapshot": {
+      "recent_bull_sweep": false,
+      "recent_bear_sweep": true,
+      "vol_spike": false,
+      "strong_bull_rej": false,
+      "strong_bear_rej": true,
+      "htf_bullish": false,
+      "htf_bearish": true,
+      "discount_zone": true,
+      "premium_zone": false,
+      "rsi_value": 35.85,
+      "rsi_bull_ok": false,
+      "rsi_bear_ok": true,
+      "trend_strong": true,
+      "trend": -1,
+      "bull_fvg_count": 0,
+      "bear_fvg_count": 6,
+      "bull_ob_count": 0,
+      "bear_ob_count": 3
+    },
+    "lot_a": {
+      "qty": 1.058e-05,
+      "status": "open"
+    },
+    "lot_b": {
+      "qty": 1.058e-05,
+      "status": "open"
+    }
+  }
 }
