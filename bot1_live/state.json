@@ -1,6 +1,6 @@
 {
   "_trade_counter": 3864,
-  "_paper_balance_irt": 3885337.666005381,
+  "_paper_balance_irt": 3887282.8220366635,
   "ADAIRT__smc__last_candle": "2026-11-10 19:30:00",
   "SEIIRT__smc__last_candle": "2026-11-10 16:15:00",
   "SHIBIRT__smc__last_candle": "2026-11-10 16:45:00",
@@ -58,7 +58,7 @@
     "trade_id": 3847,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1794342673512,
+    "last_checked_ms": 1794343562910,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -107,7 +107,7 @@
     "trade_id": 3855,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1794342677499,
+    "last_checked_ms": 1794343566844,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -156,7 +156,7 @@
     "trade_id": 3856,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1794342687117,
+    "last_checked_ms": 1794343574570,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -205,7 +205,7 @@
     "trade_id": 3858,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1794342695683,
+    "last_checked_ms": 1794343584176,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -254,7 +254,7 @@
     "trade_id": 3863,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1794342653176,
+    "last_checked_ms": 1794343539519,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -293,7 +293,7 @@
   "SUIIRT__smc": {
     "direction": "long",
     "entry": 211159.5,
-    "sl": 208420.80794609967,
+    "sl": 211159.5,
     "sl_initial": 208420.80794609967,
     "tp1": 215267.53808085047,
     "tp2": 219375.57616170094,
@@ -303,7 +303,7 @@
     "trade_id": 3864,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1794342683661,
+    "last_checked_ms": 1794343571240,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -332,11 +332,12 @@
     },
     "lot_a": {
       "qty": 0.4735,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 0.4736,
       "status": "open"
-    }
+    },
+    "realized_pnl": 1945.1560312826978
   }
 }
