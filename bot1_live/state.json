@@ -1,6 +1,6 @@
 {
   "_trade_counter": 3862,
-  "_paper_balance_irt": 3886354.3490125933,
+  "_paper_balance_irt": 3889197.5197433555,
   "ADAIRT__smc__last_candle": "2026-11-10 16:15:00",
   "SEIIRT__smc__last_candle": "2026-11-10 16:15:00",
   "SHIBIRT__smc__last_candle": "2026-11-10 16:45:00",
@@ -58,7 +58,7 @@
     "trade_id": 3847,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1794335471628,
+    "last_checked_ms": 1794336364198,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -107,7 +107,7 @@
     "trade_id": 3855,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1794335475284,
+    "last_checked_ms": 1794336368581,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -156,7 +156,7 @@
     "trade_id": 3856,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1794335480764,
+    "last_checked_ms": 1794336374630,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -205,7 +205,7 @@
     "trade_id": 3858,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1794335488905,
+    "last_checked_ms": 1794336384042,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -244,7 +244,7 @@
   "GRAMIRT__smc": {
     "direction": "short",
     "entry": 286417.5,
-    "sl": 291846.4028866403,
+    "sl": 286417.5,
     "sl_initial": 291846.4028866403,
     "tp1": 278274.1456700396,
     "tp2": 270130.79134007916,
@@ -254,7 +254,7 @@
     "trade_id": 3861,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1794335465262,
+    "last_checked_ms": 1794336354700,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -283,12 +283,13 @@
     },
     "lot_a": {
       "qty": 0.34914,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 0.34914,
       "status": "open"
-    }
+    },
+    "realized_pnl": 2843.1707307623815
   },
   "DOGSIRT__smc": {
     "direction": "long",
@@ -303,7 +304,7 @@
     "trade_id": 3862,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1794335457491,
+    "last_checked_ms": 1794336345690,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
