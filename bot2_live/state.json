@@ -1,6 +1,6 @@
 {
   "_trade_counter": 2566,
-  "_paper_balance_irt": 4070483.0748891463,
+  "_paper_balance_irt": 4044957.189996557,
   "BTCIRT__smc__last_candle": "2026-11-10 18:00:00",
   "SOLIRT__smc__last_candle": "2026-11-11 04:15:00",
   "DOGEIRT__smc__last_candle": "2026-11-10 14:30:00",
@@ -58,7 +58,7 @@
     "trade_id": 2550,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1794384217057,
+    "last_checked_ms": 1794385113931,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -85,56 +85,6 @@
       "status": "open"
     }
   },
-  "XRPIRT__smc": {
-    "direction": "short",
-    "entry": 270360.5,
-    "sl": 273108.6562689209,
-    "sl_initial": 273108.6562689209,
-    "tp1": 266238.2655966186,
-    "tp2": 262116.0311932371,
-    "source_label": "ICT/SMC v2",
-    "opened_at": "2026-11-11 00:00:00",
-    "margin_symbol": "XRP_IRT",
-    "trade_id": 2553,
-    "margin_irt": 200000.0,
-    "notional_irt": 400000.0,
-    "last_checked_ms": 1794384268859,
-    "raw_direction": "short",
-    "leverage": 2.0,
-    "timeframe": "15m",
-    "candle_time": "2026-11-11 00:00:00",
-    "session": "آسیا",
-    "adx_value": null,
-    "signal_score": 3,
-    "market_snapshot": {
-      "recent_bull_sweep": true,
-      "recent_bear_sweep": false,
-      "vol_spike": false,
-      "strong_bull_rej": false,
-      "strong_bear_rej": true,
-      "htf_bullish": false,
-      "htf_bearish": true,
-      "discount_zone": true,
-      "premium_zone": false,
-      "rsi_value": 43.7,
-      "rsi_bull_ok": false,
-      "rsi_bear_ok": true,
-      "trend_strong": false,
-      "trend": -1,
-      "bull_fvg_count": 0,
-      "bear_fvg_count": 5,
-      "bull_ob_count": 0,
-      "bear_ob_count": 2
-    },
-    "lot_a": {
-      "qty": 0.7,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 0.7,
-      "status": "open"
-    }
-  },
   "PEPEIRT__st": {
     "direction": "long",
     "entry": 1.3947150000000001,
@@ -148,7 +98,7 @@
     "trade_id": 2555,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1794384240159,
+    "last_checked_ms": 1794385133839,
     "raw_direction": "long",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -188,7 +138,7 @@
     "trade_id": 2557,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1794384217673,
+    "last_checked_ms": 1794385115238,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -228,7 +178,7 @@
   "TIAIRT__smc": {
     "direction": "long",
     "entry": 109074.5,
-    "sl": 107581.74925183524,
+    "sl": 109074.5,
     "sl_initial": 107581.74925183524,
     "tp1": 111313.62612224714,
     "tp2": 113552.75224449427,
@@ -238,7 +188,7 @@
     "trade_id": 2559,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1794384252342,
+    "last_checked_ms": 1794385150108,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -268,141 +218,12 @@
     },
     "lot_a": {
       "qty": 1.8336,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 1.8336,
       "status": "open"
-    }
-  },
-  "SHIBIRT__smc": {
-    "direction": "short",
-    "entry": 1.13345,
-    "sl": 1.145956408962385,
-    "sl_initial": 1.145956408962385,
-    "tp1": 1.1146903865564226,
-    "tp2": 1.0959307731128451,
-    "source_label": "ICT/SMC v2",
-    "opened_at": "2026-11-11 06:00:00",
-    "margin_symbol": "SHIB_IRT",
-    "trade_id": 2561,
-    "margin_irt": 200000.0,
-    "notional_irt": 400000.0,
-    "last_checked_ms": 1794384245608,
-    "raw_direction": "short",
-    "leverage": 2.0,
-    "timeframe": "15m",
-    "candle_time": "2026-11-11 06:00:00",
-    "session": "آسیا",
-    "adx_value": null,
-    "signal_score": 4,
-    "market_snapshot": {
-      "recent_bull_sweep": false,
-      "recent_bear_sweep": true,
-      "vol_spike": true,
-      "strong_bull_rej": false,
-      "strong_bear_rej": true,
-      "htf_bullish": true,
-      "htf_bearish": false,
-      "discount_zone": true,
-      "premium_zone": false,
-      "rsi_value": 40.12,
-      "rsi_bull_ok": false,
-      "rsi_bear_ok": true,
-      "trend_strong": false,
-      "trend": -1,
-      "bull_fvg_count": 0,
-      "bear_fvg_count": 0,
-      "bull_ob_count": 0,
-      "bear_ob_count": 1
     },
-    "lot_a": {
-      "qty": 176452.4,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 176452.4,
-      "status": "open"
-    }
-  },
-  "HBARIRT__st": {
-    "direction": "short",
-    "entry": 16643.5,
-    "sl": 16940.42189158063,
-    "sl_initial": 16940.42189158063,
-    "tp1": 16198.117162629054,
-    "tp2": 15752.73432525811,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-11-11 06:30:00",
-    "margin_symbol": "HBAR_IRT",
-    "trade_id": 2563,
-    "margin_irt": 200000.0,
-    "notional_irt": 600000.0,
-    "last_checked_ms": 1794384231569,
-    "raw_direction": "short",
-    "leverage": 3.0,
-    "timeframe": "15m",
-    "candle_time": "2026-11-11 06:30:00",
-    "session": "آسیا",
-    "adx_value": 19.232602522697615,
-    "signal_score": null,
-    "market_snapshot": {
-      "adx": 19.233,
-      "di_plus": 13.432,
-      "di_minus": 28.633,
-      "ema_trend": 0.066421,
-      "close_vs_ema": "below",
-      "volume": 506772.0,
-      "vol_ma": 342237.8,
-      "vol_above_ma": true
-    },
-    "lot_a": {
-      "qty": 18.025,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 18.0251,
-      "status": "open"
-    }
-  },
-  "SEIIRT__st": {
-    "direction": "short",
-    "entry": 11119.5,
-    "sl": 11317.394102719729,
-    "sl_initial": 11317.394102719729,
-    "tp1": 10822.658845920405,
-    "tp2": 10525.817691840812,
-    "source_label": "Supertrend+ADX",
-    "opened_at": "2026-11-11 07:00:00",
-    "margin_symbol": "SEI_IRT",
-    "trade_id": 2565,
-    "margin_irt": 200000.0,
-    "notional_irt": 600000.0,
-    "last_checked_ms": 1794384242984,
-    "raw_direction": "short",
-    "leverage": 3.0,
-    "timeframe": "15m",
-    "candle_time": "2026-11-11 07:00:00",
-    "session": "آسیا",
-    "adx_value": 19.703169752454734,
-    "signal_score": null,
-    "market_snapshot": {
-      "adx": 19.703,
-      "di_plus": 14.466,
-      "di_minus": 32.017,
-      "ema_trend": 0.044018,
-      "close_vs_ema": "below",
-      "volume": 443406.7,
-      "vol_ma": 201801.82,
-      "vol_above_ma": true
-    },
-    "lot_a": {
-      "qty": 26.9,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 27.0,
-      "status": "open"
-    }
+    "realized_pnl": 4105.661657752349
   }
 }
