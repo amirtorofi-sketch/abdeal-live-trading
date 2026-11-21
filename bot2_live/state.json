@@ -1,6 +1,6 @@
 {
   "_trade_counter": 2926,
-  "_paper_balance_irt": 4513521.124452125,
+  "_paper_balance_irt": 4504607.174519322,
   "BTCIRT__smc__last_candle": "2026-11-21 06:15:00",
   "SOLIRT__smc__last_candle": "2026-11-20 16:00:00",
   "DOGEIRT__smc__last_candle": "2026-11-21 06:15:00",
@@ -58,7 +58,7 @@
     "trade_id": 2915,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1795244648921,
+    "last_checked_ms": 1795245545924,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -98,7 +98,7 @@
     "trade_id": 2924,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1795244636898,
+    "last_checked_ms": 1795245536149,
     "raw_direction": "short",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -148,7 +148,7 @@
     "trade_id": 2925,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1795244617055,
+    "last_checked_ms": 1795245512150,
     "raw_direction": "short",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -182,56 +182,6 @@
     },
     "lot_b": {
       "qty": 6.6811,
-      "status": "open"
-    }
-  },
-  "FLOKIIRT__smc": {
-    "direction": "short",
-    "entry": 4.161405,
-    "sl": 4.254141468741098,
-    "sl_initial": 4.254141468741098,
-    "tp1": 4.0223002968883526,
-    "tp2": 3.883195593776704,
-    "source_label": "ICT/SMC v2",
-    "opened_at": "2026-11-21 06:45:00",
-    "margin_symbol": "FLOKI_IRT",
-    "trade_id": 2926,
-    "margin_irt": 200000.0,
-    "notional_irt": 400000.0,
-    "last_checked_ms": 1795244627248,
-    "raw_direction": "short",
-    "leverage": 2.0,
-    "timeframe": "15m",
-    "candle_time": "2026-11-21 06:45:00",
-    "session": "آسیا",
-    "adx_value": null,
-    "signal_score": 3,
-    "market_snapshot": {
-      "recent_bull_sweep": true,
-      "recent_bear_sweep": false,
-      "vol_spike": true,
-      "strong_bull_rej": false,
-      "strong_bear_rej": false,
-      "htf_bullish": false,
-      "htf_bearish": true,
-      "discount_zone": true,
-      "premium_zone": false,
-      "rsi_value": 54.45,
-      "rsi_bull_ok": true,
-      "rsi_bear_ok": false,
-      "trend_strong": true,
-      "trend": -1,
-      "bull_fvg_count": 1,
-      "bear_fvg_count": 5,
-      "bull_ob_count": 0,
-      "bear_ob_count": 3
-    },
-    "lot_a": {
-      "qty": 48060.6,
-      "status": "open"
-    },
-    "lot_b": {
-      "qty": 48060.7,
       "status": "open"
     }
   }
