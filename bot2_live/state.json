@@ -1,6 +1,6 @@
 {
   "_trade_counter": 2933,
-  "_paper_balance_irt": 4501190.823089843,
+  "_paper_balance_irt": 4505551.879621921,
   "BTCIRT__smc__last_candle": "2026-11-21 08:45:00",
   "SOLIRT__smc__last_candle": "2026-11-20 16:00:00",
   "DOGEIRT__smc__last_candle": "2026-11-21 13:00:00",
@@ -58,7 +58,7 @@
     "trade_id": 2915,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1795268382702,
+    "last_checked_ms": 1795268948363,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -98,7 +98,7 @@
     "trade_id": 2927,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1795268384275,
+    "last_checked_ms": 1795268949380,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -149,7 +149,7 @@
     "trade_id": 2928,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1795268288079,
+    "last_checked_ms": 1795268920952,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -200,7 +200,7 @@
     "trade_id": 2932,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1795268008177,
+    "last_checked_ms": 1795268909957,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -240,7 +240,7 @@
   "DOGEIRT__smc": {
     "direction": "long",
     "entry": 14724.5,
-    "sl": 14510.407877659376,
+    "sl": 14724.5,
     "sl_initial": 14510.407877659376,
     "tp1": 15045.638183510933,
     "tp2": 15366.776367021872,
@@ -250,7 +250,7 @@
     "trade_id": 2933,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1795268148434,
+    "last_checked_ms": 1795268916742,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -280,11 +280,12 @@
     },
     "lot_a": {
       "qty": 13.58,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 13.58,
       "status": "open"
-    }
+    },
+    "realized_pnl": 4361.0565320784735
   }
 }
