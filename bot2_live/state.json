@@ -1,6 +1,6 @@
 {
   "_trade_counter": 2928,
-  "_paper_balance_irt": 4504607.174519322,
+  "_paper_balance_irt": 4512031.705677166,
   "BTCIRT__smc__last_candle": "2026-11-21 06:15:00",
   "SOLIRT__smc__last_candle": "2026-11-20 16:00:00",
   "DOGEIRT__smc__last_candle": "2026-11-21 06:15:00",
@@ -58,7 +58,7 @@
     "trade_id": 2915,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1795249152022,
+    "last_checked_ms": 1795250039644,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -98,7 +98,7 @@
     "trade_id": 2924,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1795249141187,
+    "last_checked_ms": 1795250030502,
     "raw_direction": "short",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -138,7 +138,7 @@
   "ARBIRT__smc": {
     "direction": "short",
     "entry": 29935.0,
-    "sl": 30675.849177315482,
+    "sl": 29935.0,
     "sl_initial": 30675.849177315482,
     "tp1": 28823.72623402678,
     "tp2": 27712.45246805356,
@@ -148,7 +148,7 @@
     "trade_id": 2925,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1795249117633,
+    "last_checked_ms": 1795250010639,
     "raw_direction": "short",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -178,12 +178,13 @@
     },
     "lot_a": {
       "qty": 6.6811,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 6.6811,
       "status": "open"
-    }
+    },
+    "realized_pnl": 7424.531157843675
   },
   "TIAIRT__smc": {
     "direction": "long",
@@ -198,7 +199,7 @@
     "trade_id": 2927,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1795249152890,
+    "last_checked_ms": 1795250041557,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -248,7 +249,7 @@
     "trade_id": 2928,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1795249125854,
+    "last_checked_ms": 1795250017216,
     "raw_direction": "long",
     "leverage": 2.0,
     "timeframe": "15m",
