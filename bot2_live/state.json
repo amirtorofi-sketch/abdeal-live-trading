@@ -1,6 +1,6 @@
 {
   "_trade_counter": 2917,
-  "_paper_balance_irt": 4580322.090599323,
+  "_paper_balance_irt": 4587582.533004611,
   "BTCIRT__smc__last_candle": "2026-11-21 01:00:00",
   "SOLIRT__smc__last_candle": "2026-11-20 16:00:00",
   "DOGEIRT__smc__last_candle": "2026-11-20 22:15:00",
@@ -58,7 +58,7 @@
     "trade_id": 2902,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1795241032711,
+    "last_checked_ms": 1795241949899,
     "raw_direction": "short",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -109,7 +109,7 @@
     "trade_id": 2913,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1795241025445,
+    "last_checked_ms": 1795241941112,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -149,7 +149,7 @@
     "trade_id": 2914,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1795241049703,
+    "last_checked_ms": 1795241966741,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -189,7 +189,7 @@
     "trade_id": 2915,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1795241036689,
+    "last_checked_ms": 1795241954591,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -219,7 +219,7 @@
   "GRAMIRT__smc": {
     "direction": "short",
     "entry": 250674.5,
-    "sl": 256741.2488930851,
+    "sl": 250674.5,
     "sl_initial": 256741.2488930851,
     "tp1": 241574.37666037233,
     "tp2": 232474.25332074464,
@@ -229,7 +229,7 @@
     "trade_id": 2916,
     "margin_irt": 200000.0,
     "notional_irt": 400000.0,
-    "last_checked_ms": 1795241020576,
+    "last_checked_ms": 1795241933784,
     "raw_direction": "short",
     "leverage": 2.0,
     "timeframe": "15m",
@@ -259,11 +259,12 @@
     },
     "lot_a": {
       "qty": 0.79784,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 0.79785,
       "status": "open"
-    }
+    },
+    "realized_pnl": 7260.442405288537
   }
 }
