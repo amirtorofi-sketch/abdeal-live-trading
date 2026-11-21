@@ -1,6 +1,6 @@
 {
   "_trade_counter": 4409,
-  "_paper_balance_irt": 3446538.45518418,
+  "_paper_balance_irt": 3448400.67352296,
   "ADAIRT__smc__last_candle": "2026-11-21 03:30:00",
   "SEIIRT__smc__last_candle": "2026-11-21 04:00:00",
   "SHIBIRT__smc__last_candle": "2026-11-21 04:15:00",
@@ -58,7 +58,7 @@
     "trade_id": 4385,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1795264304251,
+    "last_checked_ms": 1795265195449,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -98,7 +98,7 @@
     "trade_id": 4395,
     "margin_irt": 200000.0,
     "notional_irt": 600000.0,
-    "last_checked_ms": 1795264290184,
+    "last_checked_ms": 1795265182664,
     "raw_direction": "short",
     "leverage": 3.0,
     "timeframe": "15m",
@@ -138,7 +138,7 @@
     "trade_id": 4402,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1795264282743,
+    "last_checked_ms": 1795265175068,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -188,7 +188,7 @@
     "trade_id": 4404,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1795264301091,
+    "last_checked_ms": 1795265193567,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -238,7 +238,7 @@
     "trade_id": 4405,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1795264260829,
+    "last_checked_ms": 1795265153129,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -287,7 +287,7 @@
     "trade_id": 4406,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1795264305297,
+    "last_checked_ms": 1795265196714,
     "raw_direction": "long",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -326,7 +326,7 @@
   "BTCIRT__smc": {
     "direction": "long",
     "entry": 15685034065.5,
-    "sl": 15490139419.892435,
+    "sl": 15685034065.5,
     "sl_initial": 15490139419.892435,
     "tp1": 15977376033.911346,
     "tp2": 16269718002.322697,
@@ -336,7 +336,7 @@
     "trade_id": 4409,
     "margin_irt": 200000.0,
     "notional_irt": 200000.0,
-    "last_checked_ms": 1795264257393,
+    "last_checked_ms": 1795265149045,
     "raw_direction": "short",
     "leverage": 1.0,
     "timeframe": "15m",
@@ -365,11 +365,12 @@
     },
     "lot_a": {
       "qty": 6.37e-06,
-      "status": "open"
+      "status": "closed"
     },
     "lot_b": {
       "qty": 6.38e-06,
       "status": "open"
-    }
+    },
+    "realized_pnl": 1862.2183387802768
   }
 }
